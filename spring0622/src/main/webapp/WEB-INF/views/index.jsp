@@ -7,6 +7,6 @@
 		<title>index 페이지</title>
 	</head>
 	<body>
-		<h2>JSP는 webapp에</h2>
+		<h2>JSP는 webapp에 저장합니다</h2>
 	</body>
 </html>

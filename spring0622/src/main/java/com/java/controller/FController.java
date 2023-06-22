@@ -13,17 +13,11 @@ import com.java.service.BServiceImpl2;
 @Controller
 public class FController {
 	
-	/*
-	 * @Autowired // 자동객체선언 BoardDto bdto; //BoardDto bdto = new BoardDto();
-	 */	
-	@Autowired
+	@Autowired // 자동객체선언
 	BSerivice bService; // = new BServiceImpl(); 조상의 참조변수로 자손 객체를 선언: 다형성
 	
 	@GetMapping("/index")// get방식으로 이런 url 받으면
 	public String index() {
-		/*
-		 * bdto.setBno(1); System.out.println("bno: " + bdto.getBno());
-		 */
 		System.out.println("s: " + bService.add());
 		return "index"; // /WEB-INF/views/index.jsp 로 보내기
 	}

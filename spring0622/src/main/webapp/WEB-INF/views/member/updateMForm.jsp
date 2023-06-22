@@ -13,7 +13,7 @@
 		<h2>회원정보수정</h2>
 		<form action="doUpdateMForm" method="get" name="mfrm">
 			<label>아이디</label>
-			<input type="text" name="id" value="${mdto.id}"><br>
+			<input type="text" name="id" value="${mdto.id}"><br><!-- doMForm에서 '수정하기' 눌러 받은 값 -->
 			
 			<label>비밀번호</label>
 			<input type="password" name="pw" value="${mdto.pw}"><br>

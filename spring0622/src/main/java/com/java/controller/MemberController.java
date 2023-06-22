@@ -18,17 +18,16 @@ public class MemberController {
 		return "member/member1";// /WEB-INF/member/member1.jsp 로 보내기
 	}
 	
-	
 	@RequestMapping("/login")// 이런 url 받으면
 	public String login() {
 		return "member/login";// /WEB-INF/member/login.jsp 로 보내기
 	}
 	
 	@RequestMapping("/doLogin")// 이런 url 받으면
-	public String doLogin(@RequestParam(required = false, defaultValue = "DEFAULT") String id, String pw, Model model) {
-										// Null값 허용, 기본값 설정
-		model.addAttribute("id",id);
-		model.addAttribute("pw",pw);
+	public String doLogin(@RequestParam(required = false, defaultValue = "DEFAULT") String id, String pw, Model model) {// id,pw를
+											// Null값 허용, 기본값 설정
+		model.addAttribute("id",id);// id를 model에 실어서 
+		model.addAttribute("pw",pw);// pw를 model에 실어서
 		
 		return "member/doLogin";// /WEB-INF/member/doLogin.jsp 로 보내기
 	}
@@ -48,7 +47,6 @@ public class MemberController {
 		 * request.getParameter("pw"); String name = request.getParameter("name");
 		 * String gender = request.getParameter("gender");
 		 */
-		
 		/*
 		 * model.addAttribute("id",id); model.addAttribute("pw",pw);
 		 * model.addAttribute("name",name); model.addAttribute("gender",gender);
@@ -63,14 +61,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/doMForm")// 이런 url 받으면
-	public String doMForm(MemberDto mdto, String[] hobbys, Model model) {
+	public String doMForm(MemberDto mdto, String[] hobbys, Model model) {// 체크박스는 일단 배열로 받을 수 밖에 없는데
 		String hobby="";
-		for (int i=0; i<hobbys.length; i++) {
+		
+		for (int i=0; i<hobbys.length; i++) {// 배열 한줄로 풀꺼임
 			if (i==0) hobby += hobbys[i]; // game
 			else hobby += ", " + hobbys[i]; // game, golf, run
 		}
 		System.out.println("hobby: " + hobby);
-		mdto.setHobby(hobby);// mdto 객체에 저장 
+		mdto.setHobby(hobby);// mdto객체 hobby에 저장 
 		
 		model.addAttribute("mdto", mdto); // model에 객체 저장
 		

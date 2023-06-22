@@ -13,8 +13,9 @@
 		<h3>이 름: ${mdto.name}</h3>
 		<h3>성 별: ${mdto.gender}</h3>
 		<h3>취 미: ${mdto.hobby}</h3>
+		
 		<form action="updateMForm" method="post" name="frm">
-			<input type="hidden" name="id" value="${mdto.id}">
+			<input type="hidden" name="id" value="${mdto.id}"><!-- 숨겨서 보내기..! -->
 			<input type="hidden" name="pw" value="${mdto.pw}">
 			<input type="hidden" name="name" value="${mdto.name}">
 			<input type="hidden" name="gender" value="${mdto.gender}">
