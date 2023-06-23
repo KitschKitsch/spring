@@ -13,6 +13,7 @@ public class MemberDto {
 	private String pw;
 	private String name;
 	private String gender;
+	private String job;
 	private String hobby;// 배열로받을수없음;;
 	
 }

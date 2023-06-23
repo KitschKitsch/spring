@@ -7,6 +7,7 @@
 		<title>mForm</title>
 	</head>
 	<body>
+		<h2>회원가입</h2>
 		<form action="doMForm" method="get" name="mfrm">
 		
 			<label>아이디</label>
@@ -23,6 +24,14 @@
 			<label for="male">남자</label>
 			<input type="radio" name="gender" id="female" value="female">
 			<label for="female">여자</label><br>
+			
+			<label>직업</label><br>
+			<select name="job">
+				<option value="worker">회사원</option>
+				<option value="self">자영업</option>
+				<option value="freelancer">프리랜서</option>
+				<option value="housewife" selected="selected">전업주부</option>
+			</select><br>
 			
 			<label>취미</label><br>
 			<input type="checkbox" name="hobbys" id="game" value="game">
