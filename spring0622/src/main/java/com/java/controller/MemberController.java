@@ -26,8 +26,8 @@ public class MemberController {
 	@RequestMapping("/doLogin")// 이런 url 받으면
 	public String doLogin(@RequestParam(required = false, defaultValue = "DEFAULT") String id, String pw, Model model) {// id,pw를
 											// Null값 허용, 기본값 설정
-		model.addAttribute("id",id);// id를 model에 실어서 
-		model.addAttribute("pw",pw);// pw를 model에 실어서
+		model.addAttribute("id",id);// login 폼으로 받은 id를 model에 실어서 
+		model.addAttribute("pw",pw);// login 폼으로 받은 pw를 model에 실어서
 		
 		return "member/doLogin";// /WEB-INF/member/doLogin.jsp 로 보내기
 	}
@@ -39,7 +39,7 @@ public class MemberController {
 	
 	@RequestMapping("/doMemberForm")// 이런 url 받으면
 	public String doMemberForm(MemberDto mdto, Model model, HttpServletRequest request) {// 데이터 이름이 같으면 mdto로 받아 model에 담아 보냄
-		model.addAttribute("mdto", mdto);
+		model.addAttribute("mdto", mdto);// memberForm에서 받은 값 model mdto에 싣기
 		
 		//int bno = Integer.parseInt(request.getParameter("bno"));// 객체로 받으면 형변환도 필요없음!!!
 		/*
