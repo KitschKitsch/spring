@@ -17,16 +17,6 @@ public class MController {
 	MemberService memberService; // 자동 객체선언으로 참조변수만 사용!(DI)
 	
 	
-	@RequestMapping("/member/memberView") // 주소 받으면
-	public String memberView(String id, Model model) {
-		System.out.println("MController id: " + id);
-		// 회원 1명 가져오기
-		MemberDto member = memberService.memberSelectOne(id);
-		model.addAttribute("member", member);
-		
-		return "member/memberView"; // webapp/WEB-INF/views/ 파일 열기
-	}
-	
 	
 	@RequestMapping("/member/memberList") // 주소 받으면
 	public String memberList(Model model) {
@@ -37,6 +27,21 @@ public class MController {
 		
 		return "member/memberList"; // webapp/WEB-INF/views/ 파일 열기
 	}
+	
+	
+	
+	@RequestMapping("/member/memberView") // 주소 받으면
+	public String memberView(String id, Model model) {
+		System.out.println("MController id: " + id);// url의 파라미터로 받은 id
+		// 회원 1명 가져오기
+		MemberDto member = memberService.memberSelectOne(id);
+		model.addAttribute("member", member);
+		
+		return "member/memberView"; // webapp/WEB-INF/views/ 파일 열기
+	}
+	
+	
+
 	
 
 }

@@ -25,7 +25,7 @@
 				<th>GENDER</th>
 				<th>HOBBY</th>
 			</tr>
-			<c:forEach var="member" items="${list}">
+			<c:forEach var="member" items="${list}"><!-- MController의 list -->
 				<tr>
 					<td>${member.id}</td>
 					<td>${member.pw}</td>
@@ -34,7 +34,7 @@
 					<td>${member.gender}</td>
 					<td>${member.hobby}</td>
 				</tr>
-			</c:forEach>
+			</c:forEach><!-- 반복 -->
 		</table>
 	</body>
 </html>

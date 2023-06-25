@@ -12,7 +12,7 @@ import com.java.mapper.BoardMapper;
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
-	BoardMapper boardMapper;
+	BoardMapper boardMapper; // MyBatis와 연결하는 어노테이션 -> xml에서 구문 찾음
 	
 	@Override // 회원 전체 가져오기
 	public ArrayList<MemberDto> memberSelectAll() {
