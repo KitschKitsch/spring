@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.mapper.MemberMapper">
+	
+	<select id="selectLogin" resultType="com.java.dto.MemberDto"><!-- id 넣고, restultType으로 반환타입 정해주기 -->
+        SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw} <!-- 검색할 데이터는 #{}에 넣기 -->
+    </select>
+    	
+    	
+	
+</mapper>
