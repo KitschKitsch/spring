@@ -39,7 +39,7 @@
         <th colspan="3">제목</th>
       </tr>
       <tr>
-        <td colspan="3"><strong>${bdto.btitle}</strong></td>
+        <td colspan="3"><strong>${bdto.btitle}</strong></td><!-- model의 bdto 이름으로 받음  -->
       </tr>
       <tr>
         <td>${bdto.id}</td>
@@ -50,14 +50,14 @@
         <td colspan="3" class="article">${bdto.bcontent}</td>
       </tr>
       <tr>
-        <td colspan="3" class="article"><strong>파일</strong> <span class="separator">|</span>${bdto.bfile}</td>
+        <td colspan="3" class="article"><strong>파일명</strong> <span class="separator">|</span>${bdto.bfile}</td>
       </tr>
       <tr>
       	<td colspan="3">
-      		<c:if test="${bdto.bfile!=null}">
+      		<c:if test="${bdto.bfile != null}">
       			<img src="/images/${bdto.bfile}">
       		</c:if>
-      		<c:if test="${bdto.bfile==null}">
+      		<c:if test="${bdto.bfile == null}">
       			<strong>업로드 된 파일이 없습니다.</strong>
       		</c:if>
       	</td>

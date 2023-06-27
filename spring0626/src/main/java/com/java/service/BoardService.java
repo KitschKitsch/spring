@@ -9,7 +9,7 @@ import com.java.dto.BoardDto;
 public interface BoardService {
 	
 	// 게시글 전체 가져오기
-	HashMap<String, Object> selectAll(int page); // 리턴타입 메소드명
+	HashMap<String, Object> selectAll(int page); // 리턴타입-HashMap 메소드명-selectAll(page)
 
 	// 게시글 1개 가져오기
 	BoardDto selectOne(int bno);

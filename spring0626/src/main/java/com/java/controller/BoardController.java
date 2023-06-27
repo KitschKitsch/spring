@@ -28,10 +28,9 @@ public class BoardController {
 
 	@RequestMapping("/board/boardList") // 주소받으면
 	public String boardList(@RequestParam(defaultValue = "1")int page, Model model) {
-		
-		// 게시글 전체 가져오는 메소드 호출! 전체 = 어레이리스트
-		HashMap<String, Object> map = boardService.selectAll(page); // 리턴타입 메소드명
-		model.addAttribute("list", map.get("list"));
+		// 게시글 전체 가져오는 메소드 호출
+		HashMap<String, Object> map = boardService.selectAll(page); // 리턴타입-HashMap 메소드명-selectAll(page)
+		model.addAttribute("list", map.get("list"));// model에 값 실어서 "list":list
 		model.addAttribute("page", map.get("page"));
 		model.addAttribute("listCount", map.get("listCount"));
 		model.addAttribute("startPage", map.get("startPage"));
@@ -39,87 +38,83 @@ public class BoardController {
 		model.addAttribute("maxPage", map.get("maxPage"));
 
 		return "board/boardList"; // 여기로 리턴
-	}
+	}// boardList
 
+	
 	@RequestMapping("board/boardView")
-	public String boardView(@RequestParam(defaultValue = "1") int bno, Model model) {
+	public String boardView(@RequestParam(defaultValue = "1")int bno, Model model) {
 		System.out.println("boardView bno:" + bno); // 이름만 똑같으면 자동형변환! String이지만 int로 자동형변환!
+		// 게시글 1개 조회하는 메소드 호출(게시글 1개 = 객체)
+		BoardDto bdto = boardService.selectOne(bno); //bdto 객체를
+		model.addAttribute("bdto", bdto);// model에 bdto이름으로 실어서
 
-		// 게시글 1개 가져오는 메소드 호출! 게시글 1개 = 객체
-		BoardDto bdto = boardService.selectOne(bno);
-		model.addAttribute("bdto", bdto);
+		return "board/boardView";// 반환
+	}// boardView
 
-		return "board/boardView";
-	}
-
+	
 	@GetMapping("/board/boardWrite")
 	public String boardWrite() {
 		return "board/boardWrite";
-	}
-
+	}// boardWrite
 	@PostMapping("/board/boardWrite")
 	public String doBoardWrite(BoardDto bdto, @RequestPart MultipartFile file, Model model) throws Exception {
-
-		// 게시글 저장하는 메소드 호출
+		// 게시글 저장하기
 		String fileName = "";
 		if (!file.isEmpty()) { // 파일 있는지?(null과 다름!)
-
-			String ori_fileName = file.getOriginalFilename();// 실제 파일 이름
-			UUID uuid = UUID.randomUUID();// 랜덤 16자리 숫자 생성
-			fileName = uuid + "_" + ori_fileName;// 변경 파일 이름(중복방지)
-			String uploadurl = "c:/upload/";// 파일 업로드 위치
-			File f = new File(uploadurl + fileName);
+			String ori_fileName = file.getOriginalFilename();// 입력한 파일의 실제 이름
+			UUID uuid = UUID.randomUUID();// 랜덤 16자리 숫자 생성하기
+			fileName = uuid + "_" + ori_fileName;// 파일 이름에 난수 붙이기(중복방지)
+			String uploadUrl = "c:/upload/";// 파일 업로드 하려는 위치
+			File f = new File(uploadUrl + fileName);// 경로 + 파일명
 			file.transferTo(f);// 파일 저장
 		}
 		System.out.println("doBoardWrite bfile: " + fileName);
-		bdto.setBfile(fileName);// bfile 변수에 파일이름 저장
-		boardService.insertOne(bdto);
+		bdto.setBfile(fileName);// bfile 변수에 fileName 저장
+		boardService.insertOne(bdto);// 게시글 저장하는 메소드 호출
 
 		return "redirect:boardList";
-	}
+	}// doBoardWrite
 	
 
 	@GetMapping("/board/boardDelete")
 	public String boardDelete(int bno) {
-		System.out.println("boardDelte: " + bno);
-		boardService.deleteOne(bno);
+		System.out.println("boardDelte bno: " + bno);
+		boardService.deleteOne(bno);// 게시글 삭제하는 메소드 호출
+		
 		return "redirect:boardList";
-	}
+	}// boardDelete
 	
 
 	@GetMapping("/board/boardUpdate") // boardUpdate view
 	public String boardUpdate(int bno, Model model) {
-		System.out.println("boardUpdate: " + bno);
-		BoardDto bdto = boardService.selectOne(bno);
+		System.out.println("boardUpdate bno: " + bno);
+		BoardDto bdto = boardService.selectOne(bno);// 게시글 1개 조회하는 메소드 호출
 		model.addAttribute("bdto", bdto);
+		
 		return "board/boardUpdate";
-	}
-
-
+	}// boardUpdate
 	@PostMapping("/board/boardUpdate") // boardUpdate 저장
 	public String doBoardUpdate(BoardDto bdto, @RequestPart MultipartFile file, Model model) throws Exception {
 
-		// 게시글 1개 수정
-		System.out.println("doBoardUpdate bdto : " + bdto.getBno());
-		System.out.println("doBoardUpdate bdto : " + bdto.getBfile());
-		System.out.println("doBoardUpdate file : " + file.getOriginalFilename());
+		System.out.println("doBoardUpdate bno : " + bdto.getBno());
+		System.out.println("doBoardUpdate bfile : " + bdto.getBfile());
+		System.out.println("doBoardUpdate old_file : " + file.getOriginalFilename());
 
+		// 게시글 1개 수정
 		String fileName = "";
-		
-		//파일이 있을경우 파일저장
-		if(!file.isEmpty()) {
-			String ori_fileName = file.getOriginalFilename(); //실제파일이름
-			UUID uuid = UUID.randomUUID(); //랜덤숫자생성
-			fileName = uuid+"_"+ori_fileName;  //변경파일이름 - 중복방지
-			String uploadUrl = "c:/upload/"; //파일업로드 위치
-			File f = new File(uploadUrl+fileName);
-			file.transferTo(f); //파일저장
-			bdto.setBfile(fileName);
+		if(!file.isEmpty()) {//파일이 있을경우 파일저장
+			String ori_fileName = file.getOriginalFilename();// 원본파일이름
+			UUID uuid = UUID.randomUUID();// 랜덤숫자생성
+			fileName = uuid+"_"+ori_fileName;// 변경파일이름 - 중복방지
+			String uploadUrl = "c:/upload/";// 파일업로드 위치
+			File f = new File(uploadUrl+fileName);// 경로 + 파일명 
+			file.transferTo(f);//파일저장
+			bdto.setBfile(fileName);// bfile 변수에 filename 저장
 		}
+		boardService.updateOne(bdto);// 게시글 1개 수정하는 메소드 호출
 		
-		boardService.updateOne(bdto);
 		return "redirect:boardList";
-	}
+	}// doBoardUpdate
 	
 	
 	@GetMapping("/board/boardReply") // boardReply view
@@ -129,8 +124,6 @@ public class BoardController {
 		model.addAttribute("bdto", bdto);
 		return "board/boardReply";
 	}
-	
-	
 	@PostMapping("/board/boardReply") // boardReply 저장
 	public String doBoardReply(BoardDto bdto, @RequestPart MultipartFile file, Model model) throws Exception {
 		

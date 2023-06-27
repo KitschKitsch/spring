@@ -28,7 +28,7 @@
     <form action="boardUpdate" name="update" method="post" enctype="multipart/form-data">
       <table>
       <input type="hidden" name="bno" value="${bdto.bno}">
-      <input type="hidden" name="bfile" value="${bdto.bfile}">
+      <input type="hidden" name="bfile" value="${bdto.bfile}"><!-- 원본파일명 -->
         <colgroup>
           <col width="15%">
           <col width="85%">
@@ -36,7 +36,7 @@
         <tr>
           <th>작성자</th>
           <td>
-            <input type="text" name="id" value="${bdto.id}" readonly>
+            <input type="text" name="id" value="${bdto.id}" readonly><!-- 1개 조회한 값 넣기 -->
           </td>
         </tr>
         <tr>

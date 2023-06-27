@@ -9,6 +9,9 @@ import com.java.dto.BoardDto;
 @Mapper
 public interface BoardMapper {
 	
+	// 게시글 전체 개수
+	int selectListCount();
+	
 	// 게시글 전체 가져오기
 	ArrayList<BoardDto> selectAll(int startRow, int endRow); // 리턴타입 메소드명
 	
@@ -30,7 +33,6 @@ public interface BoardMapper {
 	// 자손 수 증가
 	void updateBstepCount(BoardDto bdto);
 	
-	// 게시글 전체 개수
-	int selectListCount();
+
 
 }

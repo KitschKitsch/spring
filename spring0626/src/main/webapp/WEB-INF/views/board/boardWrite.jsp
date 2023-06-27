@@ -15,7 +15,7 @@
   <script>
   	function writeBtn() {
   		if (confirm("게시글을 저장하시겠습니까?")) {
-  			write.submit();
+  			write.submit();// write 제출
   		}
   	}
   </script>

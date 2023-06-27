@@ -75,18 +75,18 @@
         <th>조회수</th>
       </tr>
       <!-- 내용부분 -->
-      <c:forEach var="board" items="${list}">
+      <c:forEach var="board" items="${list}"><!-- 모델로 들고온 데이터 이름  -->
 	      <tr>
 	        <td><span class="table-notice">${board.bno}</span></td>
 	        <td class="table-title">
-	        <c:forEach begin="1" end="${board.bindent}" step="1"><!-- 들여쓰기  -->
-				<img src="/images/icon_reply.png">
-	        </c:forEach>
-	        <a href="boardView?bno=${board.bno}">${board.btitle}</a>
+		        <c:forEach begin="1" end="${board.bindent}" step="1"><!-- 답글 들여쓰기  -->
+					<img src="/images/icon_reply.png">
+		        </c:forEach>
+		        <a href="boardView?bno=${board.bno}">${board.btitle}</a>
 	        </td>
 	        <td>${board.id}</td>
 	        <td>
-	        	<fmt:formatDate value="${board.bdate}" pattern="yyyy-MM-dd"/>
+	        	<fmt:formatDate value="${board.bdate}" pattern="yyyy-MM-dd"/><!-- 날짜 형식 지정 -->
 	        </td>
 	        <td>${board.bhit}</td>
 	      </tr>
@@ -112,7 +112,7 @@
 	      <li class="prev"></li>
       </c:if>
       
-      
+      <!-- 하단 페이지 번호 넣기 -->      
       <c:forEach begin="${startPage}" end="${endPage}" step="1" var="num">
       	<c:if test="${num != page}">
 	      	<a href="/board/boardList?page=${num}">
