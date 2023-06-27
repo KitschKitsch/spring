@@ -4,9 +4,17 @@
 
 <mapper namespace="com.java.mapper.BoardMapper">
 	
+	<!-- 게시글 전체 개수 -->
+	<select id="selectListCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD	
+	</select>
+	
 	<!-- 게시글 전체 가져오기 -->
 	<select id="selectAll" resultType="com.java.dto.BoardDto"><!-- id 넣고, restultType으로 반환타입 정해주기: 메소드명, 리턴타입 -->
-		SELECT * FROM BOARD ORDER BY BGROUP DESC, BSTEP ASC
+		<![CDATA[
+		SELECT * FROM (SELECT ROWNUM RNUM, A.* FROM (SELECT * FROM BOARD A ORDER BY BGROUP DESC, BSTEP ASC) A)
+		WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}
+		]]><!-- 요거 쿼리문임! -->
 	</select>
 	
 	<!-- 게시글 1개 가져오기 -->
@@ -15,11 +23,31 @@
 	</select>
 	
 	<!-- 게시글 저장하기 -->
-	<select id="insertOne"><!-- 리턴 없음! -->
+	<insert id="insertOne"><!-- 리턴 없음! -->
 		INSERT INTO BOARD VALUES (board_seq.nextval, #{id}, #{btitle}, #{bcontent},
 								  SYSDATE, 0, board_seq.currval, 0, 0, #{bfile})
-	</select>
-
-
+	</insert>
+	
+	<!-- 게시글 1개 삭제하기 -->
+	<delete id="deleteOne"><!-- 리턴 없음! -->
+		DELETE BOARD WHERE BNO=#{bno}<!-- 자동커밋 -->
+	</delete>
+	
+	<!-- 게시글 1개 수정하기 -->
+	<update id="updateOne"><!-- 리턴 없음! -->
+		UPDATE BOARD SET BTITLE=#{btitle}, BCONTENT=#{bcontent}, BFILE=#{bfile} WHERE BNO=#{bno}
+	</update>
+	
+	
+	<!-- 자손수 1증가  -->
+	<update id="updateBstepCount">
+		UPDATE BOARD SET BSTEP=BSTEP+1 WHERE BGROUP=#{bgroup} AND BSTEP>#{bstep} <!-- 0번 이상인것 -->
+	</update>
+	
+	<!-- 답변달기 -->
+	<insert id="insertReplyOne">
+		INSERT INTO BOARD VALUES (board_seq.nextval, #{id}, #{btitle}, #{bcontent},
+								  SYSDATE, 0, #{bgroup}, #{bstep}+1, #{bindent}+1, #{bfile})
+	</insert>
 
 </mapper>
