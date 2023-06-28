@@ -10,12 +10,18 @@ import com.java.dto.BoardDto;
 public interface BoardMapper {
 	
 	// 게시글 전체 개수
-	int selectListCount();
+	int selectListCount(String category, String s_word);
 	// 게시글 전체 가져오기
-	ArrayList<BoardDto> selectAll(int startRow, int endRow); // 리턴타입 메소드명
+	ArrayList<BoardDto> selectAll(int startRow, int endRow, String category, String s_word); // 리턴타입 메소드명
 	
 	// 게시글 1개 가져오기
 	BoardDto selectOne(int bno);
+	// 이전글 가져오기
+	BoardDto selectPrevOne(int bno);
+	// 다음글 가져오기
+	BoardDto selectNextOne(int bno);
+	// 조회수 1증가
+	void updateBhitUp(int bno);
 	
 	// 게시글 저장하기
 	void insertOne(BoardDto bdto);
@@ -30,6 +36,8 @@ public interface BoardMapper {
 	void updateBstepCount(BoardDto bdto);
 	// 답변달기
 	void insertReplyOne(BoardDto bdto);
+	
+	
 	
 
 

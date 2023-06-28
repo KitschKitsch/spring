@@ -9,10 +9,10 @@ import com.java.dto.BoardDto;
 public interface BoardService {
 	
 	// 게시글 전체 가져오기
-	HashMap<String, Object> selectAll(int page); // 리턴타입-HashMap 메소드명-selectAll(page)
+	HashMap<String, Object> selectAll(int page, String category, String s_word); // 리턴타입-HashMap 메소드명-selectAll(page, category, s_word)
 
 	// 게시글 1개 가져오기
-	BoardDto selectOne(int bno);
+	HashMap<String, Object> selectOne(int bno);
 	
 	// 게시글 저장하기
 	void insertOne(BoardDto bdto);

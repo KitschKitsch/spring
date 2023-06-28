@@ -36,15 +36,13 @@
     			alert("2글자 이상 입력하세요.");
     			$("#s_word").focus();// 자동포커싱
     			return false;
-    		} else {
-    			alert("성공");
-    			return false;
     		}
+    		search.submit();// search를 전송
     		
     	}
     </script>
     <div class="wrapper">
-      <form action="/board/search" name="search" method="post">
+      <form action="/board/boardList" name="search" method="post"><!-- category, s_word 넘김 -->
         <select name="category" id="category">
           <option value="all">전체</option>
           <option value="btitle">제목</option>
@@ -52,7 +50,8 @@
         </select>
 
         <div class="title">
-          <input type="text" name="s_word" id="s_word" size="16">
+          <input type="text" style="display: none;">
+          <input type="text" name="s_word" id="s_word" size="16" value="${s_word}">
         </div>
   
         <button type="button" onclick="searchBtn()"><i class="fas fa-search"></i></button>
@@ -83,7 +82,7 @@
 		        <c:forEach begin="1" end="${board.bindent}" step="1"><!-- 답변 들여쓰기(bindent는 답변 달릴 때마다 1씩 증가함) -->
 					<img src="/images/icon_reply.png">
 		        </c:forEach>
-		        <a href="boardView?bno=${board.bno}">${board.btitle}</a>
+		        <a href="boardView?bno=${board.bno}&page=${page}&category=${category}&s_word=${s_word}">${board.btitle}</a>
 	        </td>
 	        <td>${board.id}</td>
 	        <td>
@@ -99,7 +98,7 @@
     
       <!-- 첫 페이지 이동 -->
       <c:if test="${page != startPage}">
-        <a href="/board/boardList?page=1"><li class="first"></li></a>
+        <a href="/board/boardList?page=1&category=${category}&s_word=${s_word}"><li class="first"></li></a>
       </c:if>
       <c:if test="${page == startPage}">
         <li class="first"></li>
@@ -107,7 +106,7 @@
     
       <!-- 이전 페이지 이동 -->
       <c:if test="${page > 1}">
-	      <a href="/board/boardList?page=${page-1}"><li class="prev"></li></a>
+	      <a href="/board/boardList?page=${page-1}&category=${category}&s_word=${s_word}"><li class="prev"></li></a>
       </c:if>
       <c:if test="${page == 1}">
 	      <li class="prev"></li>
@@ -116,7 +115,7 @@
       <!-- 하단 페이지 번호 넣기 -->      
       <c:forEach begin="${startPage}" end="${endPage}" step="1" var="num">
       	<c:if test="${num != page}">
-	      	<a href="/board/boardList?page=${num}">
+	      	<a href="/board/boardList?page=${num}&category=${category}&s_word=${s_word}">
       			<li class="num"><div>${num}</div></li>
     	  	</a>
       	</c:if>
@@ -127,7 +126,7 @@
       
       <!-- 다음 페이지 이동 -->
       <c:if test="${page < maxPage}">
-      	<a href="/board/boardList?page=${page+1}"><li class="next"></li></a>
+      	<a href="/board/boardList?page=${page+1}&category=${category}&s_word=${s_word}"><li class="next"></li></a>
       </c:if>
       <c:if test="${page == maxPage}">
       	<li class="next"></li>
@@ -135,7 +134,7 @@
       
       <!-- 끝 페이지 이동 -->
       <c:if test="${page != maxPage}">
-      	<a href="/board/boardList?page=${maxPage}"><li class="last"></li></a>
+      	<a href="/board/boardList?page=${maxPage}&category=${category}&s_word=${s_word}"><li class="last"></li></a>
       </c:if>
       <c:if test="${page == maxPage}">
       	<li class="last"></li>
