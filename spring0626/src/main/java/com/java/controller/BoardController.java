@@ -61,7 +61,7 @@ public class BoardController {
 		// 게시글 저장하기
 		String fileName = "";
 		if (!file.isEmpty()) { // 파일 있는지?(null과 다름!)
-			String ori_fileName = file.getOriginalFilename();// 입력한 파일의 실제 이름
+			String ori_fileName = file.getOriginalFilename();// 파일의 원본 이름
 			UUID uuid = UUID.randomUUID();// 랜덤 16자리 숫자 생성하기
 			fileName = uuid + "_" + ori_fileName;// 파일 이름에 난수 붙이기(중복방지)
 			String uploadUrl = "c:/upload/";// 파일 업로드 하려는 위치
@@ -102,13 +102,13 @@ public class BoardController {
 
 		// 게시글 1개 수정
 		String fileName = "";
-		if(!file.isEmpty()) {//파일이 있을경우 파일저장
-			String ori_fileName = file.getOriginalFilename();// 원본파일이름
-			UUID uuid = UUID.randomUUID();// 랜덤숫자생성
-			fileName = uuid+"_"+ori_fileName;// 변경파일이름 - 중복방지
-			String uploadUrl = "c:/upload/";// 파일업로드 위치
-			File f = new File(uploadUrl+fileName);// 경로 + 파일명 
-			file.transferTo(f);//파일저장
+		if (!file.isEmpty()) { // 파일 있는지?(null과 다름!)
+			String ori_fileName = file.getOriginalFilename();// 파일의 원본 이름
+			UUID uuid = UUID.randomUUID();// 랜덤 16자리 숫자 생성하기
+			fileName = uuid + "_" + ori_fileName;// 파일 이름에 난수 붙이기(중복방지)
+			String uploadUrl = "c:/upload/";// 파일 업로드 하려는 위치
+			File f = new File(uploadUrl + fileName);// 경로 + 파일명
+			file.transferTo(f);// 파일 저장
 			bdto.setBfile(fileName);// bfile 변수에 filename 저장
 		}
 		boardService.updateOne(bdto);// 게시글 1개 수정하는 메소드 호출
@@ -119,30 +119,32 @@ public class BoardController {
 	
 	@GetMapping("/board/boardReply") // boardReply view
 	public String boardReply(int bno, Model model) {
-		System.out.println("boardReply: " + bno);
-		BoardDto bdto = boardService.selectOne(bno); // 1개 가져오기
+		System.out.println("boardReply bno: " + bno);
+		BoardDto bdto = boardService.selectOne(bno); // 게시글 1개 가져오기
 		model.addAttribute("bdto", bdto);
+		
 		return "board/boardReply";
-	}
+	}// boardReply
 	@PostMapping("/board/boardReply") // boardReply 저장
 	public String doBoardReply(BoardDto bdto, @RequestPart MultipartFile file, Model model) throws Exception {
-		
-		// 게시글 저장하는 메소드 호출
+		// 답변 저장
 		String fileName = "";
 		if (!file.isEmpty()) { // 파일 있는지?(null과 다름!)
-
-			String ori_fileName = file.getOriginalFilename();// 실제 파일 이름
-			UUID uuid = UUID.randomUUID();// 랜덤 16자리 숫자 생성
-			fileName = uuid + "_" + ori_fileName;// 변경 파일 이름(중복방지)
-			String uploadurl = "c:/upload/";// 파일 업로드 위치
-			File f = new File(uploadurl + fileName);
+			String ori_fileName = file.getOriginalFilename();// 파일의 원본 이름
+			UUID uuid = UUID.randomUUID();// 랜덤 16자리 숫자 생성하기
+			fileName = uuid + "_" + ori_fileName;// 파일 이름에 난수 붙이기(중복방지)
+			String uploadUrl = "c:/upload/";// 파일 업로드 하려는 위치
+			File f = new File(uploadUrl + fileName);// 경로 + 파일명
 			file.transferTo(f);// 파일 저장
 		}
+		
 		System.out.println("doBoardWrite bfile: " + fileName);
-		bdto.setBfile(fileName);// bfile 변수에 파일이름 저장
 		System.out.println("doBoardWrite bgroup: " + bdto.getBgroup());
-		boardService.insertReplyOne(bdto);
+
+		bdto.setBfile(fileName);// bfile 변수에 filename 저장
+		boardService.insertReplyOne(bdto);// 답변 다는 메소드 호출
+		
 		return "redirect:boardList";
-	}// 답변달기 저장
+	}// doBoardReply
 
 }

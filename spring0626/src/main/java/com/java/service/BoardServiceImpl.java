@@ -82,7 +82,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertReplyOne(BoardDto bdto) {
 		// 답변달기
-		System.out.println("service insertReplyOne: " + bdto.getBgroup());
+		System.out.println("service insertReplyOne bgroup: " + bdto.getBgroup());
 		boardMapper.updateBstepCount(bdto); // 먼저 등록한 자손이 1씩 증가하면서 뒤로 밀림(최신순)
 		boardMapper.insertReplyOne(bdto);
 	}

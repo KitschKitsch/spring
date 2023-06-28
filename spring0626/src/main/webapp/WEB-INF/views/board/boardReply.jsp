@@ -28,7 +28,7 @@
 
     <form action="boardReply" name="reply" method="post" enctype="multipart/form-data">
       <table>
-      <input type="hidden" name="bno" value="${bdto.bno}">
+      <input type="hidden" name="bno" value="${bdto.bno}"><!-- 게시글 조회로 가져온 값 -->
       <input type="hidden" name="bgroup" value="${bdto.bgroup}">
       <input type="hidden" name="bstep" value="${bdto.bstep}">
       <input type="hidden" name="bindent" value="${bdto.bindent}">

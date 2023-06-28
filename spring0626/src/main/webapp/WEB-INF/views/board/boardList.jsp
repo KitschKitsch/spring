@@ -30,8 +30,9 @@
     	})
     }); */
     
+ 		// 검색기능
     	function searchBtn() {
-    		if($("#s_word").val().length<2) {
+    		if($("#s_word").val().length<2) {// 아이디(s_word) 값의 길이가 2미만이면
     			alert("2글자 이상 입력하세요.");
     			$("#s_word").focus();// 자동포커싱
     			return false;
@@ -79,7 +80,7 @@
 	      <tr>
 	        <td><span class="table-notice">${board.bno}</span></td>
 	        <td class="table-title">
-		        <c:forEach begin="1" end="${board.bindent}" step="1"><!-- 답글 들여쓰기  -->
+		        <c:forEach begin="1" end="${board.bindent}" step="1"><!-- 답변 들여쓰기(bindent는 답변 달릴 때마다 1씩 증가함) -->
 					<img src="/images/icon_reply.png">
 		        </c:forEach>
 		        <a href="boardView?bno=${board.bno}">${board.btitle}</a>

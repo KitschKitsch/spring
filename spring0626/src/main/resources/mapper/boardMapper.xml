@@ -46,13 +46,13 @@
 	
 	<!-- 자손수 1증가  -->
 	<update id="updateBstepCount">
-		UPDATE BOARD SET BSTEP=BSTEP+1 WHERE BGROUP=#{bgroup} AND BSTEP>#{bstep} <!-- 0번 이상인것 -->
+		UPDATE BOARD SET BSTEP=BSTEP+1 WHERE BGROUP=#{bgroup} AND BSTEP>#{bstep}<!-- 같은 그룹의 0번 이상이면 모두 1 증가 -->
 	</update>
 	
 	<!-- 답변달기 -->
 	<insert id="insertReplyOne">
 		INSERT INTO BOARD VALUES (board_seq.nextval, #{id}, #{btitle}, #{bcontent},
-								  SYSDATE, 0, #{bgroup}, #{bstep}+1, #{bindent}+1, #{bfile})
+								  SYSDATE, 0, #{bgroup}, #{bstep}+1, #{bindent}+1, #{bfile})<!-- 답변글은 자손과 들여쓰기 1증가 -->
 	</insert>
 
 </mapper>
