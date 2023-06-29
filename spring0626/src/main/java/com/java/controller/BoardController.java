@@ -30,9 +30,6 @@ public class BoardController {
 	@RequestMapping("/board/boardList") // 주소받으면
 	public String boardList(@RequestParam(defaultValue = "1")int page, String category, String s_word, Model model) {
 		
-		System.out.println("category: "+category);
-		System.out.println("s_word: "+s_word);
-		
 		// 게시글 전체 가져오는 메소드 호출
 		HashMap<String, Object> map = boardService.selectAll(page, category, s_word); // 리턴타입-HashMap 메소드명-selectAll(page)
 		model.addAttribute("list", map.get("list"));// model에 값 실어서 "list":list
@@ -48,17 +45,17 @@ public class BoardController {
 	}// boardList
 
 	
-	@RequestMapping("board/boardView")
+	@RequestMapping("/board/boardView")
 	public String boardView(@RequestParam(defaultValue = "1")int bno, int page, String category, String s_word, Model model) {
 		// 게시글 1개 조회하는 메소드 호출(게시글 1개 = 객체)
 		HashMap<String, Object> map = boardService.selectOne(bno); //bdto 객체를
 		
 		model.addAttribute("bdto", map.get("bdto"));// model에 bdto이름으로 실어서
-		model.addAttribute("page", map.get("page"));// model에 page이름으로 실어서
-		model.addAttribute("category", map.get("category"));// model에 category이름으로 실어서
-		model.addAttribute("s_word", map.get("s_word"));// model에 s_word이름으로 실어서
 		model.addAttribute("prevDto", map.get("prevDto"));// model에 prevDto이름으로 실어서
 		model.addAttribute("nextDto", map.get("nextDto"));// model에 nextDto이름으로 실어서
+		model.addAttribute("page", page);// model에 page이름으로 실어서
+		model.addAttribute("category", category);// model에 category이름으로 실어서
+		model.addAttribute("s_word", s_word);// model에 s_word이름으로 실어서
 
 		return "board/boardView";// 반환
 	}// boardView

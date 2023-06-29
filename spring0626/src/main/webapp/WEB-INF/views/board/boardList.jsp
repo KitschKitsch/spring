@@ -82,7 +82,9 @@
 		        <c:forEach begin="1" end="${board.bindent}" step="1"><!-- 답변 들여쓰기(bindent는 답변 달릴 때마다 1씩 증가함) -->
 					<img src="/images/icon_reply.png">
 		        </c:forEach>
-		        <a href="boardView?bno=${board.bno}&page=${page}&category=${category}&s_word=${s_word}">${board.btitle}</a>
+		        <a href="boardView?bno=${board.bno}&page=${page}&category=${category}&s_word=${s_word}"><!-- 검색범위와 검색어도 들고감  -->
+		        	${board.btitle}
+		        </a>
 	        </td>
 	        <td>${board.id}</td>
 	        <td>
@@ -98,7 +100,7 @@
     
       <!-- 첫 페이지 이동 -->
       <c:if test="${page != startPage}">
-        <a href="/board/boardList?page=1&category=${category}&s_word=${s_word}"><li class="first"></li></a>
+        <a href="/board/boardList?page=1&category=${category}&s_word=${s_word}"><li class="first"></li></a><!-- 검색결과에 따라 하단 페이지 달라지니까! -->
       </c:if>
       <c:if test="${page == startPage}">
         <li class="first"></li>
