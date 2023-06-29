@@ -96,9 +96,9 @@ public class BoardController {
 	public String boardUpdate(int bno, int page, String category, String s_word, Model model) {
 		HashMap<String, Object> map = boardService.selectOne(bno);// 게시글 1개 조회하는 메소드 호출
 		model.addAttribute("bdto", map.get("bdto"));
-		model.addAttribute("page", map.get("page"));
-		model.addAttribute("category", map.get("category"));
-		model.addAttribute("s_word", map.get("s_word"));
+		model.addAttribute("page", page);
+		model.addAttribute("category", category);
+		model.addAttribute("s_word", s_word);
 		
 		return "board/boardUpdate";
 	}// boardUpdate
@@ -132,9 +132,9 @@ public class BoardController {
 		System.out.println("boardReply bno: " + bno);
 		HashMap<String, Object> map = boardService.selectOne(bno); // 게시글 1개 가져오기
 		model.addAttribute("bdto", map.get("bdto"));
-		model.addAttribute("page", map.get("page"));
-		model.addAttribute("category", map.get("category"));
-		model.addAttribute("s_word", map.get("s_word"));
+		model.addAttribute("page", page);
+		model.addAttribute("category", category);
+		model.addAttribute("s_word", s_word);
 		
 		return "board/boardReply";
 	}// boardReply

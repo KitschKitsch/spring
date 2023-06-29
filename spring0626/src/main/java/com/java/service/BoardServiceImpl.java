@@ -22,13 +22,13 @@ public class BoardServiceImpl implements BoardService {
 		HashMap<String, Object> map = new HashMap<>();
 		
 		// 게시글 전체 개수
-		int listCount = boardMapper.selectListCount(category, s_word); // 게시글 전체 개수는 DB에 물어봐야함
+		int listCount = boardMapper.selectListCount(category, s_word); // 먼저 게시글 전체 개수 DB에 물어봐야함
 		// 최대,시작,종료 페이지
 		int maxPage = (int)Math.ceil((double)listCount/10); // 한 페이지 당 10개씩 = 4페이지
 		int startPage = (int)((page-1)/10) *10+1; // 1,11,21...
 		int endPage = startPage+10-1; // 10,20,30...
 		// 전체 페이지 수 최대 페이지 수로 제한
-		if (endPage > maxPage)endPage = maxPage;
+		if (endPage > maxPage) endPage = maxPage;
 
 		// 페이지 당 보여질 게시글 수
 		int startRow = (page-1)*10+1; // 1p: 1~10행 2p:11~20행

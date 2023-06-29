@@ -64,11 +64,11 @@
       </tr>
       <tr>
         <td colspan="3"><strong>다음글</strong> <span class="separator">|</span>
-        <a href="boardView?bno=${nextDto.bno}&page=${page}&category=${category}&s_word=${s_word}">${nextDto.btitle}</a></td>
+        <a href="boardView?bno=${nextDto.bno}&page=${page}">${nextDto.btitle}</a></td>
       </tr>
       <tr>
         <td colspan="3"><strong>이전글</strong> <span class="separator">|</span>
-        <a href="boardView?bno=${prevDto.bno}&page=${page}&category=${category}&s_word=${s_word}">${prevDto.btitle}</a></td>
+        <a href="boardView?bno=${prevDto.bno}&page=${page}">${prevDto.btitle}</a></td>
       </tr>
     </table>
 
