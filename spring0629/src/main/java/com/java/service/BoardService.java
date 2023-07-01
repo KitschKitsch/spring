@@ -15,7 +15,7 @@ public interface BoardService {
 	// 하단 댓글 전체 가져오기
 	ArrayList<CommentDto> selectComAll(int bno);
 	
-	// 하단 댓글 저장
+	// 하단 댓글 저장 + 1개 가져오기
 	CommentDto commentInsert(CommentDto comDto);
 
 }

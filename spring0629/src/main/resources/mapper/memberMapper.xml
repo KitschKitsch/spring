@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.mapper.MemberMapper">
+	
+	<!-- 로그인 -->
+	<select id="selectLogin" resultType="com.java.dto.MemberDto">
+		SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw} <!-- form의 name이 데이터 주고받는 변수!!! id는 자바스크립트에서 사용!!! -->
+	</select>
+
+
+</mapper>

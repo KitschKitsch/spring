@@ -3,6 +3,7 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.java.mapper.BoardMapper">
+	
 	<!-- 게시글 전체 가져오기 -->
 	<select id="selectAll" resultType="com.java.dto.BoardDto">
 		SELECT * FROM BOARD ORDER BY BGROUP DESC, BSTEP ASC
@@ -12,18 +13,24 @@
 	<select id="selectOne" resultType="com.java.dto.BoardDto">
 		SELECT * FROM BOARD WHERE BNO=#{bno}
 	</select>
+	
 	<!-- 하단 댓글 전체 가져오기 -->
 	<select id="selectComAll" resultType="com.java.dto.CommentDto">
-		SELECT * FROM COMMENT_BOARD WHERE BNO=#{bno}
+		SELECT * FROM COMMENT_BOARD WHERE BNO=#{bno} ORDER BY CNO DESC <!-- 최신 댓글이 위로 -->
 	</select>
 	
 	<!-- 하단 댓글 저장 -->
 	<insert id="commentInsert">
 		<selectKey resultType="int" keyProperty="cno" order="BEFORE"><!-- BEFORE: insert보다 전에 실행 -->
-			SELECT COMMENT_SEQ.NEXTVAL FROM DUAL
+			SELECT COMMENT_SEQ.NEXTVAL FROM DUAL <!-- 다음 시퀀스값을 cno로 저장 -->
 		</selectKey>
 		INSERT INTO COMMENT_BOARD VALUES
 			(#{cno}, #{bno}, #{id}, #{cpw}, #{ccontent}, sysdate)
 	</insert>
+	
+	<!-- 하단 댓글 1개 가져오기 -->
+	<select id="selectComOne" resultType="com.java.dto.CommentDto">
+		SELECT * FROM COMMENT_BOARD WHERE CNO=#{cno}
+	</select>
 	
 </mapper>

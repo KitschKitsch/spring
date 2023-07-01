@@ -13,6 +13,7 @@
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> <!-- 날짜 포맷함수 -->
 <link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
@@ -46,8 +47,14 @@
 			</div>
 			<div id="snb">
 				<ul>
-					<li><a href="#">LOGIN</a></li>
-					<li><a href="#">JOIN</a></li>
+					<c:if test="${sessionId == null }">
+						<li><a href="/member/login">LOGIN</a></li>
+						<li><a href="#">JOIN</a></li>
+					</c:if>
+					<c:if test="${sessionId != null }">
+						<li><a href="#">${sessionName} 님</a></li>
+						<li><a onclick="logoutBtn()" style="cursor: pointer;">LOGOUT</a></li>
+					</c:if>
 					<li><a href="#">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>
 				</ul>
@@ -159,7 +166,7 @@
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									<li>${bdto.btitle}</li>
+									<li>${bdto.btitle}</li> <!-- model의 bdto: bdto -->
 								</ul>
 							</div>
 							<div class="day">
@@ -175,7 +182,6 @@
 							<img src="../images/${bdto.bfile}" style="width: 100%" alt="" />
 						</div>
 					</div>
-
 
 					<!-- 이전다음글 -->
 					<div class="pnDiv web">
@@ -205,18 +211,51 @@
 
 <script>
 	function commentBtn() {
-			
+		
+		if ("${sessionId}" == "") {
+			alert("로그인 후 댓글입력이 가능합니다.");
+			location.href="/member/login?nowpage=noticeView";
+			return false;
+		}
+		
+		if ($(".replyType").val().length < 2) {
+			alert("2글자 이상 입력하셔야 등록 가능합니다.");
+			return false;
+		}
+		
+		alert("댓글 저장");
 		// ajax 구문
 		$.ajax({
-			url:"/board/commentInsert",
-			type:"post",
-			data:{"id":"AAA", //${sessionId}
+			url:"/board/commentInsert", // 보낼 주소
+			type:"post", // 방식
+			data:{"id":"${sessionId}",
 				  "bno":"${bdto.bno}",
-				  "ccontent":$(".replyType").val(),
-				  "cpw":$(".replynum").val()
+				  "ccontent":$(".replyType").val(), // 댓글창 내용값
+				  "cpw":$(".replynum").val() // 댓글창 비밀번호값
 				 },
-			success:function(data){
-				alert("전송성공");
+			success:function(data){ // 데이터 전송 성공하면,
+				var dataHtml = "";
+				alert("댓글 저장 성공");
+				
+				// 하단댓글1개가져오기
+				console.log(data); //  메소드 실행되서 결과 넘어옴!!!
+				
+				// 하단에댓글추가코드
+				dataHtml += "<ul id=' "+data.cno+" '>";
+				dataHtml += "<li class='name'> "+data.id+" <span>&nbsp[ "+moment(data.cdate).format("YYYY-MM-DD HH:mm:ss")+" ]</span></li>";
+				dataHtml += "<li class='txt'> "+data.ccontent+" </li>";
+				dataHtml += "<li class='btn'>";
+				dataHtml += "<a href='#' class='rebtn'>수정</a>&nbsp";
+				dataHtml += "<a href='#' class='rebtn'>삭제</a>";
+				dataHtml += "</li>";
+				dataHtml += "</ul>";
+				
+				// 클래스 replyBox 자리 위에 붙여넣기
+				$(".replyBox").prepend(dataHtml); // append:아래  prepend:위  html:덮어쓰기 
+				
+				// 인풋박스 글자삭제
+				$(".replyType").val(""); // 입력 후 초기화
+				$(".replynum").val("");
 				
 			},
 			error: function(data){
@@ -234,14 +273,14 @@
 								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" class="replynum" /></p>
 								<textarea class="replyType"></textarea>
 							</li>
-							<li class="btn"><a onclick="commentBtn()" class="replyBtn">등록</a></li>
+							<li class="btn"><a onclick="commentBtn()" style="cursor: pointer;" class="replyBtn">등록</a></li>
 						</ul>
 						<p class="ntic">※ 비밀번호를 입력하시면 댓글이 비밀글로 등록 됩니다.</p>
 					</div>
 
 					<div class="replyBox">
-						<c:forEach var="comDto" items="${comList}">
-							<ul>
+						<c:forEach var="comDto" items="${comList}"> <!-- model의 "comList: comList" 를 "comDto: comList" 로 -->
+							<ul id="${comDto.cno}">
 								<li class="name">${comDto.id} <span>[ ${comDto.cdate}  ]</span></li>
 								<li class="txt">${comDto.ccontent}</li>
 								<li class="btn">

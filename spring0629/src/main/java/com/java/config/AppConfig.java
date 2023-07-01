@@ -13,21 +13,21 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 @Configuration
 public class AppConfig {
 	@Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
-		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-		sessionFactory.setDataSource(dataSource);
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{// SqlSessionFactory Bean 구성
+		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean(); // 객체생성
+		sessionFactory.setDataSource(dataSource); // DB연결에 사용할 데이터 소스 설정
 		
 		//Mapper설정
 		Resource[] res = new PathMatchingResourcePatternResolver()
-				.getResources("classpath:/mapper/**/*.xml");
-		sessionFactory.setMapperLocations(res);
+				.getResources("classpath:/mapper/**/*.xml"); // 경로에서 MyBatis 매퍼파일들 가져오기
+		sessionFactory.setMapperLocations(res); // 매퍼파일들의 위치 설정
 		
-		return sessionFactory.getObject();
+		return sessionFactory.getObject();// IOC에 등록(반환)
 	}//
 	
 	@Bean
-	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
-		return new SqlSessionTemplate(sqlSessionFactory);
+	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {// Bean 구성
+		return new SqlSessionTemplate(sqlSessionFactory); // 
 	}//
 
 }
