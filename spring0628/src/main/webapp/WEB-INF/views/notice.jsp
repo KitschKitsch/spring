@@ -173,7 +173,7 @@
 								<th scope="col" class="tnone">조회수</th>
 							</thead>
 							<tbody>
-								<c:forEach var="board" items="${list}">
+								<c:forEach var="board" items="${list}"> <!-- model의 "list: list"를 "board: list"로 -->
 									<tr>
 										<td class="tnone">${board.bno}</td>
 										<td class="left">

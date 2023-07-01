@@ -215,20 +215,22 @@ $(document).ready(function() {
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									<li>까페모리 봄바람 커피한잔 30% 할인 이벤트!!</li>
+									<li>${bdto.btitle}</li>
 								</ul>
 							</div>
 							<div class="day">
-								<p class="txt">작성일<span>2023-06-28</span></p>
+								<p class="txt">작성일<span>${bdto.bdate}</span></p>
 							</div>
 							<div class="day">
-								<p class="txt">작성자<span>AAA</span></p>
-								<p class="txt">조회수<span>111</span></p>
+								<p class="txt">작성자<span>${bdto.id}</span></p>
+								<p class="txt">조회수<span>${bdto.bhit}</span></p>
 							</div>
 						</div>
-
+	
+						<div>${bdto.bcontent}</div>
+						<div>${bdto.bfile}</div>
 						<div class="viewContents">
-							<img src="../images/img/sample_event_view.jpg" alt="" />
+							<img src="" alt="" />
 						</div>
 					</div>
 

@@ -14,10 +14,17 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardMapper boardMapper;
 	
-	@Override //게시글 전체가져오기
+	@Override // 게시글 전체 가져오기
 	public ArrayList<BoardDto> selectBoardAll() {
 		ArrayList<BoardDto> list = boardMapper.selectBoardAll();
 		return list;
+	}
+
+	@Override
+	public BoardDto selectBoardOne(int bno) {
+		// 게시글 1개 가져오기
+		BoardDto bdto = boardMapper.selectBoardOne(bno);
+		return bdto;
 	}
 
 }

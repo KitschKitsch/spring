@@ -5,7 +5,11 @@
 <mapper namespace="com.java.mapper.BoardMapper">
 
   <select id="selectBoardAll" resultType="com.java.dto.BoardDto">
-      SELECT * FROM BOARD
+      SELECT * FROM BOARD ORDER BY BGROUP DESC, BSTEP ASC
+  </select>
+  
+  <select id="selectBoardOne" resultType="com.java.dto.BoardDto">
+  	SELECT * FROM BOARD WHERE BNO=#{bno}
   </select>
 
 </mapper>

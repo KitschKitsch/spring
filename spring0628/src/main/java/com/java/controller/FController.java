@@ -18,6 +18,7 @@ public class FController {
 	
 	@RequestMapping("/index")
 	public String index() {
+		
 		return "index";
 	}
 	
@@ -37,6 +38,8 @@ public class FController {
 	
 	@RequestMapping("/noticeView")
 	public String noticeView(int bno, Model model) {
+		BoardDto bdto = boardService.selectBoardOne(bno);
+		model.addAttribute("bdto", bdto);
 		
 		return "noticeView";
 	}
