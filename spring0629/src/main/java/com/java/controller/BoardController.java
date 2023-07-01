@@ -1,12 +1,14 @@
 package com.java.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,12 +24,19 @@ public class BoardController {
 	@Autowired BoardService boardService;
 	
 	@RequestMapping("/board/notice")
-	public String notice(Model model) {
+	public String notice(@RequestParam(defaultValue = "1") int page, String category, String s_word, Model model) {
 		// 게시글 전체 가져오기
-		ArrayList<BoardDto> list = new ArrayList<>();
-		list = boardService.selectAll();
-		model.addAttribute("list", list);// list: list
-
+		HashMap<String, Object> map = boardService.selectAll(page, category, s_word);
+		
+		model.addAttribute("list", map.get("list"));// list: list
+		model.addAttribute("page", map.get("page"));
+		model.addAttribute("listCount", map.get("listCount"));
+		model.addAttribute("startPage", map.get("startPage"));
+		model.addAttribute("endPage", map.get("endPage"));
+		model.addAttribute("maxPage", map.get("maxPage"));
+		model.addAttribute("category", map.get("category"));
+		model.addAttribute("s_word", map.get("s_word"));
+		
 		return "board/notice";
 	}
 	

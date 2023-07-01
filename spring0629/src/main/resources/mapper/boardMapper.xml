@@ -4,9 +4,41 @@
 
 <mapper namespace="com.java.mapper.BoardMapper">
 	
+	<!-- 게시글 전체 개수 -->
+	<select id="selectListCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD	
+			<if test="category == 'all'">
+		      	WHERE BTITLE LIKE '%'||#{s_word}||'%' OR BCONTENT LIKE '%'||#{s_word}||'%'
+			</if>
+			<if test="category == 'btitle'">
+		      	WHERE BTITLE LIKE '%'||#{s_word}||'%'
+			</if>
+			<if test="category == 'bcontent'">
+		      	WHERE BCONTENT LIKE '%'||#{s_word}||'%' 
+			</if>
+	</select>
+	
 	<!-- 게시글 전체 가져오기 -->
-	<select id="selectAll" resultType="com.java.dto.BoardDto">
-		SELECT * FROM BOARD ORDER BY BGROUP DESC, BSTEP ASC
+	<select id="selectAll" resultType="com.java.dto.BoardDto"><!-- id 넣고, restultType으로 반환타입 정해주기: 메소드명, 리턴타입 -->
+		<!-- 공통 영역 -->
+		<![CDATA[
+			SELECT * FROM (SELECT ROWNUM RNUM, A.* FROM
+			(SELECT * FROM BOARD 
+		]]>
+			<if test="category == 'all'">
+		      	WHERE BTITLE LIKE '%'||#{s_word}||'%' OR BCONTENT LIKE '%'||#{s_word}||'%'
+			</if>
+			<if test="category == 'btitle'">
+		      	WHERE BTITLE LIKE '%'||#{s_word}||'%'
+			</if>
+			<if test="category == 'bcontent'">
+		      	WHERE BCONTENT LIKE '%'||#{s_word}||'%' 
+			</if>
+		<!-- 공통영역 -->
+		<![CDATA[
+			ORDER BY BGROUP DESC, BSTEP ASC) A)
+			WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}	
+		]]>
 	</select>
 	
 	<!-- 게시글 1개 가져오기 -->

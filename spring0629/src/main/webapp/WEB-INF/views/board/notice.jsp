@@ -213,30 +213,51 @@
 						<div class="allPageMoving1">
 
 						<a href="#" class="n"><img src="../images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="../images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
+						
+						<!-- 하단 페이지 번호 넣기 -->      
+		      			<c:forEach begin="${startPage}" end="${endPage}" step="1" var="num">
+		      				<c:if test="${num != page}">
+			      				<a href="/board/boardList?page=${num}&category=${category}&s_word=${s_word}">
+		      						<li class="num"><div>${num}</div></li>
+		    	  				</a>
+		      				</c:if>
+					      	<c:if test="${num == page}">
+		    	  				<li class="num on"><div>${num}</div></li>
+			      			</c:if>
+		      			</c:forEach>
+		      			
 						<a href="#" class="next"><img src="../images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="../images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-
+<script>
+ 	function searchBtn() {
+ 		if($(".searchInput").val().length < 2) {
+ 			alert("2글자 이상부터 검색이 가능합니다.");
+ 			$(".searchInput").focus();
+ 			return false;
+ 		}
+ 		search.submit();
+ 	}
+</script>
 					<div class="searchWrap">
 						<div class="search">
-							<ul>
-								<li class="web"><img src="../images/txt/txt_search.gif" alt="search" /></li>
-								<li class="se">
-									<select>
-										<option value="" />제목</option>
-									</select>
-								</li>
-								<li><input type="text" class="searchInput" /></li>
-								<li class="web"><a href="#"><img src="../images/btn/btn_search.gif" alt="검색" /></a></li>
-								<li class="mobile"><a href="#"><img src="../images/btn/btn_search_m.gif" alt="검색" /></a></li>
-							</ul>
+							<form action="board/notice" name="search" method="post">
+								<ul>
+									<li class="web"><img src="../images/txt/txt_search.gif" alt="search" /></li>
+									<li class="se">
+										<select name="category" id="category">
+											<option value="all" />전체</option>
+											<option value="btitle" />제목</option>
+											<option value="bcontent" />내용</option>
+										</select>
+									</li>
+									<li><input type="text" name="s_word" class="searchInput" /></li>
+									<li class="web"><a onclick="searchBtn()"><img src="../images/btn/btn_search.gif" alt="검색" /></a></li>
+									<li class="mobile"><a onclick="searchBtn()"><img src="../images/btn/btn_search_m.gif" alt="검색" /></a></li>
+								</ul>
+							</form>
 						</div>
 					</div>
 					<!-- //포토 구매후기 -->
