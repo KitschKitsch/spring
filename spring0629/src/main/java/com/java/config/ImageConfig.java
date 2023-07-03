@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class ImageConfig implements WebMvcConfigurer {// implements 필수!!!
 	
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {// url 체크하는 handler에 추가
-		registry.addResourceHandler("images/**")// 이렇게 들어오는 모든 내용
+		registry.addResourceHandler("upload/**")// 이렇게 들어오는 모든 내용
 		.addResourceLocations("file:///c:/upload/");// 여기서 찾게
 		
 	}

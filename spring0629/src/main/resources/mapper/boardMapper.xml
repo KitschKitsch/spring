@@ -65,4 +65,14 @@
 		SELECT * FROM COMMENT_BOARD WHERE CNO=#{cno}
 	</select>
 	
+	<!-- 하단 댓글 1개 삭제 -->
+	<delete id="commentDelete">
+		DELETE COMMENT_BOARD WHERE CNO=#{cno}
+	</delete>
+	
+	<!-- 하단 댓글 수정 저장 -->
+	<update id="commentUpdateSave">
+		UPDATE COMMENT_BOARD SET CPW=#{cpw}, CCONTENT=#{ccontent}, CDATE=SYSDATE WHERE CNO=#{cno}
+	</update>
+	
 </mapper>
