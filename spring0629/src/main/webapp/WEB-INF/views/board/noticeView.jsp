@@ -113,7 +113,6 @@
 <script>
 	// <-- 1.댓글 저장 
 	function commentBtn() {
-		
 		if ("${sessionId}" == "") {
 			alert("로그인 후 댓글입력이 가능합니다.");
 			location.href="/member/login?nowpage=noticeView";
@@ -162,18 +161,16 @@
 				// 댓글 총개수 수정(+1)
 				var cnum = Number($("#cnum").text())+1;
 				$("#cnum").text(cnum);
-				
 			},
 			error: function(){
 				alert("실패");	
 			}
 		});// ajax
-		
 	}// 댓글저장 버튼 -->
+	
 	
 	// <-- 2.댓글삭제 버튼
 	function deleteBtn(cno) {
-		
 		if (confirm("댓글을 삭제하시겠습니까?")) {
 			$.ajax({
 				url:"/board/commentDelete", // 보낼 주소
@@ -192,12 +189,11 @@
 				}
 			});// ajax
 		}// if
-		
 	}// 댓글삭제 버튼 -->
 	
-	// <-- 3.댓글수정저장
+	
+	// <-- 3.댓글수정저장 버튼
 	function updateSave(cno) {
-		
 		if (confirm("댓글을 저장하시겠습니까?")) {
 			$.ajax({
 				url:"/board/commentUpdateSave", // 보낼 주소
@@ -209,7 +205,6 @@
 					alert(cno + "번 댓글이 수정/저장 되었습니다.");
 
 					var dataHtml = "";
-
 					// 하단에 댓글코드 수정
 					dataHtml += "<li class='name'> "+data.id+" <span>&nbsp[ "+moment(data.cdate).format("YYYY-MM-DD HH:mm:ss")+" ]</span></li>";
 					dataHtml += "<li class='txt'> "+data.ccontent+" </li>";
@@ -226,7 +221,8 @@
 				}
 			});// ajax
 		}// if
-	}// 댓글수정저장 -->
+	}// 댓글수정저장 버튼 -->
+	
 	
 	// <-- 4.댓글수정 버튼
 	function updateBtn(cno, id, cdate, ccontent) {
@@ -244,17 +240,17 @@
 			dataHtml += "<a onclick=\"cancelBtn("+cno+",'"+id+"','"+cdate+"','"+ccontent+"')\" class='rebtn'>취소</a>";
 			dataHtml += "</li>";
 			
+			// 덮어쓰기
 			$("#"+cno).html(dataHtml);
-			
 		}// if
 	} // 댓글수정 버튼 -->
 	
-
+	
+	// <-- 5.댓글수정취소 버튼
 	function cancelBtn(cno, id, cdate, ccontent) {
 		alert("댓글 수정을 취소합니다.");
 		
 		var dataHtml = "";
-
 		// 하단에 댓글코드 수정
 		dataHtml += "<li class='name'> "+id+" <span>&nbsp[ "+moment(cdate).format("YYYY-MM-DD HH:mm:ss")+" ]</span></li>";
 		dataHtml += "<li class='txt'> "+ccontent+" </li>";
@@ -266,7 +262,7 @@
 		// 덮어쓰기
 		$("#"+cno).html(dataHtml);
 		
-	}
+	}// 댓글수정취소 버튼-->
 </script>
 
 					<!-- 댓글-->
@@ -292,7 +288,7 @@
 										<span class="orange">※ 비밀글입니다.</span>
 									</li>
 								</c:if>
-								<!-- 자기 댓글이고 패스워드 없으면 비밀글 보이기 -->
+								<!-- 자기 댓글이거나 패스워드 없으면 비밀글 보이기 -->
 								<c:if test="${!(sessionId != comDto.id && comDto.cpw != null)}">
 									<li class="txt">${comDto.ccontent}</li>
 								</c:if>

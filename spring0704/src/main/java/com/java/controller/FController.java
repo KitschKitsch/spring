@@ -29,7 +29,7 @@ public class FController {
 	}
 	
 	
-	// 공공데이터 xml 가져오기
+	// 공공데이터 xml로 전체 가져오기
 	@RequestMapping("/ajax_xml")
 	@ResponseBody // 데이터로 반환
 	public String ajax_xml(int page) throws Exception {
@@ -75,7 +75,7 @@ public class FController {
 	
 	
 	
-	// 공공데이터 전체 가져오기
+	// 공공데이터 json으로 전체 가져오기
 	@RequestMapping("/ajax_data")
 	@ResponseBody // 데이터로 반환
 	public String ajax_data(int page) throws Exception {
@@ -119,7 +119,7 @@ public class FController {
 	}// 공공데이터 전체
 	
 	
-	// 공공데이터 검색 가져오기
+	// 공공데이터 json으로 검색 가져오기
 	@RequestMapping("/ajax_search")
 	@ResponseBody // 데이터로 반환
 	public String ajax_search(String s_word) throws Exception {
