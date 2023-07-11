@@ -13,21 +13,22 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 @Configuration
 public class AppConfig {
 	@Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{// SqlSessionFactory Bean 구성
-		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean(); // 객체생성
-		sessionFactory.setDataSource(dataSource); // DB연결에 사용할 데이터 소스 설정
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception { 
+		// 객체선언
+		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();// MyBatis 접근해서 객체 가져옴
+		sessionFactory.setDataSource(dataSource);// 명령어를 DB와 연결해서 가져옴
 		
-		//Mapper설정
+		// Mapper 설정
 		Resource[] res = new PathMatchingResourcePatternResolver()
-				.getResources("classpath:/mapper/**/*.xml"); // 경로에서 MyBatis 매퍼파일들 가져오기
-		sessionFactory.setMapperLocations(res); // 매퍼파일들의 위치 설정
+						 .getResources("classpath:/mapper/**/*.xml");// 실행해야하는 xml 구문들 모두
+		sessionFactory.setMapperLocations(res);// sessionFactory에 담아서
 		
-		return sessionFactory.getObject();// IOC에 등록(반환)
-	}//
+		return sessionFactory.getObject();// sessionFactory를 IOC에 등록(Bean)
+	}
 	
 	@Bean
-	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {// Bean 구성
-		return new SqlSessionTemplate(sqlSessionFactory); // 
-	}//
-
+	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
+		return new SqlSessionTemplate(sqlSessionFactory);// IOC에서 빼와서 실행
+	}
+	
 }

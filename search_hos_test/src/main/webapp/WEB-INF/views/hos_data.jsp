@@ -26,22 +26,24 @@
 				<th>x좌표</th>
 				<th>y좌표</th>
 			</tr>
-			<tr>
-				<td>"${list.hno}"</td>
-				<td>${list.hosnm}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			<c:forEach var="hosDto" items="${list}">
+				<tr>
+					<td>${hosDto.hno}</td>
+					<td>${hosDto.hosnm}</td>
+					<td>${hosDto.clnm}</td>
+					<td>${hosDto.sbjcd}</td>
+					<td>${hosDto.sbjnm}</td>
+					<td>${hosDto.sdnm}</td>
+					<td>${hosDto.sggnm}</td>
+					<td>${hosDto.emdnm}</td>
+					<td>${hosDto.addr}</td>
+					<td>${hosDto.tel}</td>
+					<td>${hosDto.drcnt}</td>
+					<td>${hosDto.estdate}</td>
+					<td>${hosDto.xpos}</td>
+					<td>${hosDto.ypos}</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</body>
 </html>

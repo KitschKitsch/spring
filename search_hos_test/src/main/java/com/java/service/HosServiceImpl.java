@@ -14,9 +14,31 @@ public class HosServiceImpl implements HosService {
 	@Autowired
 	HosMapper hosMapper;
 	
+	// 전체 데이터 가져오기
 	@Override
 	public ArrayList<HosDto> selectAll() {
 		ArrayList<HosDto> list = hosMapper.selectAll(); 
+		return list;
+	}
+	
+	// 병원 데이터만 가져오기
+	@Override
+	public ArrayList<HosDto> selectHos() {
+		ArrayList<HosDto> list = hosMapper.selectHos();
+		return list;
+	}
+	
+	// 약국 데이터만 가져오기
+	@Override
+	public ArrayList<HosDto> selectPharm() {
+		ArrayList<HosDto> list = hosMapper.selectPharm();
+		return list;
+	}
+	
+	// 요양병원 데이터만 가져오기
+	@Override
+	public ArrayList<HosDto> selectNurs() {
+		ArrayList<HosDto> list = hosMapper.selectNurs();
 		return list;
 	}
 
