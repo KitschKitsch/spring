@@ -653,8 +653,11 @@ $(document).ready(function() {
 										this.checked = true;
 									});
 									alert("모두 동의 완료");
+								} else {
+									location.href = "/member/step02";
 									return false;
-								}
+								} 
+								
 							}
 								location.href = "/member/step03";
 						} 
