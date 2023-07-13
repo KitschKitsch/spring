@@ -34,7 +34,8 @@ $(document).ready(function() {
 
 });
 </script>
-<!-- 스타일 적용! 디스플레이 안.보.이.게 -->
+
+<!-- 스타일 적용! 처음에 디스플레이 안.보.이.게 -->
 <style>
   .memberbd{display: none;}
 </style>
