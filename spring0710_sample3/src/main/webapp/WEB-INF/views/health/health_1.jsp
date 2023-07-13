@@ -164,17 +164,28 @@
 			
 <!-- 스타일 적용! 처음에 디스플레이 안.보.이.게 -->
 <style>
-  .jagatest-cont{display: none;}
+  .demenTest{display: none;}
+  .arthTest{display: none;}
 </style>
 
 <script>
 	function selectDemen() {
 		alert("치매");
-		$(".jagatest-cont").css("display","block"); /* 디스플레이를 보.이.게! */
+		$.ajax({
+			url:"/health/demen.html",
+			type:"get",
+			success: function(){
+				alert("성공~");
+			}
+		});
+	}
+	
+	function selectArth() {
+		alert("퇴행성관절염");
+		$(".arthTest").css("display","block"); /* 디스플레이를 보.이.게! */
 	}
 	
 </script>
-
 
 			<div class="row justify-content-center d-flex align-items-center">
 				<div class="col-lg-3 col-md-6 single-team mb-50">
@@ -194,7 +205,7 @@
 					<div class="thumb">
 						<img class="img-fluid" src="/img/t2.jpg" alt="">
 						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
+							<div class="social-links" onclick="selectArth()">
 							</div>
 							<p>
 								자가진단 하러가기 >>
@@ -243,13 +254,13 @@
 					</div>
 				</div>
 			</div>
-			
-			<!--====================-->
-
-			<div class="jagatest-cont">
+			<div id="result"></div>
+<!-- 			
+	========== 치매 자가진단 ==========
+	<div class="demenTest">
 		<h3 class="c-tit01">나는 얼마나 짜게 먹을까?</h3>
-	<h4 class="c-tit02">치매 자가진단</h4>
-	<table class="tbl-type02" style="width:100%">
+		<h4 class="c-tit02">치매 자가진단</h4>
+		<table class="tbl-type02" style="width:100%">
 			<colgroup>
 				<col style="width:10%">
 				<col style="width:70%">
@@ -265,7 +276,114 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+									<tr>
+						<th scope="row">01</th>
+						<td class="left">자신의 기억력에 문제가 있다고 생각하십니까?</td>
+						<td><input type="radio" name="Q1" value="1" id="Q1_1"></td>
+						<td><input type="radio" name="Q1" value="0" id="Q1_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">02</th>
+						<td class="left">자신의 기억력이 10년 전보다 나빠졌다고 생각하십니까?</td>
+						<td><input type="radio" name="Q2" value="1" id="Q2_1"></td>
+						<td><input type="radio" name="Q2" value="0" id="Q2_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">03</th>
+						<td class="left">자신의 기억력이 같은 또래의 다른 사람들에 비해 나쁘다고 생각하십니까?</td>
+						<td><input type="radio" name="Q3" value="1" id="Q3_1"></td>
+						<td><input type="radio" name="Q3" value="0" id="Q3_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">04</th>
+						<td class="left">기억력 저하로 인해 일상생활에 불편을 느끼십니까?</td>
+						<td><input type="radio" name="Q4" value="1" id="Q4_1"></td>
+						<td><input type="radio" name="Q4" value="0" id="Q4_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">05</th>
+						<td class="left">최근에 일어난 일을 기억하는 것이 어렵습니까?</td>
+						<td><input type="radio" name="Q5" value="1" id="Q5_1"></td>
+						<td><input type="radio" name="Q5" value="0" id="Q5_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">06</th>
+						<td class="left">며칠 전에 나눈 대화 내용을 기억하기 어렵습니까?</td>
+						<td><input type="radio" name="Q6" value="1" id="Q6_1"></td>
+						<td><input type="radio" name="Q6" value="0" id="Q6_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">07</th>
+						<td class="left">며칠 전에 한 약속을 기억하기 어렵습니까?</td>
+						<td><input type="radio" name="Q7" value="1" id="Q7_1"></td>
+						<td><input type="radio" name="Q7" value="0" id="Q7_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">08</th>
+						<td class="left">친한 사람의 이름을 기억하기 어렵습니까?</td>
+						<td><input type="radio" name="Q8" value="1" id="Q8_1"></td>
+						<td><input type="radio" name="Q8" value="0" id="Q8_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">09</th>
+						<td class="left">물건 둔 곳을 기억하기 어렵습니까?</td>
+						<td><input type="radio" name="Q9" value="1" id="Q9_1"></td>
+						<td><input type="radio" name="Q9" value="0" id="Q9_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">10</th>
+						<td class="left">이전에 비해 물건을 자주 잃어버립니까?</td>
+						<td><input type="radio" name="Q10" value="1" id="Q10_1"></td>
+						<td><input type="radio" name="Q10" value="0" id="Q10_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">11</th>
+						<td class="left">집 근처에서 길을 잃은 적이 있습니까?</td>
+						<td><input type="radio" name="Q11" value="1" id="Q11_1"></td>
+						<td><input type="radio" name="Q11" value="0" id="Q11_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">12</th>
+						<td class="left">가게에서 2-3가지 물건을 사려고 할 때 물건이름을 기억하기 어렵습니까?</td>
+						<td><input type="radio" name="Q12" value="1" id="Q12_1"></td>
+						<td><input type="radio" name="Q12" value="0" id="Q12_2"></td>
+					</tr>
+									<tr>
+						<th scope="row">13</th>
+						<td class="left">가스불이나 전기불 끄는 것을 기억하기 어렵습니까?</td>
+						<td><input type="radio" name="Q13" value="1" id="Q13_1"></td>
+						<td><input type="radio" name="Q13" value="0" id="Q13_2"></td>
+					</tr>
+						<th scope="row">14</th>
+						<td class="left">자주 사용하는 전화번호(자신 혹은 자녀의 집)를 기억하기 어렵습니까?</td>
+						<td><input type="radio" name="Q14" value="1" id="Q14_1"></td>
+						<td><input type="radio" name="Q14" value="0" id="Q14_2"></td>
+					</tr>
+				</tbody>
+					</table>
+					<a id="resultBtn" href="#" class="resultBtn"><span>확인</span></a>
+			</div>
+			 -->
+	<!--========== 퇴행성관절염 자가진단 ==========-->
+	<div class="arthTest">
+		<h3 class="c-tit01">나는 얼마나 짜게 먹을까?</h3>
+		<h4 class="c-tit02">퇴행성관절염 자가진단</h4>
+		<table class="tbl-type02" style="width:100%">
+			<colgroup>
+				<col style="width:10%">
+				<col style="width:70%">
+				<col style="width:10%">
+				<col style="width:10%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col">번호</th>
+					<th scope="col">문항</th>
+					<th scope="col">예</th>
+					<th scope="col">아니오</th>
+				</tr>
+			</thead>
+			<tbody>
 									<tr>
 						<th scope="row">01</th>
 						<td class="left">자신의 기억력에 문제가 있다고 생각하십니까?</td>
@@ -350,13 +468,11 @@
 						<td><input type="radio" name="Q14" value="0" id="Q14_2"></td>
 					</tr>
 							</tbody>
-	</table>
-	<a id="resultBtn" href="#" class="resultBtn"><span>확인</span></a>
-</div>
+				</table>
+					<a id="resultBtn" href="#" class="resultBtn"><span>확인</span></a>
+			</div>
 			
-			
-			
-		</div>
+		</div>	
 	</section>
 	<!-- End team Area -->
 

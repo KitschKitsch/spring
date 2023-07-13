@@ -10,5 +10,9 @@ public class HealthController {
 	public String health_1() {
 		return "health/health_1";
 	}
+	@RequestMapping("/health/demen.html")
+	public String demen() {
+		return "health/demen.html";
+	}
 
 }
