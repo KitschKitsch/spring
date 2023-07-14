@@ -7,18 +7,18 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="img/favicon.png" type="image/png">
+	<link rel="icon" href="/img/favicon.png" type="image/png">
 	<title>Doctors</title>
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="vendors/linericon/style.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-	<link rel="stylesheet" href="vendors/animate-css/animate.css">
-	<link rel="stylesheet" href="vendors/jquery-ui/jquery-ui.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/vendors/linericon/style.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/vendors/nice-select/css/nice-select.css">
+	<link rel="stylesheet" href="/vendors/animate-css/animate.css">
+	<link rel="stylesheet" href="/vendors/jquery-ui/jquery-ui.css">
 	<!-- main css -->
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/responsive.css">
 </head>
 
 <body>
@@ -161,210 +161,99 @@
 					</p>
 				</div>
 			</div>
+			
+<!-- 스타일 적용! 처음에 디스플레이 안.보.이.게 -->
+<style>
+  .demenTest{display: none;}
+  .arthTest{display: none;}
+</style>
+
+<script>
+	function selectDemen() {
+		alert("치매");
+		$(".arthTest").css("display","none"); /* 디스플레이를 보.이.게! */
+		$(".demenTest").css("display","block"); /* 디스플레이를 보.이.게! */
+	}
+	
+	function selectArth() {
+		alert("퇴행성관절염");
+		$(".demenTest").css("display","none"); /* 디스플레이를 보.이.게! */
+		$(".arthTest").css("display","block"); /* 디스플레이를 보.이.게! */
+	}
+	
+</script>
 
 			<div class="row justify-content-center d-flex align-items-center">
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="img/t1.jpg" alt="">
+						<img class="img-fluid" src="/img/t1.jpg" alt="">
 						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
-								<a href="#">
-									<i class="fa fa-facebook"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-twitter"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-dribbble"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-behance"></i>
-								</a>
+							<div class="social-links" onclick="selectDemen()">
 							</div>
 							<p>
-								inappropriate behavior
+								자가진단 하러가기 >>
 							</p>
-							<h4>Andy Florence</h4>
+							<h4>치매</h4>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="img/t2.jpg" alt="">
+						<img class="img-fluid" src="/img/t2.jpg" alt="">
 						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
-								<a href="#">
-									<i class="fa fa-facebook"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-twitter"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-dribbble"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-behance"></i>
-								</a>
+							<div class="social-links" onclick="selectArth()">
 							</div>
 							<p>
-								inappropriate behavior
+								자가진단 하러가기 >>
 							</p>
-							<h4>Andy Florence</h4>
+							<h4>퇴행성 관절염</h4>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="img/t3.jpg" alt="">
+						<img class="img-fluid" src="/img/t3.jpg" alt="">
 						<div class="align-items-end justify-content-center d-flex">
 							<div class="social-links">
-								<a href="#">
-									<i class="fa fa-facebook"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-twitter"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-dribbble"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-behance"></i>
-								</a>
 							</div>
 							<p>
-								inappropriate behavior
+								자가진단 하러가기 >>
 							</p>
-							<h4>Andy Florence</h4>
+							<h4>고혈압</h4>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="img/t4.jpg" alt="">
+						<img class="img-fluid" src="/img/t4.jpg" alt="">
 						<div class="align-items-end justify-content-center d-flex">
 							<div class="social-links">
-								<a href="#">
-									<i class="fa fa-facebook"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-twitter"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-dribbble"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-behance"></i>
-								</a>
 							</div>
 							<p>
-								inappropriate behavior
+								자가진단 하러가기 >>
 							</p>
-							<h4>Andy Florence</h4>
+							<h4>당뇨병</h4>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 single-team">
+				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="img/t1.jpg" alt="">
+						<img class="img-fluid" src="/img/t1.jpg" alt="">
 						<div class="align-items-end justify-content-center d-flex">
 							<div class="social-links">
-								<a href="#">
-									<i class="fa fa-facebook"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-twitter"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-dribbble"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-behance"></i>
-								</a>
 							</div>
 							<p>
-								inappropriate behavior
+								자가진단 하러가기 >>
 							</p>
-							<h4>Andy Florence</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 single-team">
-					<div class="thumb">
-						<img class="img-fluid" src="img/t2.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
-								<a href="#">
-									<i class="fa fa-facebook"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-twitter"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-dribbble"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-behance"></i>
-								</a>
-							</div>
-							<p>
-								inappropriate behavior
-							</p>
-							<h4>Andy Florence</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 single-team">
-					<div class="thumb">
-						<img class="img-fluid" src="img/t3.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
-								<a href="#">
-									<i class="fa fa-facebook"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-twitter"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-dribbble"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-behance"></i>
-								</a>
-							</div>
-							<p>
-								inappropriate behavior
-							</p>
-							<h4>Andy Florence</h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 single-team">
-					<div class="thumb">
-						<img class="img-fluid" src="img/t4.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
-								<a href="#">
-									<i class="fa fa-facebook"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-twitter"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-dribbble"></i>
-								</a>
-								<a href="#">
-									<i class="fa fa-behance"></i>
-								</a>
-							</div>
-							<p>
-								inappropriate behavior
-							</p>
-							<h4>Andy Florence</h4>
+							<h4>뇌혈관질환</h4>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+			<div id="result"></div>
+			
+			
+		</div>	
 	</section>
 	<!-- End team Area -->
 
@@ -456,15 +345,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/popper.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="/js/jquery.ajaxchimp.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-	<script src="js/mail-script.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="/js/mail-script.js"></script>
+	<script src="/js/custom.js"></script>
 </body>
 
 </html>

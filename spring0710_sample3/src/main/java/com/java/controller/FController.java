@@ -21,9 +21,9 @@ public class FController {
     return "index"; 
   } 
   
-  @RequestMapping("/searchHos/searchHos") 
+  @RequestMapping("/hos/searchHos") 
   public String searchHos() { 
-	  return "searchHos/searchHos"; 
+	  return "hos/searchHos"; 
   } 
   
 	// 전체 데이터 가져오기
