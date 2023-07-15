@@ -186,10 +186,8 @@
 			<div class="row justify-content-center d-flex align-items-center">
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t1.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links" onclick="selectDemen()">
-							</div>
+						<img class="img-fluid" src="/img/demen.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectDemen()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -199,10 +197,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t2.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links" onclick="selectArth()">
-							</div>
+						<img class="img-fluid" src="/img/arth.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectArth()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -212,10 +208,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t3.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
-							</div>
+						<img class="img-fluid" src="/img/hyper.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectHyper()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -225,10 +219,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t4.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
-							</div>
+						<img class="img-fluid" src="/img/diabet.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectDiabet()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -238,10 +230,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t1.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
-							</div>
+						<img class="img-fluid" src="/img/cerebro.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectCerebro()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -250,7 +240,6 @@
 					</div>
 				</div>
 			</div>
-			<div id="result"></div>
 			
 			
 		</div>	

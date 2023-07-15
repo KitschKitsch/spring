@@ -238,6 +238,38 @@ a.resultBtn span {
 [type="radio"]:hover + span {
   cursor: pointer;
 }
+/* 자가진단 결과창 */
+.jagatest-result {
+	position: relative;
+	top: 30px;
+    text-align: center;
+    padding: 30px 10px;
+    border: 5px solid #c5c5c5;
+    line-height: 1;
+}
+.jagatest-result .comm {
+    font-size: 26px;
+    color: #000;
+    padding-top: 80px;
+    background: url(/img/jaga_result.jpg) no-repeat 50% 0;
+}
+.jagatest-result .comm .spc {
+    color: #009893;
+    font-weight: 600;
+}
+.jagatest-result .tit {
+    font-size: 24px;
+    color: #000;
+    padding-top: 30px;
+    font-weight: 600;
+}
+.jagatest-result .stxt {
+    width: 70%;
+    padding-top: 15px;
+    line-height: 1.4;
+    margin: 0 auto;
+    font-size: 22px;
+}
 
 
 

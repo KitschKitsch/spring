@@ -156,9 +156,9 @@
 		<div class="container">
 			<div class="row justify-content-center section-title-wrap">
 				<div class="col-lg-12">
-					<h1>Our Offered Services</h1>
+					<h1>노인성 5대질환 자가진단</h1>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						치매, 퇴행성 관절염, 고혈압, 당뇨병, 뇌혈관질환을 간단하게 진단합니다.<br>본 진단은 단순 참고용으로 의학적인 진단을 대체할 수 없습니다.
 					</p>
 				</div>
 			</div>
@@ -180,6 +180,9 @@
 		$(".diabetTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".cerebroTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".demenTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".demenTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
 	}
 	function selectArth() {
 		$(".demenTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
@@ -187,6 +190,9 @@
 		$(".diabetTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".cerebroTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".arthTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".arthTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
 	}
 	function selectHyper() {
 		$(".demenTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
@@ -194,6 +200,9 @@
 		$(".diabetTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".cerebroTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".hyperTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".hyperTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
 	}
 	function selectDiabet() {
 		$(".demenTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
@@ -201,6 +210,9 @@
 		$(".hyperTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".cerebroTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".diabetTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".diabetTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
 	}
 	function selectCerebro() {
 		$(".demenTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
@@ -208,48 +220,35 @@
 		$(".hyperTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".diabetTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".cerebroTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".cerebroTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
+        
+   		// 결과창 숨겨놓기
+    	$(document).ready(function(){
+    		$(".demenResult").hide();
+    	})
+    	$(document).ready(function(){
+    		$(".arthResult").hide();
+    	})
+    	$(document).ready(function(){
+    		$(".hyperResult").hide();
+    	})
+    	$(document).ready(function(){
+    		$(".diabetResult").hide();
+    	})
+    	$(document).ready(function(){
+    		$(".cerebroResult").hide();
+    	})        
+        
+        
 	}
-	
-	// 제출버튼 -> 다시하기, 추천버튼으로 바꾸는 함수
-	function submitBtn(disNm) {
-		console.log("제출버튼: " + disNm);
-		var htmlData = "";
-		htmlData += "<a id='resetBtn' onclick='resetBtn()' class='resetBtn'><span>다시하기</span></a>";
-		htmlData += "<a id='resultBtn' onclick='resultBtn()' class='resultBtn'><span>운동/식단 추천받기</span></a>";
-		
-		if (disNm.includes("demen")) {
-			$("#submitDemenBtn").html(htmlData);
-		}
-		if (disNm.includes("arth")) {
-			$("#submitArthBtn").html(htmlData);
-		}
-		if (disNm.includes("hyper")) {
-			$("#submitHyperBtn").html(htmlData);
-		}
-		if (disNm.includes("diabet")) {
-			$("#submitDiabetBtn").html(htmlData);
-		}
-		if (disNm.includes("cerebro")) {
-			$("#submitCerebroBtn").html(htmlData);
-		}
-	}// submitBtn
-	
-	
-	// 추천버튼 : 해당 폼의 라디오버튼 개수, 체크개수
-	function resultBtn() {
-		console.log("추천버튼: ")
-		//demenTest.submit();
-	}
-	
 </script>
-
 			<div class="row justify-content-center d-flex align-items-center">
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t1.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links" onclick="selectDemen()">
-							</div>
+						<img class="img-fluid" src="/img/demen.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectDemen()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -259,10 +258,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t2.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links" onclick="selectArth()">
-							</div>
+						<img class="img-fluid" src="/img/arth.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectArth()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -272,10 +269,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t3.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links" onclick="selectHyper()">
-							</div>
+						<img class="img-fluid" src="/img/hyper.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectHyper()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -285,10 +280,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t4.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links" onclick="selectDiabet()">
-							</div>
+						<img class="img-fluid" src="/img/diabet.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectDiabet()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -298,10 +291,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
-						<img class="img-fluid" src="/img/t1.jpg" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links" onclick="selectCerebro()">
-							</div>
+						<img class="img-fluid" src="/img/cerebro.png" alt="">
+						<div class="align-items-end justify-content-center d-flex" onclick="selectCerebro()">
 							<p>
 								자가진단 하러가기 >>
 							</p>
@@ -310,10 +301,9 @@
 					</div>
 				</div>
 			</div>
-			<div id="result"></div>
 			
 	<!--========== 치매 자가진단 ==========-->
-	<form action="/hos/health_2" name="demenTest" method="post">
+	<form action="/health/health_2" name="demenTest" method="post">
 	<div class="demenTest">
 		<h3 class="c-tit01">내 기억력 점수는 몇 점 일까?</h3>
 		<h4 class="c-tit02">치매 자가진단</h4>
@@ -419,18 +409,20 @@
 				</tbody>
 					</table>
 					<div id="submitDemenBtn">
-						<a onclick="submitBtn('demenTest'); SUM($('.demenTest'))" class="submitBtn"><span>제출</span></a>
+						<a onclick="demenSum()" class="submitBtn"><span>제출</span></a>
 					</div>
-						<div class="jagatest-result" id="result" style="display: none;">
-							<p class="comm">의<span class="spc" id="title"></span>는 <span class="spc" id="sum"></span>입니다.</p>
-							<p class="tit"><span class="spc" id="result_title"></span></p>
-							<p class="stxt"><span class="spc" id="result_content"></span></p>
+						<div class="demenResult" style="display: none;">
+							<div class="jagatest-result" id="result1">
+								<p class="comm">당신의 <span class="spc" id="title1">~</span>는 <span class="spc" id="sum1">~</span> 입니다.</p>
+								<p class="tit"><span class="spc" id="result_title1"></span></p>
+								<p class="stxt"><span class="spc" id="result_content1"></span></p>
+							</div>
 						</div>
 			</div>
 		</form>
 			
 	<!--========== 퇴행성 관절염 자가진단 ==========-->
-	<form action="/hos/health_2" name="arthTest" method="post">
+	<form action="/health/health_2" name="arthTest" method="post">
 	<div class="arthTest">
 		<h3 class="c-tit01">내 관절점수는 몇 점 일까?</h3>
 		<h4 class="c-tit02">퇴행성 관절염 자가진단</h4>
@@ -513,18 +505,20 @@
 				</tbody>
 					</table>
 					<div id="submitArthBtn">
-						<a onclick="submitBtn('arthTest'); SUM($('.arthTest'))" class="submitBtn"><span>제출</span></a>
+						<a onclick="arthSum()" class="submitBtn"><span>제출</span></a>
 					</div>
-						<div class="jagatest-result" id="result" style="display: none;">
-							<p class="comm">의<span class="spc" id="title"></span>는 <span class="spc" id="sum"></span>입니다.</p>
-							<p class="tit"><span class="spc" id="result_title"></span></p>
-							<p class="stxt"><span class="spc" id="result_content"></span></p>
+						<div class="arthResult" style="display: none;">
+							<div class="jagatest-result" id="result2">
+								<p class="comm">당신의 <span class="spc" id="title2">~</span>는 <span class="spc" id="sum2">~</span> 입니다.</p>
+								<p class="tit"><span class="spc" id="result_title2"></span></p>
+								<p class="stxt"><span class="spc" id="result_content2"></span></p>
+							</div>
 						</div>
 			</div>
 		</form>
 			
 	<!--========== 고혈압 자가진단 ==========-->
-	<form action="/hos/health_2" name="hyperTest" method="post">
+	<form action="/health/health_2" name="hyperTest" method="post">
 	<div class="hyperTest">
 		<h3 class="c-tit01">내 혈압점수는 몇 점 일까?</h3>
 		<h4 class="c-tit02">고혈압 자가진단</h4>
@@ -649,18 +643,20 @@
 				</tbody>
 					</table>
 					<div id="submitHyperBtn">
-						<a  onclick="submitBtn('hyperTest'); SUM($('.hyperTest'))" class="submitBtn"><span>제출</span></a>
+						<a  onclick="hyperSum()" class="submitBtn"><span>제출</span></a>
 					</div>
-						<div class="jagatest-result" id="result" style="display: none;">
-							<p class="comm">의<span class="spc" id="title"></span>는 <span class="spc" id="sum"></span>입니다.</p>
-							<p class="tit"><span class="spc" id="result_title"></span></p>
-							<p class="stxt"><span class="spc" id="result_content"></span></p>
+						<div class="hyperResult" style="display: none;">
+							<div class="jagatest-result" id="result3">
+								<p class="comm">당신의 <span class="spc" id="title3">~</span>는 <span class="spc" id="sum3">~</span> 입니다.</p>
+								<p class="tit"><span class="spc" id="result_title3"></span></p>
+								<p class="stxt"><span class="spc" id="result_content3"></span></p>
+							</div>
 						</div>
 			</div>
 		</form>
 		
 	<!--========== 당뇨병 자가진단 ==========-->
-	<form action="/hos/health_2" name="diabetTest" method="post">
+	<form action="/health/health_2" name="diabetTest" method="post">
 	<div class="diabetTest">
 		<h3 class="c-tit01">내 혈당점수는 몇 점 일까?</h3>
 		<h4 class="c-tit02">당뇨병 자가진단</h4>
@@ -737,18 +733,20 @@
 				</tbody>
 					</table>
 					<div id="submitDiabetBtn">
-						<a onclick="submitBtn('diabetTest'); SUM($('.diabetTest'))" class="submitBtn"><span>제출</span></a>
+						<a onclick="diabetSum()" class="submitBtn"><span>제출</span></a>
 					</div>
-						<div class="jagatest-result" id="result" style="display: none;">
-							<p class="comm">의<span class="spc" id="title"></span>는 <span class="spc" id="sum"></span>입니다.</p>
-							<p class="tit"><span class="spc" id="result_title"></span></p>
-							<p class="stxt"><span class="spc" id="result_content"></span></p>
+						<div class="diabetResult" style="display: none;">
+							<div class="jagatest-result" id="result4">
+								<p class="comm">당신의 <span class="spc" id="title4">~</span>는 <span class="spc" id="sum4">~</span> 입니다.</p>
+								<p class="tit"><span class="spc" id="result_title4"></span></p>
+								<p class="stxt"><span class="spc" id="result_content4"></span></p>
+							</div>
 						</div>
 			</div>
 		</form>
 	
 	<!--========== 뇌혈관질환 자가진단 ==========-->
-	<form action="/hos/health_2" name="cerebroTest" method="post">
+	<form action="/health/health_2" name="cerebroTest" method="post">
 	<div class="cerebroTest">
 		<h3 class="c-tit01">내 뇌혈관점수는 몇 점 일까?</h3>
 		<h4 class="c-tit02">뇌혈관질환 자가진단</h4>
@@ -819,12 +817,14 @@
 				</tbody>
 					</table>
 					<div id="submitCerebroBtn">
-						<a onclick="submitBtn('cerebroTest'); SUM($('.cerebroTest'))" class="submitBtn"><span>제출</span></a>
+						<a onclick="cerebroSum()" class="submitBtn"><span>제출</span></a>
 					</div>
-						<div class="jagatest-result" id="result" style="display: none;">
-							<p class="comm">당신의<span class="spc" id="title"></span>점수는 <span class="spc" id="sum"></span>입니다.</p>
-							<p class="tit"><span class="spc" id="result_title">ㅎㅇ</span></p>
-							<p class="stxt"><span class="spc" id="result_content">ㅎㅇ</span></p>
+						<div class="cerebroResult" style="display: none;">
+							<div class="jagatest-result" id="result5">
+								<p class="comm">당신의 <span class="spc" id="title5">~</span>는 <span class="spc" id="sum5">~</span> 입니다.</p>
+								<p class="tit"><span class="spc" id="result_title5"></span></p>
+								<p class="stxt"><span class="spc" id="result_content5"></span></p>
+							</div>
 						</div>
 			</div>
 		</form>
@@ -921,93 +921,346 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script>
-	var result_Array = [["\uc88b\uc740 \uc2dd\uc2b5\uad00\uc744 \uac00\uc9c0\uace0 \uc788\uc2b5\ub2c8\ub2e4.","\uc138\uacc4\ubcf4\uac74\uae30\uad6c(WHO)\uc5d0\uc11c \uc815\ud55c \ub098\ud2b8\ub968 \uad8c\uace0\uc12d\ucde8\ub7c9\uc740 \ud558\ub8e8 2,000mg\uc785\ub2c8\ub2e4. \r\n\uadf8\ub7ec\ub098 2014\ub144 \uad6d\ubbfc\uac74\uac15\uc870\uc0ac\uc5d0 \ub530\ub974\uba74 \uc6b0\ub9ac\ub098\ub77c \uc0ac\ub78c\ub4e4\uc740 \ub098\ud2b8\ub968\uc744 \ud558\ub8e8 \ud3c9\uade0 3,890mg\uc744 \uc12d\ucde8\ud558\uace0 \uc788\uc5b4 \uc138\uacc4\ubcf4\uac74\uae30\uad6c(WHO)\uc5d0\uc11c \uc815\ud55c \uad8c\uace0\uc12d\ucde8\ub7c9\uc758 \uc57d 2\ubc30\ub85c \uc12d\ucde8\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4. \ub530\ub77c\uc11c \uc0dd\ud65c \uc18d\uc5d0\uc11c \uc2f1\uac81\uac8c \uba39\uae30\ub97c \uc2e4\ucc9c\ud569\uc2dc\ub2e4.\r\n"],["\uc8fc\uc758\ud558\uc138\uc694.","\ub098\ud2b8\ub968 \uacfc\ub2e4 \uc12d\ucde8\uac00 \uac74\uac15\uc5d0 \ubd80\uc815\uc801\uc73c\ub85c \uc601\ud5a5\uc744 \ubbf8\uce58\ub294 \uac83\uc740 \ud608\uc555 \uc0c1\uc2b9\uc744 \uc720\ubc1c\ud558\ub294 \uac83\uc785\ub2c8\ub2e4. \uace0\ud608\uc555\uc740 \ub1cc\uc878\uc911, \uc2ec\uadfc\uacbd\uc0c9\uacfc \uac19\uc740 \uc2ec\ub1cc\ud608\uad00\uc9c8\ud658 \ubc1c\ubcd1\uc5d0 \uc911\uc694\ud55c \uc704\ud5d8\uc694\uc18c\uc774\ubbc0\ub85c \uc2f1\uac81\uac8c \uba39\uae30\ub97c \uc2e4\ucc9c\ud569\uc2dc\ub2e4."],["\uc704\ud5d8\ud569\ub2c8\ub2e4.","\ub098\ud2b8\ub968 \uacfc\ub2e4 \uc12d\ucde8\uac00 \uac74\uac15\uc5d0 \ubd80\uc815\uc801\uc73c\ub85c \uc601\ud5a5\uc744 \ubbf8\uce58\ub294 \uac83\uc740 \ud608\uc555 \uc0c1\uc2b9\uc744 \uc720\ubc1c\ud558\ub294 \uac83\uc785\ub2c8\ub2e4. \uace0\ud608\uc555\uc740 \ub1cc\uc878\uc911, \uc2ec\uadfc\uacbd\uc0c9\uacfc \uac19\uc740 \uc2ec\ub1cc\ud608\uad00\uc9c8\ud658 \ubc1c\ubcd1\uc5d0 \uc911\uc694\ud55c \uc704\ud5d8\uc694\uc18c\uc774\ubbc0\ub85c \uc2f1\uac81\uac8c \uba39\uae30\ub97c \uc2e4\ucc9c\ud569\uc2dc\ub2e4."],["\ub9e4\uc6b0 \uc704\ud5d8\ud569\ub2c8\ub2e4.","\ub098\ud2b8\ub968 \uacfc\ub2e4 \uc12d\ucde8\uac00 \uac74\uac15\uc5d0 \ubd80\uc815\uc801\uc73c\ub85c \uc601\ud5a5\uc744 \ubbf8\uce58\ub294 \uac83\uc740 \ud608\uc555 \uc0c1\uc2b9\uc744 \uc720\ubc1c\ud558\ub294 \uac83\uc785\ub2c8\ub2e4. \uace0\ud608\uc555\uc740 \ub1cc\uc878\uc911, \uc2ec\uadfc\uacbd\uc0c9\uacfc \uac19\uc740 \uc2ec\ub1cc\ud608\uad00\uc9c8\ud658 \ubc1c\ubcd1\uc5d0 \uc911\uc694\ud55c \uc704\ud5d8\uc694\uc18c\uc774\ubbc0\ub85c \uc2f1\uac81\uac8c \uba39\uae30\ub97c \uc2e4\ucc9c\ud569\uc2dc\ub2e4."]]; 
-	//질문 계산
-	function SUM(disNm){
-		alert("sum버튼");
-		console.log(disNm[0]);
-		
-		var Q_total_count = '';
-		var subject = '';
-		var sub_Title='';
-		
-		if (disNm[0].getElementsByClassName("demenTest")) {
-			console.log("치매");
-			console.log(disNm[0].getElemeemen("c-tit02"));
-			sub_Title = '치매 자가진단 점수';
-			Q_total_count = $(".demenTest .tbl-type02 tbody tr").length;
-		}
-		
-		else if (disNm[0].getElementsByClassName("arthTest")) {
-			console.log("퇴행성");
-			subject = 'arth';
-			sub_Title = '퇴행성 관절염 자가진단 점수';
-			Q_total_count = $(".arthTest .tbl-type02 tbody tr").length;
-		}
-		
-		else if (disNm[0].getElementsByClassName("hyperTest")) {
-			subject = 'hyper';
-			sub_Title = '고혈압 자가진단 점수';
-			Q_total_count = $(".hyperTest .tbl-type02 tbody tr").length;
-		}
-		
-		else if (disNm[0].getElementsByClassName("diabetTest")) {
-			subject = 'diabet';
-			sub_Title = '당뇨병 자가진단 점수';
-			Q_total_count = $(".diabetTest .tbl-type02 tbody tr").length;
-		}
-		
-		else if (disNm[0].getElementsByClassName("cerebroTest")) {
-			subject = 'cerebro';
-			sub_Title = '뇌혈관질환 자가진단 점수';
-			Q_total_count = $(".cerebroTest .tbl-type02 tbody tr").length;
-		}
-		
+	var result_Array = [["양호한 수준 입니다.","꾸준한 운동과 건강한 식습관으로 균형잡힌 생활을 유지하세요."],["주의가 필요합니다.","정기적인 검진을 받아 건강관리에 더욱 신경을 써야해요. 꾸준한 운동과 건강한 식습관의 개선은 예방에 도움이 됩니다."],["위험 단계입니다!","빠른 시일내 가까운 의료기관을 방문하셔서 보다 전문적인 검사를 받아보세요!"]]; 
+	<!--========== 치매 자가진단 점수 ==========-->
+	function demenSum() {
+		var Q_total_count = $(".demenTest .tbl-type02 tbody tr").length;
+  		var subject = 'demen';
+  		var sub_Title = '치매 자가진단 점수';
+
 		console.log(Q_total_count);
 		
 		var sum = 0;
 		for(var i=1;i <=Q_total_count;i++){
 			var v = ""; var data = 0;
-
 			v = $("input[name=Q"+i+"]:checked");
-		
 			if(!v.val() && v.val() !== 0){
 				alert("선택 되지 않은 항목이 있습니다.");
 				return false;
 			}
 			data = $("input[name=Q"+i+"]:checked").val();
 			sum = sum + parseInt(data);
+		}// for
+		// 체크개수 기준
+		var result_title =""; var result_content ="";
+		if(sum <= 3){
+			result_title = result_Array[0][0];
+			result_content = result_Array[0][1];
+		}else if(sum <= 7){
+			result_title = result_Array[1][0];
+			result_content = result_Array[1][1];
+		}else if(sum > 7){
+			result_title = result_Array[2][0];
+			result_content = result_Array[2][1];
 		}
+		$("#title1").text(sub_Title);
+		$("#sum1").text(sum+"점");
+		$("#result_title1").text(result_title);
+		$("#result_content1").text(result_content);
+		$(".demenResult").show("500ms"); // 결과창 나타내기
+
+		var offset = $("#result1").offset();
+        $('html, body').animate({scrollTop : offset.top - 300}, 400);
+        
+        // 다시하기와 추천버튼으로 바꾸기
+        var htmlData = "";
+        htmlData += "<a id='resetBtn' onclick='resetBtn("+'$("form:eq(0)")'+")' class='resetBtn'><span>다시하기</span></a>"; // n번째 form 태그 이하를 매개변수로 담아 보내기!
+		htmlData += "<a id='resultBtn' onclick='resultBtn()' class='resultBtn'><span>운동/식단 추천받기</span></a>";
+		$("#submitDemenBtn").html(htmlData);
+		// +++++ DB에 치매점수 저장
+        
+	}
+	
+	<!--========== 퇴행성관절염 자가진단 점수 ==========-->
+	function arthSum() {
+		var Q_total_count = $(".arthTest .tbl-type02 tbody tr").length;
+  		var subject = 'arth';
+  		var sub_Title = '퇴행성관절염 자가진단 점수';
+
+		console.log(Q_total_count);
 		
+		var sum = 0;
+		for(var i=1;i <=Q_total_count;i++){
+			var v = ""; var data = 0;
+			v = $("input[name=Q"+i+"]:checked");
+			if(!v.val() && v.val() !== 0){
+				alert("선택 되지 않은 항목이 있습니다.");
+				return false;
+			}
+			data = $("input[name=Q"+i+"]:checked").val();
+			sum = sum + parseInt(data);
+		}// for
+		// 체크개수 기준
+		var result_title =""; var result_content ="";
+		if(sum <= 2){
+			result_title = result_Array[0][0];
+			result_content = result_Array[0][1];
+		}else if(sum <= 5){
+			result_title = result_Array[1][0];
+			result_content = result_Array[1][1];
+		}else if(sum > 5){
+			result_title = result_Array[2][0];
+			result_content = result_Array[2][1];
+		}
+		$("#title2").text(sub_Title);
+		$("#sum2").text(sum+"점");
+		$("#result_title2").text(result_title);
+		$("#result_content2").text(result_content);
+		$(".arthResult").show("500ms"); // 결과창 나타내기
+
+		var offset = $("#result2").offset();
+        $('html, body').animate({scrollTop : offset.top - 300}, 400);
+        
+        // 다시하기와 추천버튼으로 바꾸기
+        var htmlData = "";
+		htmlData += "<a id='resetBtn' onclick='resetBtn("+'$("form:eq(1)")'+")' class='resetBtn'><span>다시하기</span></a>";
+		htmlData += "<a id='resultBtn' onclick='resultBtn()' class='resultBtn'><span>운동/식단 추천받기</span></a>";
+		$("#submitArthBtn").html(htmlData);
+		// DB
+        
+	} 
+	
+	<!--========== 고혈압 자가진단 점수 ==========-->
+	function hyperSum() {
+		var Q_total_count = $(".hyperTest .tbl-type02 tbody tr").length;
+  		var subject = 'hyper';
+  		var sub_Title = '고혈압 자가진단 점수';
+
+		console.log(Q_total_count);
+		
+		var sum = 0;
+		for(var i=1;i <=Q_total_count;i++){
+			var v = ""; var data = 0;
+			v = $("input[name=Q"+i+"]:checked");
+			if(!v.val() && v.val() !== 0){
+				alert("선택 되지 않은 항목이 있습니다.");
+				return false;
+			}
+			data = $("input[name=Q"+i+"]:checked").val();
+			sum = sum + parseInt(data);
+		}// for
+		// 체크개수 기준
+		var result_title =""; var result_content ="";
+		if(sum <= 3){
+			result_title = result_Array[0][0];
+			result_content = result_Array[0][1];
+		}else if(sum <= 9){
+			result_title = result_Array[1][0];
+			result_content = result_Array[1][1];
+		}else if(sum > 9){
+			result_title = result_Array[2][0];
+			result_content = result_Array[2][1];
+		}
+		$("#title3").text(sub_Title);
+		$("#sum3").text(sum+"점");
+		$("#result_title3").text(result_title);
+		$("#result_content3").text(result_content);
+		$(".hyperResult").show("500ms"); // 결과창 나타내기
+
+		var offset = $("#result3").offset();
+        $('html, body').animate({scrollTop : offset.top - 300}, 400);
+        
+    	 // 다시하기와 추천버튼으로 바꾸기
+    	var htmlData = "";
+		htmlData += "<a id='resetBtn' onclick='resetBtn("+'$("form:eq(2)")'+")' class='resetBtn'><span>다시하기</span></a>";
+		htmlData += "<a id='resultBtn' onclick='resultBtn()' class='resultBtn'><span>운동/식단 추천받기</span></a>";
+		$("#submitHyperBtn").html(htmlData);
+		// DB
+		
+	} 
+	
+	<!--========== 당뇨병 자가진단 점수 ==========-->
+	function diabetSum() {
+		var Q_total_count = $(".diabetTest .tbl-type02 tbody tr").length;
+  		var subject = 'diabet';
+  		var sub_Title = '당뇨병 자가진단 점수';
+
+		console.log(Q_total_count);
+		
+		var sum = 0;
+		for(var i=1;i <=Q_total_count;i++){
+			var v = ""; var data = 0;
+			v = $("input[name=Q"+i+"]:checked");
+			if(!v.val() && v.val() !== 0){
+				alert("선택 되지 않은 항목이 있습니다.");
+				return false;
+			}
+			data = $("input[name=Q"+i+"]:checked").val();
+			sum = sum + parseInt(data);
+		}// for
+		// 체크개수 기준
+		var result_title =""; var result_content ="";
+		if(sum <= 2){
+			result_title = result_Array[0][0];
+			result_content = result_Array[0][1];
+		}else if(sum <= 5){
+			result_title = result_Array[1][0];
+			result_content = result_Array[1][1];
+		}else if(sum > 5){
+			result_title = result_Array[2][0];
+			result_content = result_Array[2][1];
+		}
+		$("#title4").text(sub_Title);
+		$("#sum4").text(sum+"점");
+		$("#result_title4").text(result_title);
+		$("#result_content4").text(result_content);
+		$(".diabetResult").show("500ms"); // 결과창 나타내기
+
+		var offset = $("#result4").offset();
+        $('html, body').animate({scrollTop : offset.top - 300}, 400);
+        
+   		// 다시하기와 추천버튼으로 바꾸기
+        var htmlData = "";
+		htmlData += "<a id='resetBtn' onclick='resetBtn("+'$("form:eq(3)")'+")' class='resetBtn'><span>다시하기</span></a>";
+		htmlData += "<a id='resultBtn' onclick='resultBtn()' class='resultBtn'><span>운동/식단 추천받기</span></a>";
+		$("#submitDiabetBtn").html(htmlData);
+		// DB
+        
+	} 
+	
+	<!--========== 뇌혈관질환 자가진단 점수 ==========-->
+	function cerebroSum() {
+		var Q_total_count = $(".cerebroTest .tbl-type02 tbody tr").length;
+  		var subject = 'cerebro';
+  		var sub_Title = '뇌혈관질환 자가진단 점수';
+
+		console.log(Q_total_count);
+		
+		var sum = 0;
+		for(var i=1;i <=Q_total_count;i++){
+			var v = ""; var data = 0;
+			v = $("input[name=Q"+i+"]:checked");
+			if(!v.val() && v.val() !== 0){
+				alert("선택 되지 않은 항목이 있습니다.");
+				return false;
+			}
+			data = $("input[name=Q"+i+"]:checked").val();
+			sum = sum + parseInt(data);
+		}// for
+		// 체크개수 기준
 		var result_title =""; var result_content ="";
 		if(sum == 0){
 			result_title = result_Array[0][0];
 			result_content = result_Array[0][1];
-		}else if(sum >0 && sum < 4){
-			result_title = result_Array[1][0];
-			result_content = result_Array[1][1];
-		}else if(sum >3 && sum < 7){
+		}else if(sum > 0){
 			result_title = result_Array[2][0];
 			result_content = result_Array[2][1];
-		}else if(sum > 6){
-			result_title = result_Array[3][0];
-			result_content = result_Array[3][1];
 		}
-		
-		$("#title").text(sub_Title);
-		$("#sum").text(sum+"점");
-		$("#result_title").text(result_title);
-		$("#result_content").text(result_content);
-		$(".jagatest-result").show("500ms");
+		$("#title5").text(sub_Title);
+		$("#sum5").text(sum+"점");
+		$("#result_title5").text(result_title);
+		$("#result_content5").text(result_content);
+		$(".cerebroResult").show("500ms"); // 결과창 나타내기
 
-		var offset = $("#result").offset();
-        $('html, body').animate({scrollTop : offset.top}, 400);
+		var offset = $("#result5").offset();
+        $('html, body').animate({scrollTop : offset.top - 300}, 400);
+        
+    	// 다시하기와 추천버튼으로 바꾸기
+        var htmlData = "";
+		htmlData += "<a id='resetBtn' onclick='resetBtn("+'$("form:eq(4)")'+")' class='resetBtn'><span>다시하기</span></a>";
+		htmlData += "<a id='resultBtn' onclick='resultBtn()' class='resultBtn'><span>운동/식단 추천받기</span></a>";
+		$("#submitCerebroBtn").html(htmlData);
+		// DB
+        
 	} 
-</script>
-<script>
-	$(document).ready(function(){
-		$(".jagatest-result").hide();
-	})
+	
+	<!--========== 다시하기 버튼 ==========-->	
+	function resetBtn(fidx) {
+		var htmlData = "";
+		var Q_total_count = "";
+		
+		if (fidx.html().includes("치매")) {
+			// 라디오 버튼 초기화
+			Q_total_count = $(".demenTest .tbl-type02 tbody tr").length;
+			for (var i=1; i<=Q_total_count; i++) {
+				$("input:radio[name='Q"+i+"']").prop('checked', false);
+			}
+			// 결과창 숨기고
+			$(".demenResult").hide("200ms");
+			// 스크롤 위로 이동
+			var offset = $(".demenTest").offset();
+	        $('html, body').animate({scrollTop : offset.top-500}, 400);
+			// 제출버튼으로 바꿈
+			htmlData += "<a onclick=\"submitBtn('demenTest'); demenSum()\" class='submitBtn'><span>제출</span></a>";
+			$("#submitDemenBtn").html(htmlData);
+			// +++++ DB 삭제
+		}
+		else if (fidx.html().includes("arth")) {
+			// 라디오 버튼 초기화
+			Q_total_count = $(".arthTest .tbl-type02 tbody tr").length;
+			for (var i=1; i<=Q_total_count; i++) {
+				$("input:radio[name='Q"+i+"']").prop('checked', false);
+			}
+			// 결과창 숨기고
+			$(".arthResult").hide("200ms");
+			// 스크롤 위로 이동
+			var offset = $(".arthTest").offset();
+	        $('html, body').animate({scrollTop : offset.top-500}, 400);
+			// 제출버튼으로 바꿈
+			htmlData += "<a onclick=\"submitBtn('arthTest'); arthSum()\" class='submitBtn'><span>제출</span></a>";
+			$("#submitArthBtn").html(htmlData);
+			// DB 삭제
+		}
+		else if (fidx.html().includes("hyper")) {
+			// 라디오 버튼 초기화
+			Q_total_count = $(".hyperTest .tbl-type02 tbody tr").length;
+			for (var i=1; i<=Q_total_count; i++) {
+				$("input:radio[name='Q"+i+"']").prop('checked', false);
+			}
+			// 결과창 숨기고
+			$(".hyperResult").hide("200ms");
+			// 스크롤 위로 이동
+			var offset = $(".hyperTest").offset();
+	        $('html, body').animate({scrollTop : offset.top-500}, 400);
+			// 제출버튼으로 바꿈
+			htmlData += "<a onclick=\"submitBtn('hyperTest'); hyperSum()\" class='submitBtn'><span>제출</span></a>";
+			$("#submitHyperBtn").html(htmlData);
+			// DB 삭제
+		}
+		else if (fidx.html().includes("diabet")) {
+			// 라디오 버튼 초기화
+			Q_total_count = $(".diabetTest .tbl-type02 tbody tr").length;
+			for (var i=1; i<=Q_total_count; i++) {
+				$("input:radio[name='Q"+i+"']").prop('checked', false);
+			}
+			// 결과창 숨기고
+			$(".diabetResult").hide("200ms");
+			// 스크롤 위로 이동
+			var offset = $(".diabetTest").offset();
+	        $('html, body').animate({scrollTop : offset.top-500}, 400);
+			// 제출버튼으로 바꿈
+			htmlData += "<a onclick=\"submitBtn('diabetTest'); diabetSum()\" class='submitBtn'><span>제출</span></a>";
+			$("#submitDiabetBtn").html(htmlData);
+			// DB 삭제
+		}
+		else if (fidx.html().includes("cerebro")) {
+			// 라디오 버튼 초기화
+			Q_total_count = $(".cerebroTest .tbl-type02 tbody tr").length;
+			for (var i=1; i<=Q_total_count; i++) {
+				$("input:radio[name='Q"+i+"']").prop('checked', false);
+			}
+			// 결과창 숨기고
+			$(".cerebroResult").hide("200ms");
+			// 스크롤 위로 이동
+			var offset = $(".cerebroTest").offset();
+	        $('html, body').animate({scrollTop : offset.top-500}, 400);
+			// 제출버튼으로 바꿈
+			htmlData += "<a onclick=\"submitBtn('cerebroTest'); cerebroSum()\" class='submitBtn'><span>제출</span></a>";
+			$("#submitCerebroBtn").html(htmlData);
+			// DB 삭제
+		}
+	}// resetBtn
+	
+	
+	<!--========== 추천버튼 ==========-->
+	function resultBtn() {
+		demenTest.submit();
+		arthTest.submit();
+		hyperTest.submit();
+		diabetTest.submit();
+		cerebroTest.submit();
+	}
+	
 </script>
 
 
