@@ -92,16 +92,16 @@
 							<div class="col-lg-12 pr-0">
 								<ul class="nav navbar-nav center_nav pull-right">
 									<li class="nav-item active">
-										<a class="nav-link" href="/hos/searchHos">내 주변 의료기관 찾기</a>
+										<a class="nav-link" href="/searchHoss_folder/searchHos_1">내 주변 의료기관 찾기</a>
 									</li>
 									<li class="nav-item ">
-										<a class="nav-link" href="departments.html">참여ㆍ정보마당</a>
+										<a class="nav-link" href="/madangs_folder/madang_1">참여ㆍ정보마당</a>
 									</li>
 									<li class="nav-item ">
 										<a class="nav-link" href="doctors.html">시니어 구인ㆍ구직 게시판</a>
 									</li>
 									<li class="nav-item ">
-										<a class="nav-link" href="/health/health_1">나의 건강정보</a>
+										<a class="nav-link" href="/healths_folder/health_1">나의 건강정보</a>
 									</li>
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>

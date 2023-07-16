@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HealthController {
 	
-	@RequestMapping("/health/health_1")
+	@RequestMapping("/healths_folder/health_1")
 	public String health_1() {
-		return "health/health_1";
+		return "healths_folder/health_1";
 	}
-	@RequestMapping("/health/health_2")
+	@RequestMapping("/healths_folder/health_2")
 	public String health_2() {
-		return "health/health_2";
+		return "health_folder/health_2";
 	}
 
 }
