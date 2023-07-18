@@ -20,6 +20,10 @@ public class SearchHosController {
   public String searchHos_1() { 
 	  return "searchHoss_folder/searchHos_1"; 
   } 
+  @RequestMapping("/searchHoss_folder/searchHos_2") 
+  public String searchHos_2() { 
+	  return "searchHoss_folder/searchHos_2"; 
+  } 
   
 	// 전체 데이터 가져오기
 	@RequestMapping("/allData")
