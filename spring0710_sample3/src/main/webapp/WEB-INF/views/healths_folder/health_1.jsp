@@ -244,7 +244,7 @@
         
 	}
 </script>
-	<!-- 		<div class="row justify-content-center d-flex align-items-center">
+			<div class="row justify-content-center d-flex align-items-center">
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
 						<img class="img-fluid" src="/img/demen.png" alt="">
@@ -300,65 +300,7 @@
 						</div>
 					</div>
 				</div>
-			</div> -->
-			<div class="row justify-content-center d-flex align-items-center">
-    <div class="col-lg-3 col-md-6 single-team mb-50">
-        <div class="thumb">
-            <img class="img-fluid" src="/img/demen.png" alt="">
-            <div class="align-items-end justify-content-center d-flex" onclick="selectDemen()">
-                <p>
-                    자가진단 하러가기 &gt;&gt;
-                </p>
-                <h4>치매</h4>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 single-team mb-50">
-        <div class="thumb">
-            <img class="img-fluid" src="/img/arth.png" alt="">
-            <div class="align-items-end justify-content-center d-flex" onclick="selectArth()">
-                <p>
-                    자가진단 하러가기 &gt;&gt;
-                </p>
-                <h4>퇴행성 관절염</h4>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 single-team mb-50">
-        <div class="thumb">
-            <img class="img-fluid" src="/img/hyper.png" alt="">
-            <div class="align-items-end justify-content-center d-flex" onclick="selectHyper()">
-                <p>
-                    자가진단 하러가기 &gt;&gt;
-                </p>
-                <h4>고혈압</h4>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 single-team mb-50">
-        <div class="thumb">
-            <img class="img-fluid" src="/img/diabet.png" alt="">
-            <div class="align-items-end justify-content-center d-flex" onclick="selectDiabet()">
-                <p>
-                    자가진단 하러가기 &gt;&gt;
-                </p>
-                <h4>당뇨병</h4>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 single-team mb-50">
-        <div class="thumb">
-            <img class="img-fluid" src="/img/cerebro.png" alt="">
-            <div class="align-items-end justify-content-center d-flex" onclick="selectCerebro()">
-                <p>
-                    자가진단 하러가기 &gt;&gt;
-                </p>
-                <h4>뇌혈관질환</h4>
-            </div>
-        </div>
-    </div>
-</div>
-				<!--  그림 -->
+			</div>
 			
 	<!--========== 치매 자가진단 ==========-->
 	<form action="/health/health_2" name="demenTest" method="post">

@@ -16,7 +16,6 @@ public class BoardDto {
 	private String btitle;
 	private String bcontent;
 	private Timestamp bdate;// sql timestamp!
-	private int remainDate; // sysout-bdate 칼럼
 	private int bhit;
 	private int bgroup;
 	private int bstep;
