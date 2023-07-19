@@ -12,9 +12,15 @@ public interface FreeMapper {
 	
 	// 게시글 전체 가져오기
 	ArrayList<MadangDto> selectAll();
+	// 게시글 전체 개수
+	int selectListCount(String s_opt, String s_word);
 	
 	// 게시글 1개 가져오기
 	MadangDto selectOne(int bno);
+	// 이전글 가져오기
+	MadangDto selectPrevOne(int bno);
+	// 다음글 가져오기
+	MadangDto selectNextOne(int bno);
 	
 	// 댓글 가져오기
 	ArrayList<CommentDto> selectComAll(int bno);

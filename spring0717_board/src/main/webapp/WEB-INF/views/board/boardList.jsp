@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,6 +14,9 @@
   <link rel="stylesheet" href="/css/notice_list.css">
 </head>
 <body>
+	<c:if test="${result=='i_success' }">
+		<script>alert("게시글이 등록되었습니다.");</script>
+	</c:if>
   <header>
     <ul>
       <li>회원가입</li> <span>|</span>
@@ -67,78 +71,62 @@
 
     <table>
       <colgroup>
-        <col width="18%">
-        <col width="60%">
-        <col width="18%">
+        <col width="10%">
+        <col width="45%">
+        <col width="16%">
+        <col width="16%">
+        <col width="13%">
       </colgroup>
       <tr>
         <th>No.</th>
         <th>제목</th>
+        <th>작성자</th>
         <th>작성일</th>
+        <th>남은날짜</th>
       </tr>
+      <!-- 게시글 반복 -->
+      <c:forEach var="board" items="${list}">
+      <tr>
+        <td>${board.bno}</td>
+        <td class="table-title">${board.btitle} 
+        <c:if test="${board.bfile !=null }">
+           <img src="/images/file.png" style="width:20px;">
+        </c:if>
+        </td>
+        <td>${board.id}</td>
+        <td>${board.bdate}</td>
+        <td>${board.remainDate}</td>
+      </tr>
+      </c:forEach>
+      
+      <!-- 게시글 반복끝 -->
+      
+      <!-- 상단노출 공지 -->
+      <!--  
       <tr>
         <td><span class="table-notice">NOTICE</span></td>
         <td class="table-title">신종코로나바이러스 예방관련 운영 안내</td>
         <td>2020-02-28</td>
-      </tr>
-      <tr>
-        <td><span class="table-notice">NOTICE</span></td>
-        <td class="table-title">[2020년3월] 시설 정비 공사 안내</td>
-        <td>2020-02-28</td>
-      </tr>
-      <tr>
-        <td><span class="table-notice">NOTICE</span></td>
-        <td class="table-title">[키즈잼] 2020년 이용 시간 & 이용 요금 변경 안내</td>
-        <td>2019-12-11</td>
-      </tr>
-      <tr>
-        <td><span class="table-notice">NOTICE</span></td>
-        <td class="table-title">[키즈잼] 2020년 1분기 정기 휴관일 안내</td>
-        <td>2019-12-11</td>
-      </tr>
-      <tr>
-        <td><span class="table-notice">NOTICE</span></td>
-        <td class="table-title">홈페이지 개인정보 보안 강화</td>
-        <td>2018-11-14</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td class="table-title">[키즈잼] 3월 프로그램 안내</td>
-        <td>2020-02-18</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td class="table-title">[키즈잼] 2월 프로그램 안내</td>
-        <td>2020-01-17</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td class="table-title">마이다스 멤버쉽 안내</td>
-        <td>2019-05-08</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td class="table-title">[마이다스 호텔&리조트] 제23회 경기건축문화 금상 수상</td>
-        <td>2018-10-10</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td class="table-title">카카오플러스 친구 오픈</td>
-        <td>2018-07-11</td>
-      </tr>
+      </tr> 
+      -->
+      
+      
+      
     </table>
 
     <ul class="page-num">
       <li class="first"></li>
       <li class="prev"></li>
+      <c:forEach var="num" begin="${pageDto.startPage}" end="${pageDto.endPage}" step="1" >
       <li class="num">
-        <div>1</div>
+        <div>${num}</div>
       </li>
+      </c:forEach>
       <li class="next"></li>
       <li class="last"></li>
     </ul>
 
-    <div class="write">쓰기</div>
+    <div class="write"><a href="/board/boardWrite">쓰기</a></div>
   </section>
 
   <footer>

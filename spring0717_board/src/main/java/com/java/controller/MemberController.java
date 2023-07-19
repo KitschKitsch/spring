@@ -1,4 +1,4 @@
-package com.java.contorller;
+package com.java.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +18,18 @@ public class MemberController {
 	@Autowired MemberService memberService;
 	@Autowired HttpSession session; // 세션
 	
-	
+	// 회원1명검색
+	@GetMapping("/member/memberModify")
+	public String memberModify(Model model) {
+		String id = (String) session.getAttribute("sessionId");
+		// 회원1명검색
+		MemberDto mdto = memberService.selectOneM(id);
+		
+		model.addAttribute("mdto", mdto);
+		
+		return "member/memberModify";
+	}
+
 	@GetMapping("/member/login")
 	public String login() {
 		return "member/login";

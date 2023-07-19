@@ -15,6 +15,7 @@ public class MemberDto {
 	private String pw;
 	private String name;
 	private String phone;
+	private String[] phones;
 	private String gender;
 	private String[] hobbys;
 	private String hobby;

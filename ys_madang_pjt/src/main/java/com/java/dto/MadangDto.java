@@ -22,5 +22,6 @@ public class MadangDto {
 	private String board_file;
 	private int board_view;
 	private int board_like;
+	private String meet_loc;
 	
 }

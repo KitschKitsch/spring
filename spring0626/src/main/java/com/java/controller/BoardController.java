@@ -28,10 +28,11 @@ public class BoardController {
 	BoardService boardService; // 먼저 메소드 있는 boardServiceImpl 다형성 호출
 
 	@RequestMapping("/board/boardList") // 주소받으면
-	public String boardList(@RequestParam(defaultValue = "1")int page, String category, String s_word, Model model) {
-		
+	public String boardList(@RequestParam(defaultValue = "1") int page, String category, String s_word, Model model) {
+
 		// 게시글 전체 가져오는 메소드 호출
-		HashMap<String, Object> map = boardService.selectAll(page, category, s_word); // 리턴타입-HashMap 메소드명-selectAll(page)
+		HashMap<String, Object> map = boardService.selectAll(page, category, s_word); // 리턴타입-HashMap
+																						// 메소드명-selectAll(page)
 		model.addAttribute("list", map.get("list"));// model에 값 실어서 "list":list
 		model.addAttribute("page", map.get("page"));
 		model.addAttribute("listCount", map.get("listCount"));
@@ -44,12 +45,12 @@ public class BoardController {
 		return "board/boardList"; // 여기로 리턴
 	}// boardList
 
-	
 	@RequestMapping("/board/boardView")
-	public String boardView(@RequestParam(defaultValue = "1")int bno, int page, String category, String s_word, Model model) {
+	public String boardView(@RequestParam(defaultValue = "1") int bno, int page, String category, String s_word,
+			Model model) {
 		// 게시글 1개 조회하는 메소드 호출(게시글 1개 = 객체)
-		HashMap<String, Object> map = boardService.selectOne(bno); //bdto 객체를
-		
+		HashMap<String, Object> map = boardService.selectOne(bno); // bdto 객체를
+
 		model.addAttribute("bdto", map.get("bdto"));// model에 bdto이름으로 실어서
 		model.addAttribute("prevDto", map.get("prevDto"));// model에 prevDto이름으로 실어서
 		model.addAttribute("nextDto", map.get("nextDto"));// model에 nextDto이름으로 실어서
@@ -60,11 +61,11 @@ public class BoardController {
 		return "board/boardView";// 반환
 	}// boardView
 
-	
 	@GetMapping("/board/boardWrite")
 	public String boardWrite() {
 		return "board/boardWrite";
 	}// boardWrite
+
 	@PostMapping("/board/boardWrite")
 	public String doBoardWrite(BoardDto bdto, @RequestPart MultipartFile file, Model model) throws Exception {
 		// 게시글 저장하기
@@ -82,15 +83,13 @@ public class BoardController {
 
 		return "redirect:boardList";
 	}// doBoardWrite
-	
 
 	@GetMapping("/board/boardDelete")
 	public String boardDelete(int bno) {
 		boardService.deleteOne(bno);// 게시글 삭제하는 메소드 호출
-		
+
 		return "redirect:boardList";
 	}// boardDelete
-	
 
 	@GetMapping("/board/boardUpdate") // boardUpdate view
 	public String boardUpdate(int bno, int page, String category, String s_word, Model model) {
@@ -99,11 +98,13 @@ public class BoardController {
 		model.addAttribute("page", page);
 		model.addAttribute("category", category);
 		model.addAttribute("s_word", s_word);
-		
+
 		return "board/boardUpdate";
 	}// boardUpdate
+
 	@PostMapping("/board/boardUpdate") // boardUpdate 저장
-	public String doBoardUpdate(BoardDto bdto, @RequestPart MultipartFile file, int page, String category, String s_word, Model model) throws Exception {
+	public String doBoardUpdate(BoardDto bdto, @RequestPart MultipartFile file, int page, String category,
+			String s_word, Model model) throws Exception {
 
 		// 게시글 1개 수정
 		String fileName = "";
@@ -119,14 +120,12 @@ public class BoardController {
 		model.addAttribute("page", page);
 		model.addAttribute("category", category);
 		model.addAttribute("s_word", s_word);
-		
-		
+
 		boardService.updateOne(bdto);// 게시글 1개 수정하는 메소드 호출
 		s_word = URLEncoder.encode(s_word, "utf-8");// 한글 인코딩
-		return "redirect:boardList?page="+page+"&category="+category+"&s_word="+s_word;
+		return "redirect:boardList?page=" + page + "&category=" + category + "&s_word=" + s_word;
 	}// doBoardUpdate
-	
-	
+
 	@GetMapping("/board/boardReply") // boardReply view
 	public String boardReply(int bno, int page, String category, String s_word, Model model) {
 		System.out.println("boardReply bno: " + bno);
@@ -135,11 +134,13 @@ public class BoardController {
 		model.addAttribute("page", page);
 		model.addAttribute("category", category);
 		model.addAttribute("s_word", s_word);
-		
+
 		return "board/boardReply";
 	}// boardReply
+
 	@PostMapping("/board/boardReply") // boardReply 저장
-	public String doBoardReply(BoardDto bdto, @RequestPart MultipartFile file, int page, String category, String s_word, Model model) throws Exception {
+	public String doBoardReply(BoardDto bdto, @RequestPart MultipartFile file, int page, String category, String s_word,
+			Model model) throws Exception {
 		// 답변 저장
 		String fileName = "";
 		if (!file.isEmpty()) { // 파일 있는지?(null과 다름!)
@@ -153,10 +154,10 @@ public class BoardController {
 		model.addAttribute("page", page);
 		model.addAttribute("category", category);
 		model.addAttribute("s_word", s_word);
-		
+
 		bdto.setBfile(fileName);// bfile 변수에 filename 저장
 		boardService.insertReplyOne(bdto);// 답변 다는 메소드 호출
-		
+
 		return "redirect:boardList";
 	}// doBoardReply
 

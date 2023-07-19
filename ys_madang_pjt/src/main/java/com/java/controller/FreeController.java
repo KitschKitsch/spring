@@ -1,11 +1,13 @@
 package com.java.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.java.dto.CommentDto;
 import com.java.dto.MadangDto;
@@ -18,8 +20,8 @@ public class FreeController {
 	
 	// 게시글 전체 가져오기
 	@RequestMapping("/madangs_folder/madang_1_1")
-	public String madang_1_1(Model model) {
-		ArrayList<MadangDto> list = freeService.selectAll();
+	public String madang_1_1(@RequestParam(defaultValue = "1")int page, String s_opt, String s_word, int row, Model model) {
+		HashMap<String, Object> map = freeService.selectAll(page, s_opt, s_word, row);
 		model.addAttribute("list", list);
 		
 		return "madangs_folder/madang_1_1";
@@ -28,12 +30,14 @@ public class FreeController {
 	// 게시글 1개 + 댓글 가져오기
 	@RequestMapping("/madangs_folder/madang_1_2")
 	public String madang_1_2(int bno, Model model) {
-		// 게시글 1개
-		MadangDto mdto = freeService.selectOne(bno);
+		// 게시글 1개(+이전글 다음글)
+		HashMap<String, Object> map = freeService.selectOne(bno);
 		// 댓글 가져오기
 		ArrayList<CommentDto> list = freeService.selectComAll(bno);
 		
-		model.addAttribute("mdto", mdto);
+		model.addAttribute("mdto", map.get("mdto"));
+		model.addAttribute("prevMdto", map.get("prevMdto"));
+		model.addAttribute("nextMdto", map.get("nextMdto"));
 		model.addAttribute("list", list);
 		
 		return "madangs_folder/madang_1_2";
