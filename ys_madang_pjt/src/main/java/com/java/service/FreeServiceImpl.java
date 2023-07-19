@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.java.dto.CommentDto;
 import com.java.dto.MadangDto;
+import com.java.dto.PageDto;
 import com.java.mapper.FreeMapper;
 
 @Service
@@ -17,35 +18,41 @@ public class FreeServiceImpl implements FreeService {
 	
 	// 게시글 전체 가져오기
 	@Override
-	public HashMap<String, Object> selectAll(int page, String s_opt, String s_word, int row) {
+	public HashMap<String, Object> selectAll(PageDto pageDto, String s_opt, String s_word, String rowPP) {
 		HashMap<String, Object> map = new HashMap<>();
-		// 게시글 전체
-		ArrayList<MadangDto> list = freeMapper.selectAll();
+		// 페이지 메소드
+		pageDto = pageMethod(pageDto, s_opt, s_word, rowPP);
 		
-		// 페이지
-		// 게시글 전체 개수
-		int listCount = freeMapper.selectListCount(s_opt, s_word); // 먼저 게시글 전체 개수 DB에 물어봐야함
-		// 최대,시작,종료 페이지
-		int maxPage = (int) Math.ceil((double) listCount / 10); // 한 페이지 당 10개씩 = 4페이지
-		int startPage = (int) ((page - 1) / 10) * 10 + 1; // 1,11,21...
-		int endPage = startPage + 10 - 1; // 10,20,30...
-		// 전체 페이지 수 최대 페이지 수로 제한
-		if (endPage > maxPage)
-			endPage = maxPage;
-		// 페이지 당 보여질 게시글 수
-		int startRow = (page - 1) * row + 1; // 1p: 1~10행 2p:11~20행
-		int endRow = startRow + row - 1; // 1p: 1~10행 2p:11~20행
+		// 게시글 전체
+		ArrayList<MadangDto> list = freeMapper.selectAll(pageDto);
 		
 		map.put("list", list);
-		map.put("page", page);
-		map.put("listCount", listCount);
-		map.put("startPage", startPage);
-		map.put("endPage", endPage);
-		map.put("maxPage", maxPage);
+		map.put("pageDto", pageDto);
 		map.put("s_opt", s_opt);
 		map.put("s_word", s_word);
 		
 		return map;
+	}
+	
+	public PageDto pageMethod(PageDto pageDto, String s_opt, String s_word, String rowPP) {
+		//전체게시글 수 저장
+		pageDto.setListCount(freeMapper.selectListCount(s_opt, s_word));
+		// 최대 넘버링페이지
+		pageDto.setMaxPage((int)Math.ceil((double)pageDto.getListCount()/10));
+		// 시작 넘버링페이지
+		pageDto.setStartPage((int)((pageDto.getPage()-1)/10)*10 + 1);
+		// 끝 넘버링페이지
+		pageDto.setEndPage(pageDto.getStartPage()+10-1);
+		// 시작번호
+		pageDto.setStartRow((pageDto.getPage()-1)* Integer.parseInt(rowPP) +1);
+		// 끝나는번호
+		pageDto.setEndRow(pageDto.getStartRow()+ Integer.parseInt(rowPP) -1);
+
+		// ***검색 옵션과 검색어도 pageDto에 추가함!!!
+		pageDto.setS_opt(s_opt);
+		pageDto.setS_word(s_word);
+		
+		return pageDto;
 	}
 	
 	// 게시글 1개 가져오기

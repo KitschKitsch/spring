@@ -6,12 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.java.dto.CommentDto;
 import com.java.dto.MadangDto;
+import com.java.dto.PageDto;
 
 @Mapper
 public interface FreeMapper {
 	
 	// 게시글 전체 가져오기
-	ArrayList<MadangDto> selectAll();
+	ArrayList<MadangDto> selectAll(PageDto pageDto);
 	// 게시글 전체 개수
 	int selectListCount(String s_opt, String s_word);
 	

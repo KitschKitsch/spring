@@ -101,14 +101,13 @@
 						</script>
 						<div class="col-md-9 contents">
 							<div class="block text-center">
-								<form name="dataForm" id="dataForm" method="get"
-									action="/madangs_folder/madang_1_1" class="form-inline">
+								<form name="dataForm" id="dataForm" method="get" action="/madangs_folder/madang_1_1" class="form-inline">
 									<fieldset>
 										<legend class="sr-only">목록검색조건</legend>
 										<div class="block search-condition">
 											<div class="form-group">
 												<label for="q_searchKeyTy" class="sr-only">항목</label> <select
-													name="q_searchKeyTy" id="q_searchKeyTy" class="select"
+													name="s_opt" id="q_searchKeyTy" class="select"
 													style="width: 150px;">
 													<option value="all">-- 검색선택 --</option>
 													<option value="title">제목</option>
@@ -118,7 +117,7 @@
 											</div>
 											<div class="form-group">
 												<label for="q_searchVal" class="sr-only">검색어</label> <input
-													type="text" name="q_searchVal" id="q_searchVal" value=""
+													type="text" name="s_word" id="q_searchVal" value=""
 													class="form-control" placeholder="검색어를 입력하세요.">
 											</div>
 											<button type="button" class="btn btn-info btn-search"
@@ -129,14 +128,13 @@
 												<fieldset>
 													<legend class="sr-only">페이지당 목록갯수 선택</legend>
 													<div class="pull-left">
-														<span>총 게시물 <strong>18699</strong>건
-														</span> <span>현재 페이지 <strong>1/1870</strong></span>
+														<span>총 게시물 <strong>${list.size()}</strong>건
 													</div>
 													<div class="pull-right">
 														<label for="q_rowPerPage">페이지당 목록</label> <select
-															name="q_rowPerPage" id="q_rowPerPage"
-															class="form-control">
-															<option value="10" selected="selected">10</option>
+															name="rowPP" id="q_rowPerPage" class="form-control">
+															<option value="10">-행-</option>
+															<option value="10">10</option>
 															<option value="15">15</option>
 															<option value="50">50</option>
 															<option value="100">100</option>
@@ -202,50 +200,60 @@
 							<!-- //버튼 -->
 
 							<!-- 페이징 -->
-							<div class="block text-center">
-								<ul class="pagination">
-									<li class="active"><a href="#" title="현재 1 페이지"
-										onclick="return false;">1</a></li>
-									<li><a href="#" onclick="opMovePage(2); return false;"
-										title="2 페이지">2</a></li>
-									<li><a href="#" onclick="opMovePage(3); return false;"
-										title="3 페이지">3</a></li>
-									<li><a href="#" onclick="opMovePage(4); return false;"
-										title="4 페이지">4</a></li>
-									<li><a href="#" onclick="opMovePage(5); return false;"
-										title="5 페이지">5</a></li>
-									<li><a href="#" onclick="opMovePage(6); return false;"
-										title="6 페이지">6</a></li>
-									<li><a href="#" onclick="opMovePage(7); return false;"
-										title="7 페이지">7</a></li>
-									<li><a href="#" onclick="opMovePage(8); return false;"
-										title="8 페이지">8</a></li>
-									<li><a href="#" onclick="opMovePage(9); return false;"
-										title="9 페이지">9</a></li>
-									<li><a href="#" onclick="opMovePage(10); return false;"
-										title="10 페이지">10</a></li>
-									<li class="next"><a href="#"
-										onclick="opMovePage(11); return false;" title="다음페이지그룹 가기">다음페이지<i
-											class="entypo-right-open"></i></a></li>
-									<li class="next last"><a href="#"
-										onclick="opMovePage(1870); return false;" title="마지막페이지로 가기">마지막페이지</a></li>
-								</ul>
-							</div>
+							<ul class="page-num">
+								<!-- 첫 페이지 이동 -->
+								<c:if test="${pageDto.page != pageDto.startPage}">
+									<a href="/madangs_folder/madang_1_1?page=1&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+									<li	class="first"></li></a>
+									<!-- 검색결과에 따라 하단 페이지 달라지니까! -->
+								</c:if>
+								<c:if test="${pageDto.page == pageDto.startPage}">
+									<li class="first"></li>
+								</c:if>
 
-							<!--             <div class="row"> -->
-							<!-- 	            <div class="col-sm-12 movePage"> -->
-							<!-- 		            <div class="pull-right form-inline"> -->
-							<!-- 		                <div class="form-group"> -->
-							<!-- 		                	<label class="sr-only" for="txtMovePage">페이지이동</label> -->
-							<!-- 		                	<input type="text" value="" id="txtMovePage" name="txtMovePage" class="form-inline" title="이동할 페이지를 입력하세요" /> -->
-							<!-- 		                </div> -->
+								<!-- 이전 페이지 이동 -->
+								<c:if test="${pageDto.page > 1}">
+									<a href="/madangs_folder/madang_1_1?page=${pageDto.page -1}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+									<li	class="prev"></li></a>
+								</c:if>
+								<c:if test="${pageDto.page == 1}">
+									<li class="prev"></li>
+								</c:if>
 
-							<!-- 		            </div> -->
-							<!-- 	            </div> -->
-							<!--             </div> -->
+								<!-- 하단 페이지 번호 넣기 -->
+								<c:forEach begin="${pageDto.startPage}" end="${pageDto.endPage}" step="1" var="num">
+									<c:if test="${num != pageDto.page}">
+										<a href="/madangs_folder/madang_1_1?page=${num}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+											<li class="num"><div>${num}</div></li>
+										</a>
+									</c:if>
+									<c:if test="${num == pageDto.page}">
+										<li class="num on"><div>${num}</div></li>
+									</c:if>
+								</c:forEach>
+
+								<!-- 다음 페이지 이동 -->
+								<c:if test="${pageDto.page < pageDto.maxPage}">
+									<a href="/madangs_folder/madang_1_1?page=${pageDto.page +1}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+									<li class="next"></li></a>
+								</c:if>
+								<c:if test="${pageDto.page == pageDto.maxPage}">
+									<li class="next"></li>
+								</c:if>
+
+								<!-- 끝 페이지 이동 -->
+								<c:if test="${pageDto.page != pageDto.maxPage}">
+									<a href="/madangs_folder/madang_1_1?page=${pageDto.maxPage}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+									<li class="last"></li></a>
+								</c:if>
+								<c:if test="${pageDto.page == pageDto.maxPage}">
+									<li class="last"></li>
+								</c:if>
+							</ul>
 							<!-- //페이징 -->
 							<script type="text/javascript"
 								src="/resources/libs/form-3.51.0/jquery.form.js"></script>
+
 						</div>
 					</div>
 				</div>

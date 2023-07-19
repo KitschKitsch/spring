@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.java.dto.CommentDto;
 import com.java.dto.MadangDto;
+import com.java.dto.PageDto;
 import com.java.service.FreeService;
 
 @Controller
@@ -20,9 +21,14 @@ public class FreeController {
 	
 	// 게시글 전체 가져오기
 	@RequestMapping("/madangs_folder/madang_1_1")
-	public String madang_1_1(@RequestParam(defaultValue = "1")int page, String s_opt, String s_word, int row, Model model) {
-		HashMap<String, Object> map = freeService.selectAll(page, s_opt, s_word, row);
-		model.addAttribute("list", list);
+	public String madang_1_1(PageDto pageDto, String s_opt, String s_word, @RequestParam(defaultValue = "10") String rowPP, Model model) {
+		HashMap<String, Object> map = freeService.selectAll(pageDto, s_opt, s_word, rowPP);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("pageDto", map.get("pageDto"));
+		model.addAttribute("s_opt", map.get("s_opt"));
+		model.addAttribute("s_word", map.get("s_word"));
+		model.addAttribute("rowPP", rowPP);
 		
 		return "madangs_folder/madang_1_1";
 	}

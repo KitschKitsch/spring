@@ -7,35 +7,35 @@
 	<!-- 게시글 전체 가져오기 -->
 	<select id="selectAll" resultType="com.java.dto.MadangDto">
 		SELECT * FROM (SELECT ROWNUM RNUM, A.* FROM NOTICE_BOARD A WHERE BOARD_CATEGORY = 'free'
-			<if test="category == 'all'">
+			<if test="s_opt == 'all'">
 		      	AND BOARD_TITLE LIKE '%'||#{s_word}||'%' OR BOARD_CONTENTS LIKE '%'||#{s_word}||'%'
 			</if>
-			<if test="category == 'btitle'">
+			<if test="s_opt == 'btitle'">
 		      	AND BOARD_TITLE LIKE '%'||#{s_word}||'%'
 			</if>
-			<if test="category == 'content'">
+			<if test="s_opt == 'content'">
 		      	AND BOARD_CONTENTS LIKE '%'||#{s_word}||'%' 
 			</if>
-			<if test="category == 'writer'">
+			<if test="s_opt == 'writer'">
 		      	AND AUTH_NICKNAME LIKE '%'||#{s_word}||'%' 
 			</if>
 			 ORDER BY BOARD_CREATED DESC)
-			 WHERE RNUM BTWEEN #{startRow} AND #{endRow}
+			 WHERE RNUM BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
 	<!-- 게시글 전체 개수 -->
-	<select id="selectListCount" resultType="int">
+	<select id="selectListCount" resultType="int" >
 		SELECT COUNT(*) FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'free'
-			<if test="category == 'all'">
+			<if test="s_opt == 'all'">
 		      	AND BOARD_TITLE LIKE '%'||#{s_word}||'%' OR BOARD_CONTENTS LIKE '%'||#{s_word}||'%'
 			</if>
-			<if test="category == 'btitle'">
+			<if test="s_opt == 'btitle'">
 		      	AND BOARD_TITLE LIKE '%'||#{s_word}||'%'
 			</if>
-			<if test="category == 'content'">
+			<if test="s_opt == 'content'">
 		      	AND BOARD_CONTENTS LIKE '%'||#{s_word}||'%' 
 			</if>
-			<if test="category == 'writer'">
+			<if test="s_opt == 'writer'">
 		      	AND AUTH_NICKNAME LIKE '%'||#{s_word}||'%' 
 			</if>
 	</select>
