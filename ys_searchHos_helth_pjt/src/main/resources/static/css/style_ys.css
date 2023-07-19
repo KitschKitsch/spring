@@ -3,10 +3,26 @@
  .row {
     display: flex;
     justify-content: center;
+    flex-wrap: nowrap;
 }
 .single-team {
     flex-basis: 25%;
     max-width: 25%;
+}
+.team-area .thumb div {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #3face4;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.team-area .thumb img {
+    display: block;
+    width: 80%;
 }
 /* submitBtn */
 a.submitBtn {
@@ -132,7 +148,7 @@ a.resultBtn span {
     font-weight: 600;
     color: #009599;
     padding-left: 17px;
-    background: url(/_Img/Content/sub/blt02.gif) no-repeat 0 0.45em;
+    background: url(/img/Content/sub/blt02.gif) no-repeat 0 0.45em;
     line-height: 130%;
     margin-bottom: 12px;
 }
@@ -352,7 +368,7 @@ label {
     width: 20px;
     height: 20px;
     margin-left: -22px;
-    background: url(../images/btn_sprite.png) no-repeat -2px -2px;
+    background: url(../img/btn_sprite.png) no-repeat -2px -2px;
     vertical-align: middle;
 }
 .contents .search-condition>* {

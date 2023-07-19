@@ -26,10 +26,9 @@
 			<h2><a href="/member/login"><h2>로그인 </h2></a></h2>
 			<h2><a href="/member/logout"><h2>로그아웃 </h2></a></h2>
 		  <ul>
+			<li><a href="/searchHoss_folder/searchHos_1">내 주변 의료기관 찾기</a></li>
 			<li><a href="/madangs_folder/madang_1_1">자유/일상게시판</a></li>
-			<li>카테고리2</li>
-			<li>카테고리3</li>
-			<li>카테고리4</li>
+			<li><a href="/healths_folder/health_1">나의 건강관리</a></li>
 		  </ul>
 		</div>
 	  </header>

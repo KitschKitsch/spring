@@ -1,3 +1,249 @@
+/*========== 자가진단 css ==========*/
+ /*뇌혈관질환 그림 */
+ .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+.single-team {
+    flex-basis: 25%;
+    max-width: 25%;
+}
+.team-area .thumb div {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #3face4;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.team-area .thumb img {
+    display: block;
+    width: 80%;
+}
+/* submitBtn */
+a.submitBtn {
+    position: relative;
+    left: 77%;
+    top: 10px;
+    display: inline-block;
+    padding: 22px 67px 22px 30px;
+    width: 225px;
+    line-height: 25px;
+    border-radius: 40px;
+    background: #f55a4a;
+    vertical-align: middle;
+    box-sizing: border-box;
+    box-shadow: 5px 0 5px rgba(0,0,0,0.2);
+    transition: all .2s;
+}
+a.submitBtn:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    display: block;
+    width: 22px;
+    height: 16px;
+    background: url(/img/arw_next03.png) no-repeat 0 center;
+}
+a.submitBtn span {
+    display: block;
+    background: #f55a4a;
+    border-right: 1px solid rgba(255,255,255,0.3);
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.25px;
+    text-align: center;
+}
+/* resetBtn */
+a.resetBtn {
+    position: relative;
+    left: 70%;
+    top: 10px;
+    display: inline-block;
+    padding: 22px 30px 22px 67px;
+    width: 170px;
+    line-height: 25px;
+    border-radius: 40px;
+    background: #333;
+    vertical-align: middle;
+    box-sizing: border-box;
+    box-shadow: 5px 0 5px rgba(0,0,0,0.2);
+    transition: all .2s;
+}
+a.resetBtn:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
+    display: block;
+    width: 20px;
+    height: 14px;
+    background: url(/img/arw_prev03.png) no-repeat 0 center;
+}
+a.resetBtn span {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+/* resultBtn */
+a.resultBtn {
+    position: relative;
+    left: 72%;
+   	top: 10px;
+    display: inline-block;
+    padding: 8px 67px 8px 30px;
+    width: 170px;
+    line-height: 25px;
+    border-radius: 40px;
+    background: #f55a4a;
+    vertical-align: middle;
+    box-sizing: border-box;
+    box-shadow: 5px 0 5px rgba(0,0,0,0.2);
+    transition: all .2s;
+}
+a.resultBtn:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    display: block;
+    width: 20px;
+    height: 14px;
+    background: url(/img/arw_next03.png) no-repeat 0 center;
+}
+a.resultBtn span {
+    display: block;
+    background: #f55a4a;
+    font-size: 17px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+/* 자가진단 테이블 */
+.c-tit01 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #000;
+    padding-left: 0px;
+    padding-top: 15px;
+    background: url(/img/blt01.png) no-repeat 0 0em;
+    line-height: 120%;
+    margin-bottom: 15px;
+}
+.c-tit02 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #009599;
+    padding-left: 17px;
+    background: url(/_Img/Content/sub/blt02.gif) no-repeat 0 0.45em;
+    line-height: 130%;
+    margin-bottom: 12px;
+}
+.tbl-type02 {
+	font-size: 20px;
+    font-weight: 600;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    table-layout: fixed;
+    width: 100%;
+    clear: both;
+    text-align: center;
+    border-top: 2px solid #009599;
+}
+.tbl-type02 th {
+    background: #fbfcfd;
+    color: #01a09b;
+}
+.tbl-type02 th.l, .tbl-type02 td.l, .tbl-type02 td.left {
+    padding-left: 10px;
+}
+.left, .l {
+    text-align: left !important;
+}
+.tbl-type02 th, .tbl-type02 td {
+    border: 1px solid #c7d3d3;
+    border-right: 0;
+    padding: 13px 5px;
+    word-wrap: break-word;
+}
+/* 라디오 버튼 */
+[type="radio"], span {
+  vertical-align: middle;
+}
+
+[type="radio"] {
+  appearance: none;
+  border: max(2px, 0.1em) solid gray;
+  border-radius: 50%;
+  width: 1.25em;
+  height: 1.25em;
+}
+
+[type="radio"]:checked {
+  border: 0.4em solid tomato;
+}
+
+[type="radio"]:focus-visible {
+  outline-offset: max(2px, 0.1em);
+  outline: max(2px, 0.1em) dotted tomato;
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+  cursor: pointer;
+}
+
+[type="radio"]:hover + span {
+  cursor: pointer;
+}
+/* 자가진단 결과창 */
+.jagatest-result {
+	position: relative;
+	top: 30px;
+    text-align: center;
+    padding: 30px 10px;
+    border: 5px solid #c5c5c5;
+    line-height: 1;
+}
+.jagatest-result .comm {
+    font-size: 26px;
+    color: #000;
+    padding-top: 80px;
+    background: url(/img/jaga_result.jpg) no-repeat 50% 0;
+}
+.jagatest-result .comm .spc {
+    color: #009893;
+    font-weight: 600;
+}
+.jagatest-result .tit {
+    font-size: 24px;
+    color: #000;
+    padding-top: 30px;
+    font-weight: 600;
+}
+.jagatest-result .stxt {
+    width: 70%;
+    padding-top: 15px;
+    line-height: 1.4;
+    margin: 0 auto;
+    font-size: 22px;
+}
+
+
+
 .contents>.row, .contents>.block {
     width: 1200px;
     margin: 0 auto;
