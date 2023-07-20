@@ -23,6 +23,7 @@ public class MemberServiceImpl implements MemberService {
 		if (mdto != null) {
 			session.setAttribute("sessionId", mdto.getAuth_id());
 			session.setAttribute("sessionName", mdto.getAuth_name());
+			session.setAttribute("sessionNickName", mdto.getAuth_nickname());
 			
 			result = "success";
 		} else {

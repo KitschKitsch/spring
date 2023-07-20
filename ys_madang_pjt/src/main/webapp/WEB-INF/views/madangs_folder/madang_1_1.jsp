@@ -1,23 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- <link rel="icon" href="../img/favicon.png" type="../image/png"> -->
 <link rel="icon" href="../img/favicon.png" type="../image/png">
 <title>Hospice Medical</title>
 <!-- i class 아이콘 -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../css/bootstrap.css">
@@ -51,8 +47,8 @@
 				<div class="banner_content text-left">
 					<h2>자유 / 일상 게시판</h2>
 					<div class="page_link">
-						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a> <a
-							href="madang_1.jsp">클릭하시면 [ 자유 / 일상 게시판 ] 페이지를 새로 고침합니다.</a>
+						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
+						<a href="madang_1.jsp">클릭하시면 [ 자유 / 일상 게시판 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -77,10 +73,8 @@
 					<div class="content_box tab_menu_01">
 						<div class="boxtype1">
 							<p class="descript">
-							<li>특정 개인 및 단체에 대한 비난, 상업성 광고, 허위사실 유포, 동일 또는 유사한 내용의 반복적 게시
-								등 법령을 위반하거나 홈페이지의 정상적인 운영에 지장을 초래하는 경우는 운영규칙에 의거하여 삭제될 수 있습니다.</li>
-							<li>또한, 개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기
-								바랍니다.</li>
+							<li>특정 개인 및 단체에 대한 비난, 상업성 광고, 허위사실 유포, 동일 또는 유사한 내용의 반복적 게시 등 법령을 위반하거나 홈페이지의 정상적인 운영에 지장을 초래하는 경우는 운영규칙에 의거하여 삭제될 수 있습니다.</li>
+							<li>또한, 개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기 바랍니다.</li>
 							</p>
 						</div>
 						<script>
@@ -105,9 +99,7 @@
 										<legend class="sr-only">목록검색조건</legend>
 										<div class="block search-condition">
 											<div class="form-group">
-												<label for="q_searchKeyTy" class="sr-only">항목</label> <select
-													name="s_opt" id="q_searchKeyTy" class="select"
-													style="width: 150px;">
+												<label for="q_searchKeyTy" class="sr-only">항목</label> <select name="s_opt" id="q_searchKeyTy" class="select" style="width: 150px;">
 													<option value="all">-- 검색선택 --</option>
 													<option value="title">제목</option>
 													<option value="content">내용</option>
@@ -115,31 +107,29 @@
 												</select>
 											</div>
 											<div class="form-group">
-												<label for="q_searchVal" class="sr-only">검색어</label> <input
-													type="text" name="s_word" id="q_searchVal" value=""
-													class="form-control" placeholder="검색어를 입력하세요.">
+												<label for="q_searchVal" class="sr-only">검색어</label>
+												<input type="text" name="s_word" id="q_searchVal" value="" class="form-control" placeholder="검색어를 입력하세요.">
 											</div>
-											<button type="button" class="btn btn-info btn-search"
-												onclick="searchBtn()">검색</button>
+											<button type="button" class="btn btn-info btn-search" onclick="searchBtn()">검색</button>
+											<button type="submit" class="btn btn-info">초기화</button>
 										</div>
 										<div class="row grid-list-top">
 											<div class="col-xs-12">
 												<fieldset>
 													<legend class="sr-only">페이지당 목록갯수 선택</legend>
 													<div class="pull-left">
-														<span>총 게시물 <strong>${list.size()}</strong>건
+														<span>
+															총 게시물 <strong>${pageDto.listCount}</strong>건 
 													</div>
 													<div class="pull-right">
-														<label for="q_rowPerPage">페이지당 목록</label> <select
-															name="rowPP" id="q_rowPerPage" class="form-control">
+														<label for="q_rowPerPage">페이지당 목록</label> <select name="rowPP" id="q_rowPerPage" class="form-control">
 															<option value="10">-행-</option>
 															<option value="10">10</option>
 															<option value="15">15</option>
 															<option value="50">50</option>
 															<option value="100">100</option>
 														</select>
-														<button type="submit" class="btn btn-primary "
-															data-loading-text="<i class='icon-spinner7 spin'></i>">변경</button>
+														<button type="submit" class="btn btn-primary " data-loading-text="<i class='icon-spinner7 spin'></i>">변경</button>
 													</div>
 												</fieldset>
 											</div>
@@ -153,9 +143,9 @@
 									<colgroup>
 										<col class="show-col" width="80px;">
 										<col class="subject" width="">
-										<col width="10%;">
-										<col width="10%;">
-										<col width="10%;">
+										<col width="18%;">
+										<col width="12%;">
+										<col width="8%;">
 									</colgroup>
 									<thead>
 										<tr>
@@ -167,17 +157,37 @@
 										</tr>
 									</thead>
 									<tbody>
+										<!-- 관리자가 작성한 공지글 -->
+										<c:forEach var="board" items="${notice}">
+											<tr>
+												<td class="show-col text-center"><span class="table-notice">공지</span></td>
+												<td class="subject"><a href="/madangs_folder/madang_1_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">${board.board_title}</a>
+												<c:if test="${today < board.board_created }">
+													<img class="bbsNewImage" src="/img/ico_new.gif" alt="New">
+												</c:if>
+												<c:if test="${board.board_file != ',,'}">
+													<img class="bbsNewImage" src="/img/file.png" style="width: 17px" alt="file">
+												</c:if>
+												</td>
+												<td>${board.auth_nickname}</td>
+												<td><fmt:formatDate value="${board.board_created}" pattern="yyyy-MM-dd"/></td>
+												<td>${board.board_view}</td>
+											</tr>
+										</c:forEach>
+										<!-- 일반회원이 작성한 게시글 -->
 										<c:forEach var="board" items="${list}">
 											<tr>
-												<td class="show-col text-center">${board.board_no}</td>
-												<td class="subject"><a
-													href="/madangs_folder/madang_1_2?bno=${board.board_no}">${board.board_title}</a>
-													<img class="bbsNewImage"
-													src="/resources/openworks4/theme/default/images/bbs/ico_new.gif"
-													alt="New"></td>
-
+												<td class="show-col text-center">${board.bno}</td>
+												<td class="subject"><a href="/madangs_folder/madang_1_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">${board.board_title}</a>
+												<c:if test="${today < board.board_created }">
+													<img class="bbsNewImage" src="/img/ico_new.gif" alt="New">
+												</c:if>
+												<c:if test="${board.board_file != ',,'}">
+													<img class="bbsNewImage" src="/img/file.png" style="width: 17px" alt="file">
+												</c:if>
+												</td>
 												<td>${board.auth_nickname}</td>
-												<td>${board.board_created}</td>
+												<td><fmt:formatDate value="${board.board_created}" pattern="yyyy-MM-dd"/></td>
 												<td>${board.board_view}</td>
 											</tr>
 										</c:forEach>
@@ -190,8 +200,8 @@
 							<div class="row block btn-group-wrap">
 								<div class="col-sm-12 btn-group">
 									<div class="pull-right">
-										<a href="/login/vnameLogin.do?q_bbsCode=1013"
-											class="btnType02 btn btn-info"> <span>글쓰기</span>
+										<a href="/madangs_folder/madang_1_3" class="btnType02 btn btn-info">
+											<span>글쓰기</span>
 										</a>
 									</div>
 								</div>
@@ -203,7 +213,8 @@
 								<!-- 첫 페이지 이동 -->
 								<c:if test="${pageDto.page != pageDto.startPage}">
 									<a href="/madangs_folder/madang_1_1?page=1&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
-									<li	class="first"></li></a>
+										<li class="first"></li>
+									</a>
 									<!-- 검색결과에 따라 하단 페이지 달라지니까! -->
 								</c:if>
 								<c:if test="${pageDto.page == pageDto.startPage}">
@@ -213,28 +224,34 @@
 								<!-- 이전 페이지 이동 -->
 								<c:if test="${pageDto.page > 1}">
 									<a href="/madangs_folder/madang_1_1?page=${pageDto.page -1}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
-									<li	class="prev"></li></a>
+										<li class="prev"></li>
+									</a>
 								</c:if>
 								<c:if test="${pageDto.page == 1}">
 									<li class="prev"></li>
 								</c:if>
 
 								<!-- 하단 페이지 번호 넣기 -->
-								<c:forEach begin="${pageDto.startPage}" end="${pageDto.endPage}" step="1" var="num">
+								<c:forEach begin="${pageDto.startPage}" end="${pageDto.maxPage}" step="1" var="num">
 									<c:if test="${num != pageDto.page}">
 										<a href="/madangs_folder/madang_1_1?page=${num}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
-											<li class="num"><div>${num}</div></li>
+											<li class="num">
+												<div>${num}</div>
+											</li>
 										</a>
 									</c:if>
 									<c:if test="${num == pageDto.page}">
-										<li class="num on"><div>${num}</div></li>
+										<li class="num on">
+											<div>${num}</div>
+										</li>
 									</c:if>
 								</c:forEach>
 
 								<!-- 다음 페이지 이동 -->
 								<c:if test="${pageDto.page < pageDto.maxPage}">
 									<a href="/madangs_folder/madang_1_1?page=${pageDto.page +1}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
-									<li class="next"></li></a>
+										<li class="next"></li>
+									</a>
 								</c:if>
 								<c:if test="${pageDto.page == pageDto.maxPage}">
 									<li class="next"></li>
@@ -243,15 +260,15 @@
 								<!-- 끝 페이지 이동 -->
 								<c:if test="${pageDto.page != pageDto.maxPage}">
 									<a href="/madangs_folder/madang_1_1?page=${pageDto.maxPage}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
-									<li class="last"></li></a>
+										<li class="last"></li>
+									</a>
 								</c:if>
 								<c:if test="${pageDto.page == pageDto.maxPage}">
 									<li class="last"></li>
 								</c:if>
 							</ul>
 							<!-- //페이징 -->
-							<script type="text/javascript"
-								src="/resources/libs/form-3.51.0/jquery.form.js"></script>
+							<script type="text/javascript" src="/resources/libs/form-3.51.0/jquery.form.js"></script>
 
 						</div>
 					</div>

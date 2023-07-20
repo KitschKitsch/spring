@@ -2,6 +2,9 @@ package com.java.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.java.dto.CommentDto;
 import com.java.dto.MadangDto;
@@ -17,5 +20,14 @@ public interface FreeService {
 	
 	// 댓글 가져오기
 	ArrayList<CommentDto> selectComAll(int bno);
+	
+	// 게시글 저장하기
+	void insertOne(MadangDto mdto, List<MultipartFile> files);
+	
+	// 댓글 저장하기
+	CommentDto insertComOne(CommentDto aCdto);
+	
+	// 댓글 삭제하기
+	void deleteOne(int cno);
 
 }

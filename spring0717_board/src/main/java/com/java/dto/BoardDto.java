@@ -21,11 +21,7 @@ public class BoardDto {
 	private int bgroup;
 	private int bstep;
 	private int bindent;
-	private String bfile; // 파일저장이름 한번에 주욱
-	private String[] bfiles; // 파일이름 list 출력할 때 사용
-	
-	
-	
-	
-	
+	private String[] bfiles; // list출력할때 사용하는 이름
+	private String bfile; // 파일저장이름
+
 }

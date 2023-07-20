@@ -11,10 +11,16 @@ import com.java.dto.PageDto;
 
 public interface BoardService {
 
-	//게시글 전체가져오기
+	// 게시글 전체 가져오기
 	HashMap<String, Object> selectAll(PageDto pageDto);
 
-	//게시글 1개저장
+	// 게시글 1개저장
 	void insertBoard(BoardDto boardDto, List<MultipartFile> files);
+
+	// 게시글 1개 가져오기
+	BoardDto selectOne(int bno);
+	
+	// 게시글 전체 가져오기2
+	ArrayList<BoardDto> selectBoardAll();
 
 }

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!doctype html>
@@ -8,27 +7,22 @@
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- <link rel="icon" href="../img/favicon.png" type="../image/png"> -->
 <link rel="icon" href="../img/favicon.png" type="../image/png">
 <title>Hospice Medical</title>
 <!-- i class 아이콘 -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-<script type="application/javascript"
-	src="https://code.jquery.com/jquery-latest.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<script type="application/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> <!-- 날짜 포맷함수 -->
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../vendors/linericon/style.css">
 <link rel="stylesheet" href="../css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="../vendors/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
 <link rel="stylesheet" href="../vendors/lightbox/simpleLightbox.css">
 <link rel="stylesheet" href="../vendors/nice-select/css/nice-select.css">
 <link rel="stylesheet" href="../vendors/animate-css/animate.css">
@@ -56,8 +50,8 @@
 				<div class="banner_content text-left">
 					<h2>자유 / 일상 게시판</h2>
 					<div class="page_link">
-						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a> <a
-							href="madang_1.jsp">클릭하시면 [ 자유 / 일상 게시판 ] 페이지를 새로 고침합니다.</a>
+						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
+						<a href="madang_1.jsp">클릭하시면 [ 자유 / 일상 게시판 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -81,10 +75,8 @@
 					<div class="content_box tab_menu_01">
 						<div class="boxtype1">
 							<p class="descript">
-							<li>특정 개인 및 단체에 대한 비난, 상업성 광고, 허위사실 유포, 동일 또는 유사한 내용의 반복적 게시
-								등 법령을 위반하거나 홈페이지의 정상적인 운영에 지장을 초래하는 경우는 운영규칙에 의거하여 삭제될 수 있습니다.</li>
-							<li>또한, 개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기
-								바랍니다.</li>
+							<li>특정 개인 및 단체에 대한 비난, 상업성 광고, 허위사실 유포, 동일 또는 유사한 내용의 반복적 게시 등 법령을 위반하거나 홈페이지의 정상적인 운영에 지장을 초래하는 경우는 운영규칙에 의거하여 삭제될 수 있습니다.</li>
+							<li>또한, 개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기 바랍니다.</li>
 							</p>
 						</div>
 						<div class="block table-responsive grid-view">
@@ -99,8 +91,9 @@
 									<tr>
 										<th colspan="4">
 											<div class="col-md-12">
-												<span class="ico-new"><img
-													src="/resources/common/images/ico_new.gif" alt="New"></span>
+												<span class="ico-new">
+													<img src="/resources/common/images/ico_new.gif" alt="New">
+												</span>
 												<span>${mdto.getBoard_title()}</span>
 											</div>
 										</th>
@@ -125,53 +118,27 @@
 												<script type="text/javascript">
 													$(function() {
 														var editrUseAt = "N";
-														if (1 == 1
-																&& true
-																&& editrUseAt != 'Y') {
+														if (1 == 1 && true && editrUseAt != 'Y') {
 															if ("value" == "form") {
 																var id = "lngtCn";
-																var innerText = document
-																		.getElementById(id).innerHTML;
+																var innerText = document.getElementById(id).innerHTML;
 																innerText = htmldecode(innerText);
-																document
-																		.getElementById(id).innerHTML = innerText;
+																document.getElementById(id).innerHTML = innerText;
 															}
 														}
 													});
 													function htmldecode(s) {
-														if (typeof s != "undefined"
-																&& s != null
-																&& s != "") {
-															s = s.replace(
-																	/&amp;/g,
-																	"&");
-															s = s.replace(
-																	/&lt;/g,
-																	"<");
-															s = s.replace(
-																	/&gt;/g,
-																	">");
-															s = s.replace(
-																	/&quot;/g,
-																	'\"');
-															s = s.replace(
-																	/&apos;/g,
-																	'\'');
-															s = s.replace(
-																	/&#059;/g,
-																	";");
-															s = s.replace(
-																	/&#091;/g,
-																	"[");
-															s = s.replace(
-																	/&#093;/g,
-																	"]");
-															s = s.replace(
-																	/&#092;/g,
-																	"\\");
-															s = s.replace(
-																	/&#061;/g,
-																	"=");
+														if (typeof s != "undefined" && s != null && s != "") {
+															s = s.replace(/&amp;/g,"&");
+															s = s.replace(/&lt;/g,"<");
+															s = s.replace(/&gt;/g,">");
+															s = s.replace(/&quot;/g,'\"');
+															s = s.replace(/&apos;/g,'\'');
+															s = s.replace(/&#059;/g,";");
+															s = s.replace(/&#091;/g,"[");
+															s = s.replace(/&#093;/g,"]");
+															s = s.replace(/&#092;/g,"\\");
+															s = s.replace(/&#061;/g,"=");
 														} else {
 															s = '';
 														}
@@ -191,22 +158,20 @@
 					<div id="mypage">
 						<!-- 이전다음글 -->
 						<div class="pnDiv web">
-							<table summary="이전다음글을 선택하여 보실 수 있습니다." class="preNext"
-								border="1" cellspacing="0">
+							<table summary="이전다음글을 선택하여 보실 수 있습니다." class="preNext" border="1" cellspacing="0">
 								<colgroup>
 									<col width="100px">
 									<col width="*">
 									<col width="100px">
 								</colgroup>
 								<tbody>
-
 									<tr>
 										<th class="next">다음글</th>
 										<c:if test="${nextMdto.board_no == null}">
 											<td>(다음 글이 존재하지 않습니다.)</td>
 										</c:if>
 										<c:if test="${nextMdto.board_no != null}">
-											<td><a href="#">${nextMdto.board_title}</a></td>
+											<td><a href="/madangs_folder/madang_1_2?bno=${nextMdto.board_no }">${nextMdto.board_title}</a></td>
 										</c:if>
 										<td>&nbsp;</td>
 									</tr>
@@ -216,7 +181,7 @@
 											<td>(이전 글이 존재하지 않습니다.)</td>
 										</c:if>
 										<c:if test="${prevMdto.board_no != null}">
-											<td><a href="#">${prevMdto.board_title}</a></td>
+											<td><a href="/madangs_folder/madang_1_2?bno=${prevMdto.board_no }">${prevMdto.board_title}</a></td>
 										</c:if>
 										<td>&nbsp;</td>
 									</tr>
@@ -225,36 +190,111 @@
 						</div>
 						<!-- //이전다음글 -->
 						<script>
+							// 1. 댓글 저장
 							function commentBtn() {
+								
+								let comment_private;
 								const replynumCheckbox = $(".replynum"); // replynum 클래스 이름을 가진 체크박스 요소를 가져옴
-
-								if (replynumCheckbox.prop("checked")) {
-									alert("비밀글 여부: on");
-									$(".replynum").prop("checked", false);// 비밀댓글쓰고 체크박스 초기화
+								if (replynumCheckbox.prop("checked")==true) {
+									comment_private = 1;
 								} else {
-									alert("비밀글 여부: off");
-
+									comment_private = 0;
 								}
+								
+								if ($("#commentBox").val().length < 2) {
+									alert("2글자 이상부터 댓글 등록이 가능합니다.");
+									return false;
+								}
+								
+								$.ajax({
+									url:"/insertComOne",
+									type:"post",
+									data: {
+										"board_no":"${mdto.board_no}",
+										"auth_id":"${sessionId}",
+										"auth_nickname":"${sessionNickName}",
+										"comment_content":$("#commentBox").val(),
+										"comment_private":comment_private
+											},
+									success: function(data) {
+										console.log(data);
+										
+										var htmlData = "";
+										
+										htmlData += "<ul id="+data.comment_no+">";
+										htmlData += "<li class='name'>"+data.auth_nickname+"<span>["+moment(data.comment_date).format("YYYY-MM-DD HH:mm:ss")+"]</span></li>";
+										htmlData += "<li class='txt'>"+data.comment_content+"</li>";
+										htmlData += "<li class='btn'>";
+										htmlData += "<a href='#' class='rebtn'>수정</a>";
+										htmlData += "<a onclick=\"deleteBtn("+data.cno+")\" class='rebtn'>삭제</a>";
+										htmlData += "</li></ul>";
+										
+										$(".replyBox").prepend(htmlData); // 위에 붙여 넣기 => 최신 댓글이 위로!!
+										
+										if (comment_private == 1) {
+											alert("비밀 댓글이 등록되었습니다.");
+											$("#commentBox").val(""); // 댓글창 비우기
+											$(".replynum").prop("checked", false);// 비밀댓글쓰고 체크박스 초기화
+										} else {
+											alert("댓글이 등록되었습니다.");
+											$("#commentBox").val(""); // 댓글창 비우기
+										}
+										
+										// 댓글 총개수 증가
+										var cnum = Number($("#cnum").text())+1;
+										$("#cnum").text(cnum);// 아이디 텍스트를 cnum으로 대체
+									},
+									error: function() {
+										alert("등록 실패");
+									}
+								});// ajax
 							}// commentBtn
+							
+							
+							// 2. 댓글 삭제
+							function deleteBtn(cno) {
+								alert("삭제버튼");
+								if (confirm("댓글을 삭제하시겠습니까?")) {
+									
+									$.ajax({
+										url:"/deleteComOne",
+										type:"post",
+										data:{"cno":cno},
+										success: function(data) {
+											alert("댓글이 삭제되었습니다.");
+											$("#"+cno).remove(); // ???
+													
+											// 댓글 총개수 감소
+											var cnum = Number($("#cnum").text())-1;
+											$("#cnum").text(cnum);// 아이디 텍스트를 cnum으로 대체
+										},
+										error: function() {
+											alert("삭제 실패");
+										}
+									});// ajax
+								}// if 
+							}// deleteBtn
+							
 						</script>
-
-
-
-
-
-
+						
+						
 						<!-- 댓글-->
 						<div class="replyWrite">
 							<ul>
 								<li class="in">
 									<p class="txt">
-										총 <span class="orange">${list.size()}</span> 개의 댓글이 달려있습니다.
-									</p> <label><p class="password">
-											비밀글 여부 &nbsp; <input role="switch" type="checkbox"
-												class="replynum">
-										</p></label> <textarea class="replyType"></textarea>
+										총<span class="orange" id="cnum">${list.size()}</span>개의 댓글이 달려있습니다.
+									</p>
+									<label>
+										<p class="password">
+											비밀글 여부 &nbsp;<input role="switch" type="checkbox" class="replynum">
+										</p>
+									</label>
+									<textarea class="replyType" id="commentBox" val=""></textarea>
 								</li>
-								<li class="btn"><a onclick="commentBtn()" class="replyBtn">등록</a></li>
+								<li class="btn">
+									<a onclick="commentBtn()" class="replyBtn">등록</a>
+								</li>
 							</ul>
 							<p class="ntic">※ 비밀글 버튼을 활성화하시면 게시글 작성자에게만 보이는 비밀글로 등록됩니다.</p>
 						</div>
@@ -275,11 +315,14 @@
 								<!-- 일반댓글, 본인이 쓴 댓글 -->
 								<c:if test="${cdto.comment_private == 0}">
 									<c:if test="${sessionId == cdto.auth_id}">
-										<ul>
-											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span></li>
+										<ul id="${cdto.comment_no }">
+											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span>
+											</li>
 											<li class="txt">${cdto.comment_content}</li>
-											<li class="btn"><a href="#" class="rebtn">수정</a> <a
-												href="#" class="rebtn">삭제</a></li>
+											<li class="btn">
+												<a href="#" class="rebtn">수정</a>
+												<a onclick="deleteBtn(${cdto.comment_no})" class="rebtn">삭제</a>
+											</li>
 										</ul>
 									</c:if>
 								</c:if>
@@ -287,8 +330,9 @@
 								<!-- 일반댓글, 다른사람이 쓴 댓글 -->
 								<c:if test="${cdto.comment_private == 0}">
 									<c:if test="${sessionId != cdto.auth_id}">
-										<ul>
-											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span></li>
+										<ul id="${cdto.comment_no }">
+											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span>
+											</li>
 											<li class="txt">${cdto.comment_content}</li>
 										</ul>
 									</c:if>
@@ -297,11 +341,14 @@
 								<!-- 비밀댓글, 본인이 쓴 댓글 -->
 								<c:if test="${cdto.comment_private == 1}">
 									<c:if test="${sessionId == cdto.auth_id}">
-										<ul>
-											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span></li>
+										<ul id="${cdto.comment_no }">
+											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span>
+											</li>
 											<li class="txt">${cdto.comment_content}</li>
-											<li class="btn"><a href="#" class="rebtn">수정</a> <a
-												href="#" class="rebtn">삭제</a></li>
+											<li class="btn">
+												<a href="#" class="rebtn">수정</a>
+												<a onclick="deleteBtn(${cdto.comment_no})" class="rebtn">삭제</a>
+											</li>
 										</ul>
 									</c:if>
 								</c:if>
@@ -309,25 +356,34 @@
 								<!-- 비밀댓글, 다른사람이 쓴 댓글 -->
 								<c:if test="${cdto.comment_private == 1}">
 									<c:if test="${sessionId != cdto.auth_id}">
-										<ul>
-											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span></li>
-											<li class="txt"><a href="password.html"
-												class="passwordBtn"><span class="orange">※
-														비밀글입니다.</span></a></li>
+										<ul id="${cdto.comment_no }">
+											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span>
+											</li>
+											<li class="txt">
+												<a href="password.html" class="passwordBtn">
+													<span class="orange">※ 비밀글입니다.</span>
+												</a>
+											</li>
 										</ul>
 									</c:if>
 								</c:if>
 							</c:forEach>
-
-
 						</div>
 						<!-- //댓글 -->
 						<!-- 버튼 -->
 						<div class="row block btn-group-wrap">
 							<div class="col-sm-12 btn-group">
 								<div class="pull-right">
-									<a href="/login/vnameLogin.do?q_bbsCode=1013"
-										class="btnType02 btn btn-info"> <span>목록</span>
+									<c:if test="${mdto.auth_id == sessionId }">
+										<a href="#" class="btnType02 btn btn-info">
+											<span>수정</span>
+										</a>
+										<a href="#" class="btnType02 btn btn-info">
+											<span>삭제</span>
+										</a>
+									</c:if>
+									<a href="/madangs_folder/madang_1_1?s_opt=${param.s_opt}&s_word=${param.s_word}&rowPP=${param.rowPP}" class="btnType02 btn btn-info">
+										<span>목록</span>
 									</a>
 								</div>
 							</div>
@@ -336,8 +392,7 @@
 					</div>
 
 
-					<script type="text/javascript"
-						src="/resources/libs/form-3.51.0/jquery.form.js"></script>
+					<script type="text/javascript" src="/resources/libs/form-3.51.0/jquery.form.js"></script>
 				</div>
 			</div>
 			<!--====게시판====-->
@@ -372,13 +427,13 @@
 	<script src="../js/custom.js"></script>
 	<!-- 스크립트 : 링크 연결 -->
 	<script>
-		window.addEventListener('load', function () {
+		window.addEventListener('load', function() {
 			var allElements = document.getElementsByTagName('*');
-			Array.prototype.forEach.call(allElements, function (el) {
+			Array.prototype.forEach.call(allElements, function(el) {
 				var includePath = el.dataset.includePath;
 				if (includePath) {
 					var xhttp = new XMLHttpRequest();
-					xhttp.onreadystatechange = function () {
+					xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
 							el.outerHTML = this.responseText;
 						}

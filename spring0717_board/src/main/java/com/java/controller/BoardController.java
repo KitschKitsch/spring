@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.java.dto.BoardDto;
@@ -19,33 +20,46 @@ import com.java.service.BoardService;
 
 @Controller
 public class BoardController {
-	
-	@Autowired BoardService boardService;
+
+	@Autowired
+	BoardService boardService;
 
 	@GetMapping("/board/boardWrite")
 	public String boardWrite() {
 		return "board/boardWrite";
 	}
-	
-	@PostMapping("/board/boardWrite")
-	public String boardWrite(BoardDto boardDto,List<MultipartFile> files, Model model) {
-		//게시글 1개저장
-		boardService.insertBoard(boardDto,files);
-		String result="i_success";
-		return "redirect:/board/boardList?result="+result;
+
+	@PostMapping("/board/reviewAjax")
+	@ResponseBody // 데이터 넘김!!! ajax 짝꿍!!!
+	public ArrayList<BoardDto> reviewAjax(int bno) {
+		System.out.println("ajax에서 넘어온 bno: " + bno);
+		
+		//BoardDto bdto = boardService.selectOne(bno); // 데이터 1개
+		//bdto.setBfiles(bdto.getBfile().split(","));
+		
+		ArrayList<BoardDto> list = boardService.selectBoardAll(); // 데이터 list
+
+		return list;
 	}
-	
-	
+
+	@PostMapping("/board/boardWrite")
+	public String boardWrite(BoardDto boardDto, List<MultipartFile> files, Model model) {
+		// 게시글 1개저장
+		boardService.insertBoard(boardDto, files);
+		String result = "i_success";
+		return "redirect:/board/boardList?result=" + result;
+	}
+
 	@RequestMapping("/board/boardList")
 	public String boardList(@RequestParam(defaultValue = "none") String result, PageDto pageDto, Model model) {
-		System.out.println("BoardController page : "+pageDto.getPage());
-		
-		//게시글 전체가져오기
+		System.out.println("BoardController page : " + pageDto.getPage());
+
+		// 게시글 전체 가져오기
 		HashMap<String, Object> map = boardService.selectAll(pageDto);
-		model.addAttribute("list",map.get("list"));
-		model.addAttribute("pageDto",map.get("pageDto"));
-		model.addAttribute("result",result); //파일저장 결과변수
-		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("pageDto", map.get("pageDto"));
+		model.addAttribute("result", result); // 파일저장 결과변수
+
 		return "board/boardList";
 	}
 }

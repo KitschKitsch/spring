@@ -8,15 +8,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pages - Login</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/write.css">
-  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script>
-  	function writeBtn() { 
-  		alert("test");
-  		writeFrm.submit();// 전송
-  	}
+     function writeBtn(){
+    	 alert("test");
+    	 writeFrm.submit(); //전송
+    	 
+     }
   </script>
 </head>
 
@@ -68,8 +69,8 @@
         <tr>
           <th>작성자</th>
           <td>
-          	${sessionName}
-            <input type="hidden" name="id" value="${sessionId }">
+            ${sessionName}
+            <input type="hidden" name="id" value="${sessionId}">
           </td>
         </tr>
         <tr>
@@ -78,7 +79,7 @@
             <div class="category-wrapper">
               <select name="topCheck" id="topCheck">
                 <option value="1">상단공지</option>
-                <option value="0">일반</option>
+                <option value="0" selected>일반</option>
               </select>  
             </div>
           </td>
@@ -86,13 +87,13 @@
         <tr>
           <th>제목</th>
           <td>
-            <input type="text" name="title">
+            <input type="text" name="btitle">
           </td>
         </tr>
         <tr>
           <th>내용</th>
           <td>
-            <textarea name="content" cols="50" rows="10"></textarea>
+            <textarea name="bcontent" cols="50" rows="10"></textarea>
           </td>
         </tr>
         <tr>
@@ -117,7 +118,7 @@
       <hr>
       <div class="button-wrapper">
         <button type="button" onclick="writeBtn()" class="write">작성완료</button>
-        <button type="button" onclick="javascript:location.href='/board/boardList';" class="cancel">취소</button>
+        <button type="button" onclick="javascript:location.href='/board/boardList';"  class="cancel">취소</button>
       </div>
     </form>
 

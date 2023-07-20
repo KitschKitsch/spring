@@ -19,9 +19,12 @@ public class MadangDto {
 	private String board_contents;
 	private Timestamp board_created;
 	private Timestamp board_modified;
-	private String board_file;
+	private String board_file; // 하나로 저장하기
+	private String[] board_files; // 배열로 받기
 	private int board_view;
 	private int board_like;
 	private String meet_loc;
+	
+	private int bno; // 게시판 카테고리별 순차 번호 추가!!
 	
 }
