@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<!-- 자유/일상 게시판 게시글 보기 페이지 2023.07.21 영섭 -->
 <!doctype html>
 <html lang="en">
 
@@ -16,7 +16,8 @@
 <script type="application/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> <!-- 날짜 포맷함수 -->
+<!-- 날짜 포맷함수 -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../css/bootstrap.css">
@@ -69,6 +70,34 @@
 				<!-- 사이드바 영역 카테고리 메뉴 -->
 			</div>
 			<!--====게시판====-->
+			<script>
+			// 게시글에 이미지 배열을 받아오는 스크립트
+				
+				// 주소창 파라미터값으로 게시글 번호 받기
+				var urlParameter = window.location.search;
+				var urlParams = new URLSearchParams(urlParameter);
+				var bno = urlParams.get('bno');
+				 
+				$.ajax({
+					url:"/loadImage",
+					type:"post",
+					data:{"bno":bno},// 게시글 번호 넘김
+					success: function(data) {
+						 
+						var htmlData = "";
+						for (var i=0; i<data.length; i++) {
+							if (data[i] == "") continue;
+							htmlData += "<img src='../upload/"+data[i]+"'>";
+							$("#imageContainer").html(htmlData); // '내부' 소스코드에 덮어쓰기
+						}
+					},
+					error: function() {
+						alert("이미지 로드 실패");
+					}
+				});// ajax
+			</script>
+			
+			
 			<div class="right-area">
 				<div class="right_contents_wrap">
 					<h3>자유 / 일상 게시판</h3>
@@ -145,7 +174,11 @@
 														return s;
 													};
 												</script>
-												<div class="board-contents">${mdto.board_contents}</div>
+												<div class="board-contents">${mdto.board_contents}<br>
+													<div id="imageContainer">
+													 	<!-- 이미지가 표시되는 자리 -->
+													</div>
+												</div>
 											</div>
 										</td>
 									</tr>
@@ -222,7 +255,7 @@
 										var htmlData = "";
 										
 										htmlData += "<ul id="+data.comment_no+">";
-										htmlData += "<li class='name'>"+data.auth_nickname+"<span>["+moment(data.comment_date).format("YYYY-MM-DD HH:mm:ss")+"]</span></li>";
+										htmlData += "<li class='name'>"+data.auth_nickname+" <span>["+moment(data.comment_date).format("YYYY-MM-DD HH:mm:ss")+"]</span></li>";
 										htmlData += "<li class='txt'>"+data.comment_content+"</li>";
 										htmlData += "<li class='btn'>";
 										htmlData += "<a href='#' class='rebtn'>수정</a>";
@@ -253,7 +286,6 @@
 							
 							// 2. 댓글 삭제
 							function deleteBtn(cno) {
-								alert("삭제버튼");
 								if (confirm("댓글을 삭제하시겠습니까?")) {
 									
 									$.ajax({
@@ -275,9 +307,83 @@
 								}// if 
 							}// deleteBtn
 							
+							
+							// 3. 댓글수정 버튼
+							function updateBtn(cno, ann, cdate, ccon) {
+								alert("수정버튼");
+								
+								var htmlData = "";
+								htmlData += "<li class='name'>"+ann+" <span>["+cdate+"]</span></li>";
+								htmlData += "<li class='txt'><textarea class='replyType' id='updateText'>"+ccon+"</textarea></li>";
+								htmlData += "<li class='btn'>";
+								htmlData += "<a onclick=\"updateSave("+cno+")\" class='rebtn'>저장</a>";
+								htmlData += "<a onclick=\"cancelBtn('"+cno+"','"+ann+"','"+cdate+"','"+ccon+"')\" class='rebtn'>취소</a>";
+								htmlData += "</li>";
+								
+								// 덮어쓰기
+								$("#"+cno).html(htmlData);
+							}// updateBtn
+							
+							
+							// 4. 댓글수정취소 버튼
+							function cancelBtn(cno, ann, cdate, ccon) {
+								var htmlData = "";
+								htmlData += "<li class='name'>"+ann+" <span>["+cdate+"]</span></li>";
+								htmlData += "<li class='txt'>"+ccon+"</li>";
+								htmlData += "<li class='btn'>";
+								htmlData += "<a onclick=\"updateBtn('"+cno+"','"+ann+"','"+cdate+"','"+ccon+"')\" class='rebtn'>수정</a>";
+								htmlData += "<a onclick=\"deleteBtn('"+cno+"')\" class='rebtn'>삭제</a>";
+								htmlData += "</li>";
+								
+								// 덮어쓰기
+								$("#"+cno).html(htmlData);
+							}// cancelBtn
+							
+							
+							// 5. 댓글수정저장 버튼
+							function updateSave(cno) {
+								
+								if ($("#updateText").val().length < 2) {
+									alert("2글자 이상부터 댓글 등록이 가능합니다.");
+									return false;
+								}
+								
+								if (confirm("수정된 댓글을 저장합니다.")) {
+									$.ajax({
+										url:"/updateComOne",
+										type:"post",
+										data: {
+											"comment_no":cno,
+											"comment_content":$("#updateText").val()
+												},
+										success: function(data) {
+											console.log(data);
+											
+											var htmlData = "";
+											
+											htmlData += "<li class='name'>"+data.auth_nickname+" <span>["+moment(data.comment_modify).format("YYYY-MM-DD HH:mm:ss")+"] (수정)</span></li>";
+											htmlData += "<li class='txt'>"+data.comment_content+"</li>";
+											htmlData += "<li class='btn'>";
+											htmlData += "<a href='#' class='rebtn'>수정</a>";
+											htmlData += "<a onclick=\"deleteBtn("+data.cno+")\" class='rebtn'>삭제</a>";
+											htmlData += "</li>";
+											
+											$("#"+cno).html(htmlData);
+										},
+										error: function() {
+											alert("등록 실패");
+										}
+									});// ajax
+								}// if
+
+							}// updateSave
+							
+							
+							
+							
 						</script>
-						
-						
+
+
 						<!-- 댓글-->
 						<div class="replyWrite">
 							<ul>
@@ -300,64 +406,51 @@
 						</div>
 
 						<div class="replyBox">
-							<!-- 댓글 수정 -->
-							<!-- 
-			<ul>
-				<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-				<li class="txt"><textarea class="replyType">댓글수정할때</textarea></li>
-				<li class="btn">
-					<a href="#" class="rebtn">수정</a>
-					<a href="#" class="rebtn">삭제</a>
-				</li>
-			</ul>
-			 -->
 							<c:forEach var="cdto" items="${list}">
-								<!-- 일반댓글, 본인이 쓴 댓글 -->
-								<c:if test="${cdto.comment_private == 0}">
-									<c:if test="${sessionId == cdto.auth_id}">
-										<ul id="${cdto.comment_no }">
-											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span>
-											</li>
-											<li class="txt">${cdto.comment_content}</li>
-											<li class="btn">
-												<a href="#" class="rebtn">수정</a>
-												<a onclick="deleteBtn(${cdto.comment_no})" class="rebtn">삭제</a>
-											</li>
-										</ul>
-									</c:if>
+								<!-- 본인이 쓴 댓글 -->
+								<c:if test="${sessionId == cdto.auth_id}">
+									<ul id="${cdto.comment_no }">
+										<li class="name">${cdto.auth_nickname}
+											<c:if test="${cdto.comment_modify == null}">
+												<span>[${cdto.comment_date}]</span>
+											</c:if>
+											<c:if test="${cdto.comment_modify != null}">
+												<span>[${cdto.comment_modify}] (수정)</span>
+											</c:if>
+										</li>
+										<li class="txt">${cdto.comment_content}</li>
+										<li class="btn">
+											<a onclick="updateBtn('${cdto.comment_no}','${cdto.auth_nickname}','${cdto.comment_date}','${cdto.comment_content}')" class="rebtn">수정</a>
+											<a onclick="deleteBtn(${cdto.comment_no})" class="rebtn">삭제</a>
+										</li>
+									</ul>
 								</c:if>
 
-								<!-- 일반댓글, 다른사람이 쓴 댓글 -->
-								<c:if test="${cdto.comment_private == 0}">
-									<c:if test="${sessionId != cdto.auth_id}">
+								<c:if test="${sessionId != cdto.auth_id}">
+									<!-- 일반댓글, 다른사람이 쓴 댓글 -->
+									<c:if test="${cdto.comment_private == 0}">
 										<ul id="${cdto.comment_no }">
-											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span>
+											<li class="name">${cdto.auth_nickname}
+												<c:if test="${cdto.comment_modify == null}">
+													<span>[${cdto.comment_date}]</span>
+												</c:if>
+												<c:if test="${cdto.comment_modify != null}">
+													<span>[${cdto.comment_modify}] (수정)</span>
+												</c:if>
 											</li>
 											<li class="txt">${cdto.comment_content}</li>
 										</ul>
 									</c:if>
-								</c:if>
-
-								<!-- 비밀댓글, 본인이 쓴 댓글 -->
-								<c:if test="${cdto.comment_private == 1}">
-									<c:if test="${sessionId == cdto.auth_id}">
+									<!-- 비밀댓글, 다른사람이 쓴 댓글 -->
+									<c:if test="${cdto.comment_private == 1}">
 										<ul id="${cdto.comment_no }">
-											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span>
-											</li>
-											<li class="txt">${cdto.comment_content}</li>
-											<li class="btn">
-												<a href="#" class="rebtn">수정</a>
-												<a onclick="deleteBtn(${cdto.comment_no})" class="rebtn">삭제</a>
-											</li>
-										</ul>
-									</c:if>
-								</c:if>
-
-								<!-- 비밀댓글, 다른사람이 쓴 댓글 -->
-								<c:if test="${cdto.comment_private == 1}">
-									<c:if test="${sessionId != cdto.auth_id}">
-										<ul id="${cdto.comment_no }">
-											<li class="name">${cdto.auth_nickname}<span>[${cdto.comment_date}]</span>
+											<li class="name">${cdto.auth_nickname}
+												<c:if test="${cdto.comment_modify == null}">
+													<span>[${cdto.comment_date}]</span>
+												</c:if>
+												<c:if test="${cdto.comment_modify != null}">
+													<span>[${cdto.comment_modify}] (수정)</span>
+												</c:if>
 											</li>
 											<li class="txt">
 												<a href="password.html" class="passwordBtn">
@@ -367,18 +460,39 @@
 										</ul>
 									</c:if>
 								</c:if>
+
 							</c:forEach>
 						</div>
 						<!-- //댓글 -->
-						<!-- 버튼 -->
+						
+						<script>
+							// 1. 게시글 삭제하기
+							function deleteBrdBtn(bno) {
+								$.ajax({
+									url: "/deleteBrdOne",
+									type: "post",
+									data: {"bno":bno},
+									success: function(data) {
+										if (data=="deleted") {
+											alert("게시글이 삭제 되었습니다.");
+											location.href = document.referrer; // 뒤로가기 후 새로고침!
+										}
+									},
+									error: function() {
+									}
+								});// ajax
+							}// deleteBrdBtn
+						</script>
+						
+						<!-- 게시글 버튼 -->
 						<div class="row block btn-group-wrap">
 							<div class="col-sm-12 btn-group">
 								<div class="pull-right">
 									<c:if test="${mdto.auth_id == sessionId }">
-										<a href="#" class="btnType02 btn btn-info">
+										<a href="/madangs_folder/madang_1_4?bno=${mdto.board_no}" class="btnType02 btn btn-info">
 											<span>수정</span>
 										</a>
-										<a href="#" class="btnType02 btn btn-info">
+										<a onclick="deleteBrdBtn(${mdto.board_no})" class="btnType02 btn btn-info">
 											<span>삭제</span>
 										</a>
 									</c:if>
@@ -388,7 +502,7 @@
 								</div>
 							</div>
 						</div>
-						<!-- //버튼 -->
+						<!-- //게시글 버튼 -->
 					</div>
 
 

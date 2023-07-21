@@ -93,17 +93,72 @@ public class FreeController {
 	// 댓글 삭제
 	@PostMapping("/deleteComOne")
 	@ResponseBody // ***AJAX와 짝짜꿍!!!!
-	public String deleteComOne(int cno) {
+	public void deleteComOne(int cno) {
 		System.out.println("ajax에서 온 데이터:" +cno);
 		freeService.deleteOne(cno);
 		
-		return "success delete";
 	}
+	
+	// 댓글 수정 저장
+	@PostMapping("/updateComOne")
+	@ResponseBody
+	public CommentDto updateComOne(CommentDto aCdto) {
+		// 댓글 수정하고 저장하기
+		CommentDto cdto = freeService.updateComOne(aCdto);
+		System.out.println(aCdto);
+		
+		return cdto;
+	}
+	
+	// 이미지 배열로 가져오기
+	@PostMapping("/loadImage")
+	@ResponseBody
+	public String[] loadImage(int bno) {
+		System.out.println(bno);
+		String[] arrImg = freeService.loadImage(bno); 
+		
+		return arrImg;
+	}
+	
+	// 게시글 1개 삭제하기
+	@PostMapping("/deleteBrdOne")
+	@ResponseBody
+	public String deleteBrd(int bno) {
+		freeService.deleteBrdOne(bno);
+		
+		return "deleted";
+	}
+	
+	// 게시글 수정하기
+	@GetMapping("/madangs_folder/madang_1_4")
+	public String updateBrdOne(int bno, Model model) {
+		// 게시글 1개(+이전글 다음글) -- 수정페이지에서는 이전글,다음글 필요없지만 메소드 이미 만들었으니 사용하기! 
+		HashMap<String, Object> map = freeService.selectOne(bno);
+
+		// 이미지 배열로 가져오기
+		String[] arrImg = freeService.loadImage(bno); 
+		
+		model.addAttribute("mdto", map.get("mdto"));
+		model.addAttribute("arrImg", arrImg);
+		
+		return "madangs_folder/madang_1_4";
+	}
+	
+	// 게시글 수정 후 저장하기
+	@PostMapping("/madangs_folder/madang_1_4")
+	public String madang_1_4(MadangDto mdto, List<MultipartFile> files) {
+		
+		freeService.updateOne(mdto, files);
+			
+		return "redirect:/madangs_folder/madang_1_1";
+	}
+	
 	
 	
 	// 네비게이션바
 	@RequestMapping("/madangs_folder/madang_list")
 	public String madang_list() {
+		
 		return "madangs_folder/madang_list";
 	}
 

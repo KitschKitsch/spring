@@ -111,12 +111,15 @@ public class FreeServiceImpl implements FreeService {
 					e.printStackTrace();
 				}
 			} // if
+			// 임시파일 이름 배열에 넣기
+			bfiles[i] = tempFile; 
+			mdto.setBoard_files(bfiles);
+
 			// files 배열을 file 하나에 저장
 			if (i == 0)
 				bfile = tempFile;
 			else
 				bfile += "," + tempFile;
-
 			mdto.setBoard_file(bfile);
 		} // for
 		
@@ -128,15 +131,81 @@ public class FreeServiceImpl implements FreeService {
 	public CommentDto insertComOne(CommentDto aCdto) {
 		// 댓글 저장하기
 		freeMapper.insertComOne(aCdto);
+		// 댓글 1개 가져오기
 		CommentDto cdto = freeMapper.selectComOne(aCdto);
 		return cdto;
 	}
 	
-	// 댓글 삭제하기
+	// 댓글 1개 삭제하기
 	@Override
 	public void deleteOne(int cno) {
 		freeMapper.deleteOne(cno);
+	}
+	
+	// 댓글 수정 저장 + 수정한 댓글 1개 가져오기
+	@Override
+	public CommentDto updateComOne(CommentDto aCdto) {
+		// 댓글 수정하기
+		freeMapper.updateComOne(aCdto);
+		// 댓글 1개 가져오기
+		CommentDto cdto = freeMapper.selectComOne(aCdto);
+		
+		return cdto;
+	}
+	
+	// 이미지를 배열로 가져오기
+	@Override
+	public String[] loadImage(int bno) {
+		String imgNm = freeMapper.loadImage(bno);
+		String[] arrImg = imgNm.split(",");
+		
+		return arrImg;
+	}
+
+	// 게시글 1개 삭제하기
+	@Override
+	public void deleteBrdOne(int bno) {
+		freeMapper.deleteBrdOne(bno);
 		
 	}
+	
+	// 게시글 수정 후 저장하기
+	@Override
+	public void updateOne(MadangDto mdto, List<MultipartFile> files) {
+
+		String bfile = "";
+		String tempFile = "";
+		String oriFile = "";
+		String[] bfiles = new String[3];
+
+		for (int i = 0; i < files.size(); i++) {
+			tempFile = "";
+			if (!files.get(i).isEmpty()) {
+				oriFile = files.get(i).getOriginalFilename();
+				UUID uuid = UUID.randomUUID();
+				tempFile = uuid + "_" + oriFile;
+				String uploadURL = "c:/upload/";
+				File f = new File(uploadURL + tempFile);
+				try {
+					files.get(i).transferTo(f);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} // if
+			// 임시파일 이름 배열에 넣기
+			bfiles[i] = tempFile; 
+			mdto.setBoard_files(bfiles);
+
+			// files 배열을 file 하나에 저장
+			if (i == 0)
+				bfile = tempFile;
+			else
+				bfile += "," + tempFile;
+			mdto.setBoard_file(bfile);
+		} // for
+		
+		freeMapper.updateOne(mdto);
+	}
+		
 
 }

@@ -107,5 +107,25 @@
 		DELETE NOTICE_COMMENT WHERE COMMENT_NO=#{cno}
 	</delete>
 	
+	<!-- 댓글 수정 저장 -->
+	<update id="updateComOne">
+		UPDATE NOTICE_COMMENT SET COMMENT_CONTENT=#{comment_content}, COMMENT_MODIFY=SYSDATE WHERE COMMENT_NO=#{comment_no}
+	</update>
+	
+	<!-- 이미지 배열로 가져오기 -->
+	<select id="loadImage" resultType="string">
+		SELECT BOARD_FILE FROM NOTICE_BOARD WHERE BOARD_NO=#{bno} 
+	</select>
+	
+	<!-- 게시글 1개 삭제하기 -->
+	<delete id="deleteBrdOne">
+		DELETE NOTICE_BOARD WHERE BOARD_NO=#{bno}
+	</delete>
+	
+	<!-- 게시글 수정 후 저장하기 -->
+	<update id="updateOne">
+		UPDATE NOTICE_BOARD SET BOARD_TITLE=#{board_title}, BOARD_CONTENTS=#{board_contents}, BOARD_MODIFIED=SYSDATE, BOARD_FILE=#{board_file} WHERE BOARD_NO=#{board_no}
+	</update>
+	
 	
 </mapper>

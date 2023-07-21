@@ -3,6 +3,7 @@ package com.java.mapper;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.java.dto.CommentDto;
 import com.java.dto.MadangDto;
@@ -38,6 +39,18 @@ public interface FreeMapper {
 	
 	// 댓글 1개 삭제하기
 	void deleteOne(int cno);
+	
+	// 댓글 수정 저장
+	void updateComOne(CommentDto aCdto);
+	
+	// 이미지 배열로 가져오기
+	String loadImage(int bno);
+	
+	// 게시글 1개 삭제하기
+	void deleteBrdOne(int bno);
+	
+	// 게시글 수정 후 저장하기
+	void updateOne(MadangDto mdto);
 	
 
 }

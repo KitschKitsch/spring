@@ -27,7 +27,19 @@ public interface FreeService {
 	// 댓글 저장하기
 	CommentDto insertComOne(CommentDto aCdto);
 	
-	// 댓글 삭제하기
+	// 댓글 1개 삭제하기
 	void deleteOne(int cno);
+	
+	// 댓글 수정 저장
+	CommentDto updateComOne(CommentDto aCdto);
+	
+	// 이미지 배열로 가져오기
+	String[] loadImage(int bno);
+	
+	// 게시글 1개 삭제하기
+	void deleteBrdOne(int bno);
+
+	// 게시글 수정 후 저장하기
+	void updateOne(MadangDto mdto, List<MultipartFile> files);
 
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- 자유/일상 게시판 게시글 작성 페이지 2023.07.21 영섭 -->
+<!-- 자유/일상 게시판 수정 페이지 2023.07.21 영섭 -->
 <!doctype html>
 <html lang="en">
 
@@ -78,12 +78,16 @@
 						</div>
 						<hr class="bold">
 						<div class="block table-responsive grid-view">
-							<form action="/madangs_folder/madang_1_3" name="write" method="post" enctype="multipart/form-data">
+							<form action="/madangs_folder/madang_1_4" name="update" method="post" enctype="multipart/form-data">
 								<table>
 									<colgroup>
 										<col width="15%">
 										<col width="85%">
 									</colgroup>
+									<tr>
+										<th>번호</th>
+										<td><input type="text" name="board_no" value="${mdto.board_no}" readonly="readonly"></td>
+									</tr>
 									<tr>
 										<th>작성자 ID</th>
 										<td><input type="text" name="auth_id" value="${sessionId}" readonly="readonly"></td>
@@ -94,11 +98,19 @@
 									</tr>
 									<tr>
 										<th>제목</th>
-										<td><input type="text" name="board_title"></td>
+										<td><input type="text" name="board_title" value="${mdto.board_title}"></td>
 									</tr>
 									<tr>
 										<th>내용</th>
-										<td><textarea name="board_contents" cols="50" rows="10"></textarea></td>
+										<td><textarea name="board_contents" cols="50" rows="10" >${mdto.board_contents}</textarea></td>
+									</tr>
+									<tr>
+										<th>파일</th>
+											<td>
+												<c:forEach var="imgNm" items="${arrImg }">
+													${imgNm }<br>
+												</c:forEach>
+											</td>
 									</tr>
 									<tr>
 										<th>이미지</th>
@@ -116,9 +128,9 @@
 									<div class="col-sm-12 btn-group">
 										<div class="pull-right">
 											<button type="submit" class="btnType02 btn btn-info">
-												<span>작성완료</span>
+												<span>수정완료</span>
 											</button>
-											<button type="button" onclick="javascript:location.href='madang_1_1'" class="btnType02 btn btn-info2">
+											<button type="button" onclick="javascript:location.href = document.referrer;" class="btnType02 btn btn-info2">
 												<span>취소</span>
 											</button>
 										</div>
