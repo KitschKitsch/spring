@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
+import com.java.service.FreeService;
+import com.java.service.HobbyService;
+
 @Configuration
 public class AppConfig {
 	@Bean
@@ -29,5 +32,5 @@ public class AppConfig {
 	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {// Bean 구성
 		return new SqlSessionTemplate(sqlSessionFactory); // 
 	}//
-
+	
 }

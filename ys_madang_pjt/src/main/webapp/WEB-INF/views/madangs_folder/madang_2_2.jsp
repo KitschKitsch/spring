@@ -79,7 +79,7 @@
 				var bno = urlParams.get('bno');
 				 
 				$.ajax({
-					url:"/free/loadImage",
+					url:"/hobby/loadImage",
 					type:"post",
 					data:{"bno":bno},// 게시글 번호 넘김
 					success: function(data) {
@@ -242,7 +242,7 @@
 								}
 								
 								$.ajax({
-									url:"/free/insertComOne",
+									url:"/hobby/insertComOne",
 									type:"post",
 									data: {
 										"board_no":"${mdto.board_no}",
@@ -291,7 +291,7 @@
 								if (${sessionId == 'admin'}) { // 관리자이면
 									if (confirm("관리자 권한으로 해당 댓글을 삭제하시겠습니까?")) {
 										$.ajax({
-											url:"/free/deleteComOne",
+											url:"/hobby/deleteComOne",
 											type:"post",
 											data:{"cno":cno},
 											success: function(data) {
@@ -310,7 +310,7 @@
 								} else { // 관리자 아니면
 									if (confirm("댓글을 삭제하시겠습니까?")) {
 										$.ajax({
-											url:"/free/deleteComOne",
+											url:"/hobby/deleteComOne",
 											type:"post",
 											data:{"cno":cno},
 											success: function(data) {
@@ -371,7 +371,7 @@
 								
 								if (confirm("수정된 댓글을 저장합니다.")) {
 									$.ajax({
-										url:"/free/updateComOne",
+										url:"/hobby/updateComOne",
 										type:"post",
 										data: {
 											"comment_no":cno,
@@ -516,7 +516,7 @@
 								if (${sessionId == 'admin'}) {// 관리자이면
 									if(confirm("관리자 권한으로 해당 게시글을 삭제하시겠습니까?")) {
 										$.ajax({
-											url: "/free/deleteBrdOne",
+											url: "/hobby/deleteBrdOne",
 											type: "post",
 											data: {"bno":bno},
 											success: function(data) {
@@ -532,7 +532,7 @@
 								} else {// 관리자 아니면
 									if(confirm("해당 게시글을 삭제하시겠습니까?")) {
 										$.ajax({
-											url: "/free/deleteBrdOne",
+											url: "/hobby/deleteBrdOne",
 											type: "post",
 											data: {"bno":bno},
 											success: function(data) {

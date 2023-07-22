@@ -30,8 +30,8 @@
 <div class="menu_list">
 	<h3 class="tit"> <strong>참여 · 정보<br>마당</strong></h3>
 	<ul class="menu_list_ul">
-		<a class="menu_a" href="../madangs_folder/madang_1.jsp"> 자유 / 일상 게시판 </a> 
-		<a class="menu_a" href="../madangs_folder/madang_2.jsp"> 취미 / 친목 게시판 </a> 
+		<a class="menu_a" href="../madangs_folder/madang_1_1"> 자유 / 일상 게시판 </a> 
+		<a class="menu_a" href="../madangs_folder/madang_2_1"> 취미 / 친목 게시판 </a> 
 		<a class="menu_a" href="../madangs_folder/madang_3.jsp"> 복지 혜택 안내 </a> 
 		<a class="menu_a" href="../madangs_folder/madang_4.jsp"> 디지털 교육 안내 </a> 
 	</ul>

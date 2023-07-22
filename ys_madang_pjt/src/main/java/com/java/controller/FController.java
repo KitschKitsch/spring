@@ -20,5 +20,12 @@ public class FController {
   public String senicare_sub_footer() { 
 	  return "senicare_sub_footer"; 
   } 
+  
+	// 네비게이션바
+	@RequestMapping("/madangs_folder/madang_list")
+	public String madang_list() {
+		
+		return "madangs_folder/madang_list";
+	}
  
 }

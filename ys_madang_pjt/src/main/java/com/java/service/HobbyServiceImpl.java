@@ -14,13 +14,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.java.dto.CommentDto;
 import com.java.dto.MadangDto;
 import com.java.dto.PageDto;
-import com.java.mapper.FreeMapper;
+import com.java.mapper.HobbyMapper;
 
 @Service
-public class FreeServiceImpl implements FreeService {
+public class HobbyServiceImpl implements HobbyService {
 
 	@Autowired
-	FreeMapper freeMapper;
+	HobbyMapper hobbyMapper;
 
 	// 게시글 전체 가져오기
 	@Override
@@ -30,9 +30,9 @@ public class FreeServiceImpl implements FreeService {
 		pageDto = pageMethod(pageDto, s_opt, s_word, rowPP);
 
 		// 일반회원 게시글 전체
-		ArrayList<MadangDto> list = freeMapper.selectAll(pageDto);
+		ArrayList<MadangDto> list = hobbyMapper.selectAll(pageDto);
 		// 관리자 공지글 전체
-		ArrayList<MadangDto> notice = freeMapper.selectNoticeAll(pageDto);
+		ArrayList<MadangDto> notice = hobbyMapper.selectNoticeAll(pageDto);
 		
 		map.put("list", list);
 		map.put("notice", notice);
@@ -46,7 +46,7 @@ public class FreeServiceImpl implements FreeService {
 
 	public PageDto pageMethod(PageDto pageDto, String s_opt, String s_word, String rowPP) {
 		// 전체게시글 수 저장
-		pageDto.setListCount(freeMapper.selectListCount(s_opt, s_word));
+		pageDto.setListCount(hobbyMapper.selectListCount(s_opt, s_word));
 		// 최대 넘버링페이지
 		pageDto.setMaxPage((int) Math.ceil((double) pageDto.getListCount() / Integer.parseInt(rowPP)));
 		// 시작 넘버링페이지
@@ -70,10 +70,10 @@ public class FreeServiceImpl implements FreeService {
 	public HashMap<String, Object> selectOne(int bno) {
 		HashMap<String, Object> map = new HashMap<>();
 
-		MadangDto mdto = freeMapper.selectOne(bno);
-		MadangDto prevMdto = freeMapper.selectPrevOne(bno); // 이전글
-		MadangDto nextMdto = freeMapper.selectNextOne(bno); // 다음글
-		freeMapper.updateBView(bno); // 조회수 1증가
+		MadangDto mdto = hobbyMapper.selectOne(bno);
+		MadangDto prevMdto = hobbyMapper.selectPrevOne(bno); // 이전글
+		MadangDto nextMdto = hobbyMapper.selectNextOne(bno); // 다음글
+		hobbyMapper.updateBView(bno); // 조회수 1증가
 
 		map.put("mdto", mdto);
 		map.put("prevMdto", prevMdto);
@@ -85,7 +85,7 @@ public class FreeServiceImpl implements FreeService {
 	// 댓글 가져오기
 	@Override
 	public ArrayList<CommentDto> selectComAll(int bno) {
-		ArrayList<CommentDto> list = freeMapper.selectComAll(bno);
+		ArrayList<CommentDto> list = hobbyMapper.selectComAll(bno);
 
 		return list;
 	}
@@ -125,32 +125,32 @@ public class FreeServiceImpl implements FreeService {
 			mdto.setBoard_file(bfile);
 		} // for
 		
-		freeMapper.insertOne(mdto);
+		hobbyMapper.insertOne(mdto);
 	}
 	
 	// 댓글 저장하기 + 작성한 댓글 1개 가져오기
 	@Override
 	public CommentDto insertComOne(CommentDto aCdto) {
 		// 댓글 저장하기
-		freeMapper.insertComOne(aCdto);
+		hobbyMapper.insertComOne(aCdto);
 		// 댓글 1개 가져오기
-		CommentDto cdto = freeMapper.selectComOne(aCdto);
+		CommentDto cdto = hobbyMapper.selectComOne(aCdto);
 		return cdto;
 	}
 	
 	// 댓글 1개 삭제하기
 	@Override
 	public void deleteOne(int cno) {
-		freeMapper.deleteOne(cno);
+		hobbyMapper.deleteOne(cno);
 	}
 	
 	// 댓글 수정 저장 + 수정한 댓글 1개 가져오기
 	@Override
 	public CommentDto updateComOne(CommentDto aCdto) {
 		// 댓글 수정하기
-		freeMapper.updateComOne(aCdto);
+		hobbyMapper.updateComOne(aCdto);
 		// 댓글 1개 가져오기
-		CommentDto cdto = freeMapper.selectComOne(aCdto);
+		CommentDto cdto = hobbyMapper.selectComOne(aCdto);
 		
 		return cdto;
 	}
@@ -158,7 +158,7 @@ public class FreeServiceImpl implements FreeService {
 	// 이미지를 배열로 가져오기
 	@Override
 	public String[] loadImage(int bno) {
-		String imgNm = freeMapper.loadImage(bno);
+		String imgNm = hobbyMapper.loadImage(bno);
 		String[] arrImg = imgNm.split(",");
 		
 		return arrImg;
@@ -167,7 +167,7 @@ public class FreeServiceImpl implements FreeService {
 	// 게시글 1개 삭제하기
 	@Override
 	public void deleteBrdOne(int bno) {
-		freeMapper.deleteBrdOne(bno);
+		hobbyMapper.deleteBrdOne(bno);
 		
 	}
 	
@@ -206,7 +206,7 @@ public class FreeServiceImpl implements FreeService {
 			} // if
 		} // for
 		
-		freeMapper.updateOne(mdto);
+		hobbyMapper.updateOne(mdto);
 	}
 		
 
