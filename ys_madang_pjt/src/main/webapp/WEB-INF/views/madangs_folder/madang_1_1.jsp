@@ -162,7 +162,12 @@
 										<c:forEach var="board" items="${notice}">
 											<tr>
 												<td class="show-col text-center"><span class="table-notice">공지</span></td>
-												<td class="subject"><a href="/madangs_folder/madang_1_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">${board.board_title}</a>
+												<td class="subject"><a href="/madangs_folder/madang_1_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">${board.board_title}
+												<c:if test="${board.ccnt != 0}">
+													&nbsp;[${board.ccnt}] <!-- 제목옆에 댓글수 나타내기 -->
+												</c:if>
+												</a>
+												</a>
 												<c:if test="${today < board.board_created }">
 													<img class="bbsNewImage" src="/img/ico_new.gif" alt="New">
 												</c:if>
@@ -179,7 +184,11 @@
 										<c:forEach var="board" items="${list}">
 											<tr>
 												<td class="show-col text-center">${board.bno}</td>
-												<td class="subject"><a href="/madangs_folder/madang_1_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">${board.board_title}</a>
+												<td class="subject"><a href="/madangs_folder/madang_1_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">${board.board_title} 
+												<c:if test="${board.ccnt != 0}">
+													&nbsp;[${board.ccnt}]
+												</c:if>
+												</a>
 												<c:if test="${today < board.board_created }">
 													<img class="bbsNewImage" src="/img/ico_new.gif" alt="New">
 												</c:if>

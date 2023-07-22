@@ -118,11 +118,9 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th colspan="4">
+										<th>제목</th>
+										<th colspan="3">
 											<div class="col-md-12">
-												<span class="ico-new">
-													<img src="/resources/common/images/ico_new.gif" alt="New">
-												</span>
 												<span>${mdto.getBoard_title()}</span>
 											</div>
 										</th>
@@ -133,7 +131,11 @@
 										<th>등록자명</th>
 										<td>${mdto.auth_nickname}</td>
 										<th>등록일</th>
-										<td>${mdto.board_created}</td>
+										<td>${mdto.board_created}
+										<c:if test="${mdto.board_modified != null}">
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[${mdto.board_modified} 수정]
+										</c:if>
+										</td>
 									</tr>
 									<tr>
 										<th>조회수</th>
@@ -174,7 +176,7 @@
 														return s;
 													};
 												</script>
-												<div class="board-contents">${mdto.board_contents}<br>
+												<div class="board-contents" id="board_contents">${mdto.board_contents}<br>
 													<div id="imageContainer">
 													 	<!-- 이미지가 표시되는 자리 -->
 													</div>
@@ -258,7 +260,7 @@
 										htmlData += "<li class='name'>"+data.auth_nickname+" <span>["+moment(data.comment_date).format("YYYY-MM-DD HH:mm:ss")+"]</span></li>";
 										htmlData += "<li class='txt'>"+data.comment_content+"</li>";
 										htmlData += "<li class='btn'>";
-										htmlData += "<a href='#' class='rebtn'>수정</a>";
+										htmlData += "<a onclick=\"updateBtn('"+data.comment_no+"','"+data.auth_nickname+"','"+moment(data.comment_date).format("YYYY-MM-DD HH:mm:ss")+"','"+data.comment_content+"')\" class='rebtn'>수정</a>";
 										htmlData += "<a onclick=\"deleteBtn("+data.cno+")\" class='rebtn'>삭제</a>";
 										htmlData += "</li></ul>";
 										
@@ -278,7 +280,7 @@
 										$("#cnum").text(cnum);// 아이디 텍스트를 cnum으로 대체
 									},
 									error: function() {
-										alert("등록 실패");
+										alert("댓글 등록 실패");
 									}
 								});// ajax
 							}// commentBtn
@@ -419,6 +421,7 @@
 											</c:if>
 										</li>
 										<li class="txt">${cdto.comment_content}</li>
+										
 										<li class="btn">
 											<a onclick="updateBtn('${cdto.comment_no}','${cdto.auth_nickname}','${cdto.comment_date}','${cdto.comment_content}')" class="rebtn">수정</a>
 											<a onclick="deleteBtn(${cdto.comment_no})" class="rebtn">삭제</a>

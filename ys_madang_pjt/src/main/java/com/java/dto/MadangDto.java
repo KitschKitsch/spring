@@ -26,5 +26,6 @@ public class MadangDto {
 	private String meet_loc;
 	
 	private int bno; // 게시판 카테고리별 순차 번호 추가!!
+	private int ccnt; // 게시판 댓글 수 추가!!
 	
 }

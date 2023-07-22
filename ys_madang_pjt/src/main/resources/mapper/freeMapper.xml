@@ -7,9 +7,9 @@
 	<!-- 일반회원 게시글 전체 가져오기 -->
 	<select id="selectAll" resultType="com.java.dto.MadangDto">
 		SELECT * FROM
-    		(SELECT ROWNUM RNUM, B.* FROM
-      		  (SELECT * FROM 
-          		  (SELECT ROWNUM BNO, A.* FROM NOTICE_BOARD A WHERE BOARD_CATEGORY = 'free' AND AUTH_ID != 'admin'
+    		(SELECT ROWNUM RNUM, C.* FROM
+      		  (SELECT B.*, COALESCE(CC.CCNT, NULL) AS CCNT FROM 
+          		  (SELECT ROWNUM BNO, A.* FROM (SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'free' AND AUTH_ID != 'admin'
 			<if test="s_opt == 'all'">
 		      	AND (BOARD_TITLE LIKE '%'||#{s_word}||'%' OR BOARD_CONTENTS LIKE '%'||#{s_word}||'%')
 			</if>
@@ -22,16 +22,22 @@
 			<if test="s_opt == 'writer'">
 		      	AND AUTH_NICKNAME LIKE '%'||#{s_word}||'%' 
 			</if>
-			 ORDER BY BOARD_NO ASC) ORDER BY BNO DESC) B)
+			 ORDER BY BOARD_NO ASC) A) B 
+			 LEFT JOIN (
+			 	SELECT BOARD_NO, COUNT(*) AS CCNT
+			 	FROM NOTICE_COMMENT
+			 	GROUP BY BOARD_NO) CC ON B.BOARD_NO = CC.BOARD_NO
+			 ORDER BY BNO DESC) C)
 			 WHERE RNUM BETWEEN #{startRow} AND #{endRow}
 	</select>
+	
 	
 	<!-- 관리자 공지글 전체 가져오기 -->
 	<select id="selectNoticeAll" resultType="com.java.dto.MadangDto">
 		SELECT * FROM
-    		(SELECT ROWNUM RNUM, B.* FROM
-      		  (SELECT * FROM 
-          		  (SELECT ROWNUM BNO, A.* FROM NOTICE_BOARD A WHERE BOARD_CATEGORY = 'free' AND AUTH_ID = 'admin'
+    		(SELECT ROWNUM RNUM, C.* FROM
+      		  (SELECT B.*, COALESCE(CC.CCNT, NULL) AS CCNT FROM 
+          		  (SELECT ROWNUM BNO, A.* FROM (SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'free' AND AUTH_ID = 'admin'
 			<if test="s_opt == 'all'">
 		      	AND (BOARD_TITLE LIKE '%'||#{s_word}||'%' OR BOARD_CONTENTS LIKE '%'||#{s_word}||'%')
 			</if>
@@ -44,7 +50,12 @@
 			<if test="s_opt == 'writer'">
 		      	AND AUTH_NICKNAME LIKE '%'||#{s_word}||'%' 
 			</if>
-			 ORDER BY BOARD_NO ASC) ORDER BY BNO DESC) B)
+			  ORDER BY BOARD_NO ASC) A) B 
+			 LEFT JOIN (
+			 	SELECT BOARD_NO, COUNT(*) AS CCNT
+			 	FROM NOTICE_COMMENT
+			 	GROUP BY BOARD_NO) CC ON B.BOARD_NO = CC.BOARD_NO
+			 ORDER BY BNO DESC) C)
 			 WHERE RNUM BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
@@ -77,6 +88,10 @@
 	<select id="selectNextOne" resultType="com.java.dto.MadangDto">
 		SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'free' AND BOARD_NO=#{bno}+1
 	</select>
+	<!-- 조회수 1증가 -->
+	<update id="updateBView">
+		UPDATE NOTICE_BOARD SET BOARD_VIEW = BOARD_VIEW+1 WHERE BOARD_NO=#{bno} 
+	</update>
 	
 	<!-- 댓글 가져오기 -->
 	<select id="selectComAll" resultType="com.java.dto.CommentDto">

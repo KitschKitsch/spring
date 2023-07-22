@@ -33,12 +33,13 @@ public class FreeServiceImpl implements FreeService {
 		ArrayList<MadangDto> list = freeMapper.selectAll(pageDto);
 		// 관리자 공지글 전체
 		ArrayList<MadangDto> notice = freeMapper.selectNoticeAll(pageDto);
-
+		
 		map.put("list", list);
 		map.put("notice", notice);
 		map.put("pageDto", pageDto);
 		map.put("s_opt", s_opt);
 		map.put("s_word", s_word);
+		
 
 		return map;
 	}
@@ -72,6 +73,7 @@ public class FreeServiceImpl implements FreeService {
 		MadangDto mdto = freeMapper.selectOne(bno);
 		MadangDto prevMdto = freeMapper.selectPrevOne(bno); // 이전글
 		MadangDto nextMdto = freeMapper.selectNextOne(bno); // 다음글
+		freeMapper.updateBView(bno); // 조회수 1증가
 
 		map.put("mdto", mdto);
 		map.put("prevMdto", prevMdto);

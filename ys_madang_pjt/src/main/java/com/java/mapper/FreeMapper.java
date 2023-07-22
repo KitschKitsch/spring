@@ -25,6 +25,8 @@ public interface FreeMapper {
 	MadangDto selectPrevOne(int bno);
 	// 다음글 가져오기
 	MadangDto selectNextOne(int bno);
+	// 조회수 1증가
+	void updateBView(int bno);
 	
 	// 댓글 가져오기
 	ArrayList<CommentDto> selectComAll(int bno);
@@ -51,6 +53,7 @@ public interface FreeMapper {
 	
 	// 게시글 수정 후 저장하기
 	void updateOne(MadangDto mdto);
+	
 	
 
 }

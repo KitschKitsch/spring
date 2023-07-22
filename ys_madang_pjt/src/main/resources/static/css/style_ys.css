@@ -798,3 +798,6 @@ label {
     color: white;
     padding: 4px 15px 4px 15px;
 }
+#board_contents {
+    height: 380px;
+}
