@@ -92,6 +92,39 @@
 								dataForm.submit();
 
 							}
+							
+							// 전국 버튼 누르면 전체 활성화
+							function checkAll() {
+								if($("#allLoc").is(':checked')) {
+									$("input[name=s_loc]").prop("checked", true);
+								} else {
+									$("input[name=s_loc]").prop("checked", false);
+								}
+							}
+							
+							// 전체 체크에서 다른 지역 비활성화하면 전국 버튼 비활성화
+							$(document).on("click", "input:checkbox[name=s_loc]", function(e) {
+								
+								var chks = document.getElementsByName("s_loc");
+								var chksChecked = 0;
+								
+								for(var i=0; i<chks.length; i++) { // 지역 수만큼 반복
+									var cbox = chks[i];
+									
+									if(cbox.checked) {
+										chksChecked++;
+									}
+								}
+								
+								if(chks.length == chksChecked){
+									$("#cboxAll").prop("checked", true);
+								}else{
+									$("#cboxAll").prop("checked",false);
+								}
+								
+							});
+							
+							
 						</script>
 						<div class="col-md-9 contents">
 							<div class="block text-center">
@@ -114,7 +147,7 @@
 											<br>
 											<div class="form-group">
 												<label for="q_searchLoc" class="sr-only">지역</label>
-												<label class="locs"><input type="checkbox" name="s_loc" value="전국" class="form-control" />전국 </label>
+												<label class="locs"><input type="checkbox" name="s_loc" value="전국" class="form-control"  id="allLoc" onclick="checkAll()"/>전국 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="서울" class="form-control" />서울 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="부산" class="form-control" />부산 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="대구" class="form-control" />대구 </label>
