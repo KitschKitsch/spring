@@ -3,11 +3,12 @@ package com.java.service;
 import java.util.ArrayList;
 
 import com.java.dto.HosDto;
+import com.java.dto.PageDto;
 
 public interface HosService {
 	
 	// 전체 데이터 가져오기
-	ArrayList<HosDto> selectAll();
+	ArrayList<HosDto> selectAll(PageDto pageDto);
 
 	// 병원 데이터만 가져오기
 	ArrayList<HosDto> selectHos();

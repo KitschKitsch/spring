@@ -24,10 +24,10 @@ public class FreeServiceImpl implements FreeService {
 
 	// 게시글 전체 가져오기
 	@Override
-	public HashMap<String, Object> selectAll(PageDto pageDto, String s_opt, String s_word, String rowPP) {
+	public HashMap<String, Object> selectAll(PageDto pageDto, String rowPP) {
 		HashMap<String, Object> map = new HashMap<>();
 		// 페이지 메소드
-		pageDto = pageMethod(pageDto, s_opt, s_word, rowPP);
+		pageDto = pageMethod(pageDto, rowPP);
 
 		// 일반회원 게시글 전체
 		ArrayList<MadangDto> list = freeMapper.selectAll(pageDto);
@@ -37,16 +37,14 @@ public class FreeServiceImpl implements FreeService {
 		map.put("list", list);
 		map.put("notice", notice);
 		map.put("pageDto", pageDto);
-		map.put("s_opt", s_opt);
-		map.put("s_word", s_word);
 		
 
 		return map;
 	}
 
-	public PageDto pageMethod(PageDto pageDto, String s_opt, String s_word, String rowPP) {
+	public PageDto pageMethod(PageDto pageDto, String rowPP) {
 		// 전체게시글 수 저장
-		pageDto.setListCount(freeMapper.selectListCount(s_opt, s_word));
+		pageDto.setListCount(freeMapper.selectListCount(pageDto));
 		// 최대 넘버링페이지
 		pageDto.setMaxPage((int) Math.ceil((double) pageDto.getListCount() / Integer.parseInt(rowPP)));
 		// 시작 넘버링페이지
@@ -59,8 +57,6 @@ public class FreeServiceImpl implements FreeService {
 		pageDto.setEndRow(pageDto.getStartRow() + Integer.parseInt(rowPP) - 1);
 
 		// ***검색 옵션과 검색어도 pageDto에 추가함!!!
-		pageDto.setS_opt(s_opt);
-		pageDto.setS_word(s_word);
 
 		return pageDto;
 	}

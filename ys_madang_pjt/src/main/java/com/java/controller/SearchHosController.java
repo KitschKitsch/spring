@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.dto.HosDto;
+import com.java.dto.PageDto;
 import com.java.service.HosService; 
  
 @Controller 
@@ -16,19 +17,18 @@ public class SearchHosController {
    
   @Autowired HosService hosService;
   
-  @RequestMapping("/searchHoss_folder/searchHos_1") 
-  public String searchHos_1() { 
-	  return "searchHoss_folder/searchHos_1"; 
-  } 
-  
 	// 전체 데이터 가져오기
 	@RequestMapping("/allData")
 	@ResponseBody
-	public ArrayList<HosDto> allData(Model model) {
-		ArrayList<HosDto> list = hosService.selectAll();
+	public ArrayList<HosDto> allData(PageDto pageDto, Model model) {
+		ArrayList<HosDto> list = hosService.selectAll(pageDto);
+		
 		model.addAttribute("list", list);
+		
 		return list;
 	}
+	
+	
 	
 	// 병원 데이터만 가져오기
 	@RequestMapping("/hosBtn")
@@ -66,6 +66,7 @@ public class SearchHosController {
 			return list;
 		}
 	
+		
 	
 
  

@@ -37,8 +37,8 @@ public class FreeController {
 	
 	// 게시글 전체 가져오기
 	@RequestMapping("/madangs_folder/madang_1_1")
-	public String madang_1_1(PageDto pageDto, String s_opt, String s_word, @RequestParam(defaultValue = "10") String rowPP, Model model) {
-		HashMap<String, Object> map = freeService.selectAll(pageDto, s_opt, s_word, rowPP);
+	public String madang_1_1(PageDto pageDto, @RequestParam(defaultValue = "10") String rowPP, Model model) {
+		HashMap<String, Object> map = freeService.selectAll(pageDto, rowPP);
 		
 		model.addAttribute("list", map.get("list")); // 일반회원
 		model.addAttribute("notice", map.get("notice")); // 관리자 공지
