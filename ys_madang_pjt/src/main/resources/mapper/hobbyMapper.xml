@@ -22,6 +22,12 @@
 			<if test="s_opt == 'writer'">
 		      	AND AUTH_NICKNAME LIKE '%'||#{s_word}||'%' 
 			</if>
+			<if test="locString == '전국'">
+		      	AND REGEXP_LIKE(MEET_LOC,'전국|서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주')
+			</if>
+			<if test="locString != '전국'">
+			    AND REGEXP_LIKE(MEET_LOC, #{locString})
+			</if>
 			 ORDER BY BOARD_NO ASC) A) B 
 			 LEFT JOIN (
 			 	SELECT BOARD_NO, COUNT(*) AS CCNT
@@ -38,18 +44,6 @@
     		(SELECT ROWNUM RNUM, C.* FROM
       		  (SELECT B.*, COALESCE(CC.CCNT, NULL) AS CCNT FROM 
           		  (SELECT ROWNUM BNO, A.* FROM (SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'hobby' AND AUTH_ID = 'admin'
-			<if test="s_opt == 'all'">
-		      	AND (BOARD_TITLE LIKE '%'||#{s_word}||'%' OR BOARD_CONTENTS LIKE '%'||#{s_word}||'%')
-			</if>
-			<if test="s_opt == 'btitle'">
-		      	AND BOARD_TITLE LIKE '%'||#{s_word}||'%'
-			</if>
-			<if test="s_opt == 'content'">
-		      	AND BOARD_CONTENTS LIKE '%'||#{s_word}||'%' 
-			</if>
-			<if test="s_opt == 'writer'">
-		      	AND AUTH_NICKNAME LIKE '%'||#{s_word}||'%' 
-			</if>
 			  ORDER BY BOARD_NO ASC) A) B 
 			 LEFT JOIN (
 			 	SELECT BOARD_NO, COUNT(*) AS CCNT
@@ -73,6 +67,12 @@
 			</if>
 			<if test="s_opt == 'writer'">
 		      	AND AUTH_NICKNAME LIKE '%'||#{s_word}||'%' 
+			</if>
+			<if test="locString == '전국'">
+		      	AND REGEXP_LIKE(MEET_LOC,'전국|서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주')
+			</if>
+			<if test="locString != '전국'">
+			    AND REGEXP_LIKE(MEET_LOC, #{locString})
 			</if>
 	</select>
 	
@@ -101,7 +101,7 @@
 	<!-- 게시글 저장하기 -->
 	<insert id="insertOne">
 		INSERT INTO NOTICE_BOARD VALUES(
-			nb_seq.nextval,#{auth_id},#{auth_nickname},'hobby',#{board_title},#{board_contents}, SYSDATE, null,#{board_file},0,0, null)
+			nb_seq.nextval,#{auth_id},#{auth_nickname},'hobby',#{board_title},#{board_contents}, SYSDATE, null,#{board_file},0,0, #{meet_loc})
 	</insert>
 	
 	<!-- 댓글 저장하기 -->

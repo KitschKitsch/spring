@@ -28,6 +28,7 @@
 		  <ul>
 			<li><a href="/searchHoss_folder/searchHos_1">내 주변 의료기관 찾기</a></li>
 			<li><a href="/madangs_folder/madang_1_1">자유/일상게시판</a></li>
+			<li><a href="/madangs_folder/madang_2_1">취미/친목게시판</a></li>
 			<li><a href="/healths_folder/health_1">나의 건강관리</a></li>
 		  </ul>
 		</div>

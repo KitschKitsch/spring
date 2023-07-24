@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!-- 취미/친목 게시판 수정 페이지 2023.07.24 영섭 -->
+<!-- 복지 혜택 안내 수정 페이지 2023.07.24 영섭 -->
 <!doctype html>
 <html lang="en">
 
@@ -46,10 +46,10 @@
 		<div class="banner_inner d-flex align-items-center">
 			<div class="container">
 				<div class="banner_content text-left">
-					<h2>자유 / 일상 게시판</h2>
+					<h2>취미 / 친목 게시판</h2>
 					<div class="page_link">
 						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_1.jsp">클릭하시면 [ 자유 / 일상 게시판 ] 페이지를 새로 고침합니다.</a>
+						<a href="madang_1.jsp">클릭하시면 [ 복지 혜택 안내 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -73,13 +73,14 @@
 					<div class="content_box tab_menu_01">
 						<div class="boxtype1">
 							<p class="descript">
-							<li>특정 개인 및 단체에 대한 비난, 상업성 광고, 허위사실 유포, 동일 또는 유사한 내용의 반복적 게시 등 법령을 위반하거나 홈페이지의 정상적인 운영에 지장을 초래하는 경우는 운영규칙에 의거하여 삭제될 수 있습니다.</li>
-							<li>또한, 개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기 바랍니다.</li>
+							<li>각 부처의 복지서비스 정보를 모아 한눈에 볼 수 있도록 제공하고, 실생활 중심의 복지정보와 서비스를 제공합니다.</li>
+							<li>개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기 바랍니다.</li>
+							<li>( 더 자세한 내용을 보시려면 <a href="https://www.bokjiro.go.kr/ssis-tbu/index.do"> → '복지로' 홈페이지로 이동하기</a> )</li>
 							</p>
 						</div>
 						<hr class="bold">
 						<div class="block table-responsive grid-view">
-							<form action="/madangs_folder/madang_2_4" name="update" method="post" enctype="multipart/form-data">
+							<form action="/madangs_folder/madang_3_4" name="update" method="post" enctype="multipart/form-data">
 							
 							
 								<table>

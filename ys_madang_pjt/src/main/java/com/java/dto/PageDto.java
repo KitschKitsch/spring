@@ -1,5 +1,8 @@
 package com.java.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +22,10 @@ public class PageDto {
 	private int rowPerPage=10;
 	private int numberingPerPage=10;
 
-	// *** 검색옵션과 검색어도 추가함!!!
+	// *** 검색옵션과 검색어 + 지역도 추가함!!!
 	private String s_opt;
 	private String s_word;
+	private String[] s_loc;
+	private String locString = "전국"; // 버티컬바 구분 // 기본값은 전국 검색
+	private String locString2 = "전국"; // 쉼표 구분 // 기본값은 전국 검색
 }

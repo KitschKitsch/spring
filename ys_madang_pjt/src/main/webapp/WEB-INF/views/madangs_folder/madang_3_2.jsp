@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- 자유/일상 게시판 게시글 보기 페이지 2023.07.21 영섭 -->
+<!-- 복지 혜택 안내 게시글 보기 페이지 2023.07.24 영섭 -->
 <!doctype html>
 <html lang="en">
 
@@ -49,10 +49,10 @@
 		<div class="banner_inner d-flex align-items-center">
 			<div class="container">
 				<div class="banner_content text-left">
-					<h2>자유 / 일상 게시판</h2>
+					<h2>취미 / 친목 게시판</h2>
 					<div class="page_link">
 						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_1.jsp">클릭하시면 [ 자유 / 일상 게시판 ] 페이지를 새로 고침합니다.</a>
+						<a href="madang_1.jsp">클릭하시면 [ 복지 혜택 안내 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 				var bno = urlParams.get('bno');
 				 
 				$.ajax({
-					url:"/free/loadImage",
+					url:"/wel/loadImage",
 					type:"post",
 					data:{"bno":bno},// 게시글 번호 넘김
 					success: function(data) {
@@ -87,7 +87,7 @@
 						var htmlData = "";
 						for (var i=0; i<data.length; i++) {
 							if (data[i] == "") continue;
-							htmlData += "<img src='../upload/"+data[i]+"' style='height:400px;'>";
+							htmlData += "<img src='../upload/"+data[i]+"' style='height:100%;'>";
 							$("#imageContainer").html(htmlData); // '내부' 소스코드에 덮어쓰기
 						}
 					},
@@ -95,6 +95,12 @@
 						alert("이미지 로드 실패");
 					}
 				});// ajax
+				
+				
+				function applyBtn() {
+					alert("신청을 위해 '복지로' 사이트가 새로운 창에서 열립니다.");
+					window.open("https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52005M.do");
+				}
 			</script>
 			
 			
@@ -104,8 +110,9 @@
 					<div class="content_box tab_menu_01">
 						<div class="boxtype1">
 							<p class="descript">
-							<li>특정 개인 및 단체에 대한 비난, 상업성 광고, 허위사실 유포, 동일 또는 유사한 내용의 반복적 게시 등 법령을 위반하거나 홈페이지의 정상적인 운영에 지장을 초래하는 경우는 운영규칙에 의거하여 삭제될 수 있습니다.</li>
-							<li>또한, 개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기 바랍니다.</li>
+							<li>각 부처의 복지서비스 정보를 모아 한눈에 볼 수 있도록 제공하고, 실생활 중심의 복지정보와 서비스를 제공합니다.</li>
+							<li>개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기 바랍니다.</li>
+							<li>( 더 자세한 내용을 보시려면 <a href="https://www.bokjiro.go.kr/ssis-tbu/index.do"> → '복지로' 홈페이지로 이동하기</a> )</li>
 							</p>
 						</div>
 						<div class="block table-responsive grid-view">
@@ -128,18 +135,23 @@
 								</thead>
 								<tbody>
 									<tr>
-										<th>등록자명</th>
-										<td>${mdto.auth_nickname}</td>
 										<th>등록일</th>
 										<td>${mdto.board_created}
 										<c:if test="${mdto.board_modified != null}">
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[${mdto.board_modified} 수정]
 										</c:if>
 										</td>
+										<th>조회수</th>
+										<td>${mdto.board_view}</td>
 									</tr>
 									<tr>
-										<th>조회수</th>
-										<td colspan="3">${mdto.board_view}</td>
+										<th>지역</th>
+										<td>${mdto.meet_loc}</td>
+										<th colspan="2">
+										<a onclick="applyBtn()" class="btnType02 btn btn-info">
+											<span style="color:white;">신청하기</span>
+										</a>
+										</th>
 									</tr>
 									<tr>
 										<td colspan="4">
@@ -206,7 +218,7 @@
 											<td>(다음 글이 존재하지 않습니다.)</td>
 										</c:if>
 										<c:if test="${nextMdto.board_no != null}">
-											<td><a href="/madangs_folder/madang_1_2?bno=${nextMdto.board_no }">${nextMdto.board_title}</a></td>
+											<td><a href="/madangs_folder/madang_3_2?bno=${nextMdto.board_no }">${nextMdto.board_title}</a></td>
 										</c:if>
 										<td>&nbsp;</td>
 									</tr>
@@ -216,7 +228,7 @@
 											<td>(이전 글이 존재하지 않습니다.)</td>
 										</c:if>
 										<c:if test="${prevMdto.board_no != null}">
-											<td><a href="/madangs_folder/madang_1_2?bno=${prevMdto.board_no }">${prevMdto.board_title}</a></td>
+											<td><a href="/madangs_folder/madang_3_2?bno=${prevMdto.board_no }">${prevMdto.board_title}</a></td>
 										</c:if>
 										<td>&nbsp;</td>
 									</tr>
@@ -242,7 +254,7 @@
 								}
 								
 								$.ajax({
-									url:"/free/insertComOne",
+									url:"/wel/insertComOne",
 									type:"post",
 									data: {
 										"board_no":"${mdto.board_no}",
@@ -291,7 +303,7 @@
 								if (${sessionId == 'admin'}) { // 관리자이면
 									if (confirm("관리자 권한으로 해당 댓글을 삭제하시겠습니까?")) {
 										$.ajax({
-											url:"/free/deleteComOne",
+											url:"/wel/deleteComOne",
 											type:"post",
 											data:{"cno":cno},
 											success: function(data) {
@@ -310,7 +322,7 @@
 								} else { // 관리자 아니면
 									if (confirm("댓글을 삭제하시겠습니까?")) {
 										$.ajax({
-											url:"/free/deleteComOne",
+											url:"/wel/deleteComOne",
 											type:"post",
 											data:{"cno":cno},
 											success: function(data) {
@@ -371,7 +383,7 @@
 								
 								if (confirm("수정된 댓글을 저장합니다.")) {
 									$.ajax({
-										url:"/free/updateComOne",
+										url:"/wel/updateComOne",
 										type:"post",
 										data: {
 											"comment_no":cno,
@@ -516,7 +528,7 @@
 								if (${sessionId == 'admin'}) {// 관리자이면
 									if(confirm("관리자 권한으로 해당 게시글을 삭제하시겠습니까?")) {
 										$.ajax({
-											url: "/free/deleteBrdOne",
+											url: "/wel/deleteBrdOne",
 											type: "post",
 											data: {"bno":bno},
 											success: function(data) {
@@ -532,7 +544,7 @@
 								} else {// 관리자 아니면
 									if(confirm("해당 게시글을 삭제하시겠습니까?")) {
 										$.ajax({
-											url: "/free/deleteBrdOne",
+											url: "/wel/deleteBrdOne",
 											type: "post",
 											data: {"bno":bno},
 											success: function(data) {
@@ -556,7 +568,7 @@
 								
 									
 									<c:if test="${mdto.auth_id == sessionId }">
-										<a href="/madangs_folder/madang_1_4?bno=${mdto.board_no}" class="btnType02 btn btn-info">
+										<a href="/madangs_folder/madang_3_4?bno=${mdto.board_no}" class="btnType02 btn btn-info">
 											<span>수정</span>
 										</a>
 										<c:if test="${sessionId != 'admin' }">
@@ -569,11 +581,11 @@
 									<!-- 관리자 권한으로 게시글 삭제 -->
 									<c:if test="${sessionId == 'admin' }">
 									<a onclick="deleteBrdBtn(${mdto.board_no})" class="btnType02 btn btn-info">
-											<span style="color:white;">삭제</span>
+											<span style="color:white;" >삭제</span>
 										</a>
 									</c:if>
 									
-									<a href="/madangs_folder/madang_1_1?s_opt=${param.s_opt}&s_word=${param.s_word}&rowPP=${param.rowPP}" class="btnType02 btn btn-info">
+									<a href="/madangs_folder/madang_3_1?s_opt=${param.s_opt}&s_word=${param.s_word}&s_loc=${param.s_loc}&rowPP=${param.rowPP}" class="btnType02 btn btn-info">
 										<span>목록</span>
 									</a>
 								</div>

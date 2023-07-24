@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- 자유/일상 게시판 게시글 보기 페이지 2023.07.21 영섭 -->
+<!-- 취미/친목 게시판 게시글 보기 페이지 2023.07.24 영섭 -->
 <!doctype html>
 <html lang="en">
 
@@ -139,7 +139,9 @@
 									</tr>
 									<tr>
 										<th>조회수</th>
-										<td colspan="3">${mdto.board_view}</td>
+										<td>${mdto.board_view}</td>
+										<th>지역</th>
+										<td>${mdto.meet_loc}</td>
 									</tr>
 									<tr>
 										<td colspan="4">
@@ -206,7 +208,7 @@
 											<td>(다음 글이 존재하지 않습니다.)</td>
 										</c:if>
 										<c:if test="${nextMdto.board_no != null}">
-											<td><a href="/madangs_folder/madang_1_2?bno=${nextMdto.board_no }">${nextMdto.board_title}</a></td>
+											<td><a href="/madangs_folder/madang_2_2?bno=${nextMdto.board_no }">${nextMdto.board_title}</a></td>
 										</c:if>
 										<td>&nbsp;</td>
 									</tr>
@@ -216,7 +218,7 @@
 											<td>(이전 글이 존재하지 않습니다.)</td>
 										</c:if>
 										<c:if test="${prevMdto.board_no != null}">
-											<td><a href="/madangs_folder/madang_1_2?bno=${prevMdto.board_no }">${prevMdto.board_title}</a></td>
+											<td><a href="/madangs_folder/madang_2_2?bno=${prevMdto.board_no }">${prevMdto.board_title}</a></td>
 										</c:if>
 										<td>&nbsp;</td>
 									</tr>
@@ -556,12 +558,12 @@
 								
 									
 									<c:if test="${mdto.auth_id == sessionId }">
-										<a href="/madangs_folder/madang_1_4?bno=${mdto.board_no}" class="btnType02 btn btn-info">
+										<a href="/madangs_folder/madang_2_4?bno=${mdto.board_no}" class="btnType02 btn btn-info">
 											<span>수정</span>
 										</a>
 										<c:if test="${sessionId != 'admin' }">
 										<a onclick="deleteBrdBtn(${mdto.board_no})" class="btnType02 btn btn-info">
-											<span>삭제</span>
+											<span style="color:white;">삭제</span>
 										</a>
 										</c:if>
 									</c:if>
@@ -569,11 +571,11 @@
 									<!-- 관리자 권한으로 게시글 삭제 -->
 									<c:if test="${sessionId == 'admin' }">
 									<a onclick="deleteBrdBtn(${mdto.board_no})" class="btnType02 btn btn-info">
-											<span>삭제</span>
+											<span style="color:white;" >삭제</span>
 										</a>
 									</c:if>
 									
-									<a href="/madangs_folder/madang_1_1?s_opt=${param.s_opt}&s_word=${param.s_word}&rowPP=${param.rowPP}" class="btnType02 btn btn-info">
+									<a href="/madangs_folder/madang_2_1?s_opt=${param.s_opt}&s_word=${param.s_word}&s_loc=${param.s_loc}&rowPP=${param.rowPP}" class="btnType02 btn btn-info">
 										<span>목록</span>
 									</a>
 								</div>

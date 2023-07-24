@@ -14,13 +14,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.java.dto.CommentDto;
 import com.java.dto.MadangDto;
 import com.java.dto.PageDto;
-import com.java.mapper.HobbyMapper;
+import com.java.mapper.WelMapper;
 
 @Service
-public class HobbyServiceImpl implements HobbyService {
+public class WelServiceImpl implements WelService {
 
 	@Autowired
-	HobbyMapper hobbyMapper;
+	WelMapper welMapper;
 
 	// 게시글 전체 가져오기
 	@Override
@@ -30,12 +30,9 @@ public class HobbyServiceImpl implements HobbyService {
 		pageDto = pageMethod(pageDto, rowPP);
 
 		// 일반회원 게시글 전체
-		ArrayList<MadangDto> list = hobbyMapper.selectAll(pageDto);
-		// 관리자 공지글 전체
-		ArrayList<MadangDto> notice = hobbyMapper.selectNoticeAll(pageDto);
+		ArrayList<MadangDto> list = welMapper.selectAll(pageDto);
 		
 		map.put("list", list);
-		map.put("notice", notice);
 		map.put("pageDto", pageDto);
 		map.put("s_opt", pageDto.getS_opt());
 		map.put("s_word", pageDto.getS_word());
@@ -58,7 +55,7 @@ public class HobbyServiceImpl implements HobbyService {
 		}
 		
 		// 전체게시글 수 저장
-		pageDto.setListCount(hobbyMapper.selectListCount(pageDto));
+		pageDto.setListCount(welMapper.selectListCount(pageDto));
 		// 최대 넘버링페이지
 		pageDto.setMaxPage((int) Math.ceil((double) pageDto.getListCount() / Integer.parseInt(rowPP)));
 		// 시작 넘버링페이지
@@ -80,10 +77,10 @@ public class HobbyServiceImpl implements HobbyService {
 	public HashMap<String, Object> selectOne(int bno) {
 		HashMap<String, Object> map = new HashMap<>();
 
-		MadangDto mdto = hobbyMapper.selectOne(bno);
-		MadangDto prevMdto = hobbyMapper.selectPrevOne(bno); // 이전글
-		MadangDto nextMdto = hobbyMapper.selectNextOne(bno); // 다음글
-		hobbyMapper.updateBView(bno); // 조회수 1증가
+		MadangDto mdto = welMapper.selectOne(bno);
+		MadangDto prevMdto = welMapper.selectPrevOne(bno); // 이전글
+		MadangDto nextMdto = welMapper.selectNextOne(bno); // 다음글
+		welMapper.updateBView(bno); // 조회수 1증가
 
 		map.put("mdto", mdto);
 		map.put("prevMdto", prevMdto);
@@ -95,7 +92,7 @@ public class HobbyServiceImpl implements HobbyService {
 	// 댓글 가져오기
 	@Override
 	public ArrayList<CommentDto> selectComAll(int bno) {
-		ArrayList<CommentDto> list = hobbyMapper.selectComAll(bno);
+		ArrayList<CommentDto> list = welMapper.selectComAll(bno);
 
 		return list;
 	}
@@ -135,32 +132,32 @@ public class HobbyServiceImpl implements HobbyService {
 			mdto.setBoard_file(bfile);
 		} // for
 		
-		hobbyMapper.insertOne(mdto);
+		welMapper.insertOne(mdto);
 	}
 	
 	// 댓글 저장하기 + 작성한 댓글 1개 가져오기
 	@Override
 	public CommentDto insertComOne(CommentDto aCdto) {
 		// 댓글 저장하기
-		hobbyMapper.insertComOne(aCdto);
+		welMapper.insertComOne(aCdto);
 		// 댓글 1개 가져오기
-		CommentDto cdto = hobbyMapper.selectComOne(aCdto);
+		CommentDto cdto = welMapper.selectComOne(aCdto);
 		return cdto;
 	}
 	
 	// 댓글 1개 삭제하기
 	@Override
 	public void deleteOne(int cno) {
-		hobbyMapper.deleteOne(cno);
+		welMapper.deleteOne(cno);
 	}
 	
 	// 댓글 수정 저장 + 수정한 댓글 1개 가져오기
 	@Override
 	public CommentDto updateComOne(CommentDto aCdto) {
 		// 댓글 수정하기
-		hobbyMapper.updateComOne(aCdto);
+		welMapper.updateComOne(aCdto);
 		// 댓글 1개 가져오기
-		CommentDto cdto = hobbyMapper.selectComOne(aCdto);
+		CommentDto cdto = welMapper.selectComOne(aCdto);
 		
 		return cdto;
 	}
@@ -168,7 +165,7 @@ public class HobbyServiceImpl implements HobbyService {
 	// 이미지를 배열로 가져오기
 	@Override
 	public String[] loadImage(int bno) {
-		String imgNm = hobbyMapper.loadImage(bno);
+		String imgNm = welMapper.loadImage(bno);
 		String[] arrImg = imgNm.split(",");
 		
 		return arrImg;
@@ -177,7 +174,7 @@ public class HobbyServiceImpl implements HobbyService {
 	// 게시글 1개 삭제하기
 	@Override
 	public void deleteBrdOne(int bno) {
-		hobbyMapper.deleteBrdOne(bno);
+		welMapper.deleteBrdOne(bno);
 		
 	}
 	
@@ -216,7 +213,7 @@ public class HobbyServiceImpl implements HobbyService {
 			} // if
 		} // for
 		
-		hobbyMapper.updateOne(mdto);
+		welMapper.updateOne(mdto);
 	}
 		
 

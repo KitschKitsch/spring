@@ -10,7 +10,7 @@ import com.java.dto.CommentDto;
 import com.java.dto.MadangDto;
 import com.java.dto.PageDto;
 
-public interface HobbyService {
+public interface WelService {
 	
 	// 게시글 전체 가져오기
 	HashMap<String, Object> selectAll(PageDto pageDto, String s_opt);

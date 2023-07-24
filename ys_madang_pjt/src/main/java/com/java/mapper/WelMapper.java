@@ -11,12 +11,10 @@ import com.java.dto.MadangDto;
 import com.java.dto.PageDto;
 
 @Mapper
-public interface HobbyMapper {
+public interface WelMapper {
 	
 	// 일반회원 게시글 전체
 	ArrayList<MadangDto> selectAll(PageDto pageDto);
-	// 관리자 공지글 전체
-	ArrayList<MadangDto> selectNoticeAll(PageDto pageDto);
 	// 게시글 전체 개수
 	int selectListCount(PageDto pageDto);
 	

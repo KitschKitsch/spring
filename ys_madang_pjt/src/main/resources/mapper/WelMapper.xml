@@ -2,14 +2,14 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.java.mapper.HobbyMapper">
+<mapper namespace="com.java.mapper.WelMapper">
 
-	<!-- 일반회원 게시글 전체 가져오기 -->
+	<!-- 게시글 전체 가져오기 -->
 	<select id="selectAll" resultType="com.java.dto.MadangDto">
 		SELECT * FROM
     		(SELECT ROWNUM RNUM, C.* FROM
       		  (SELECT B.*, COALESCE(CC.CCNT, NULL) AS CCNT FROM 
-          		  (SELECT ROWNUM BNO, A.* FROM (SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'hobby' AND AUTH_ID != 'admin'
+          		  (SELECT ROWNUM BNO, A.* FROM (SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'wel' AND AUTH_ID = 'admin'
 			<if test="s_opt == 'all'">
 		      	AND (BOARD_TITLE LIKE '%'||#{s_word}||'%' OR BOARD_CONTENTS LIKE '%'||#{s_word}||'%')
 			</if>
@@ -38,24 +38,9 @@
 	</select>
 	
 	
-	<!-- 관리자 공지글 전체 가져오기 -->
-	<select id="selectNoticeAll" resultType="com.java.dto.MadangDto">
-		SELECT * FROM
-    		(SELECT ROWNUM RNUM, C.* FROM
-      		  (SELECT B.*, COALESCE(CC.CCNT, NULL) AS CCNT FROM 
-          		  (SELECT ROWNUM BNO, A.* FROM (SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'hobby' AND AUTH_ID = 'admin'
-			  ORDER BY BOARD_NO ASC) A) B 
-			 LEFT JOIN (
-			 	SELECT BOARD_NO, COUNT(*) AS CCNT
-			 	FROM NOTICE_COMMENT
-			 	GROUP BY BOARD_NO) CC ON B.BOARD_NO = CC.BOARD_NO
-			 ORDER BY BNO DESC) C)
-			 WHERE RNUM BETWEEN #{startRow} AND #{endRow}
-	</select>
-	
 	<!-- 게시글 전체 개수 -->
 	<select id="selectListCount" resultType="int" >
-		SELECT COUNT(*) FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'hobby'
+		SELECT COUNT(*) FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'wel'
 			<if test="s_opt == 'all'">
 		      	AND (BOARD_TITLE LIKE '%'||#{s_word}||'%' OR BOARD_CONTENTS LIKE '%'||#{s_word}||'%')
 			</if>
@@ -78,15 +63,15 @@
 	
 	<!-- 게시글 1개 가져오기 -->
 	<select id="selectOne" resultType="com.java.dto.MadangDto">
-		SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'hobby' AND BOARD_NO=#{bno}
+		SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'wel' AND BOARD_NO=#{bno}
 	</select>
 	<!-- 이전글 가져오기 -->
 	<select id="selectPrevOne" resultType="com.java.dto.MadangDto">
-		SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'hobby' AND BOARD_NO=#{bno}-1
+		SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'wel' AND BOARD_NO=#{bno}-1
 	</select>
 	<!-- 다음글 가져오기 -->
 	<select id="selectNextOne" resultType="com.java.dto.MadangDto">
-		SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'hobby' AND BOARD_NO=#{bno}+1
+		SELECT * FROM NOTICE_BOARD WHERE BOARD_CATEGORY = 'wel' AND BOARD_NO=#{bno}+1
 	</select>
 	<!-- 조회수 1증가 -->
 	<update id="updateBView">
@@ -101,7 +86,7 @@
 	<!-- 게시글 저장하기 -->
 	<insert id="insertOne">
 		INSERT INTO NOTICE_BOARD VALUES(
-			nb_seq.nextval,#{auth_id},#{auth_nickname},'hobby',#{board_title},#{board_contents}, SYSDATE, null,#{board_file},0,0, #{meet_loc})
+			nb_seq.nextval,#{auth_id},#{auth_nickname},'wel',#{board_title},#{board_contents}, SYSDATE, null,#{board_file},0,0, #{meet_loc})
 	</insert>
 	
 	<!-- 댓글 저장하기 -->

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- 자유/일상 게시판 리스트 페이지 2023.07.20 영섭 -->
+<!-- 취미/친목 게시판 리스트 페이지 2023.07.24 영섭 -->
 <!doctype html>
 <html lang="en">
 
@@ -14,6 +14,7 @@
 <title>Hospice Medical</title>
 <!-- i class 아이콘 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 
 <!-- Bootstrap CSS -->
@@ -80,55 +81,39 @@
 						</div>
 						<script>
 							function searchBtn() {
-								if ($("#q_searchVal").val().length < 2) {
-									alert("2글자 이상부터 검색이 가능합니다.");
-									$("#q_searchVal").focus();
-									return false;
-								}
-								alert($("#q_searchKeyTy option:selected").val()); // 검색조건
-								alert($("#q_searchVal").val()); // 검색어
-								alert($("#q_rowPerPage option:selected").val()); // 페이지당 목록
-
 								dataForm.submit();
-
 							}
 							
-							// 전국 버튼 누르면 전체 활성화
-							function checkAll() {
-								if($("#allLoc").is(':checked')) {
-									$("input[name=s_loc]").prop("checked", true);
-								} else {
-									$("input[name=s_loc]").prop("checked", false);
-								}
-							}
-							
-							// 전체 체크에서 다른 지역 비활성화하면 전국 버튼 비활성화
-							$(document).on("click", "input:checkbox[name=s_loc]", function(e) {
-								
+						  // 전국 누르면 전체 선택&해제
+						  function checkAll() {
+						    if($("#s_locs").is(":checked")){
+						      $("input[name=s_loc]").prop("checked", true);
+						    }else {
+						      $("input[name=s_loc]").prop("checked", false);
+						    }
+							  
+						  }
+							  
+						  // 체크된 개수에 따라 전국 활성화/비활성화
+						  $(document).on("click", "input:checkbox[name=s_loc]", function(e) { // s_loc들 클릭하면
 								var chks = document.getElementsByName("s_loc");
 								var chksChecked = 0;
-								
-								for(var i=0; i<chks.length; i++) { // 지역 수만큼 반복
+								for(var i=0; i<chks.length; i++) {
 									var cbox = chks[i];
-									
-									if(cbox.checked) {
-										chksChecked++;
-									}
+									if(cbox.checked) chksChecked++; // 체크되어 있으면 체크 개수 증가
 								}
 								
-								if(chks.length == chksChecked){
-									$("#cboxAll").prop("checked", true);
+								if(chks.length == chksChecked){ // 전체 s_loc 개수와 체크된 체크박스 개수 비교
+									$("#s_locs").prop("checked", true);
 								}else{
-									$("#cboxAll").prop("checked",false);
+									$("#s_locs").prop("checked",false);
 								}
-								
 							});
-							
-							
+								
 						</script>
 						<div class="col-md-9 contents">
 							<div class="block text-center">
-								<form name="dataForm" id="dataForm" method="get" action="/madangs_folder/madang_1_1" class="form-inline">
+								<form name="dataForm" id="dataForm" method="get" action="/madangs_folder/madang_2_1" class="form-inline">
 									<fieldset>
 										<legend class="sr-only">목록검색조건</legend>
 										<div class="block search-condition">
@@ -142,12 +127,12 @@
 											</div>
 											<div class="form-group">
 												<label for="q_searchVal" class="sr-only">검색어</label>
-												<input type="text" name="s_word" id="q_searchVal" value="" class="form-control" placeholder="검색어를 입력하세요.">
+												<input type="text" name="s_word" id="q_searchVal" value="${param.s_word }" class="form-control" placeholder="검색어를 입력하세요.">
 											</div>
 											<br>
 											<div class="form-group">
 												<label for="q_searchLoc" class="sr-only">지역</label>
-												<label class="locs"><input type="checkbox" name="s_loc" value="전국" class="form-control"  id="allLoc" onclick="checkAll()"/>전국 </label>
+												<label class="locs"><input type="checkbox" name="s_loc" value="전국" class="form-control"  id="s_locs" onclick="checkAll()" />전국 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="서울" class="form-control" />서울 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="부산" class="form-control" />부산 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="대구" class="form-control" />대구 </label>
@@ -157,7 +142,7 @@
 												<label class="locs"><input type="checkbox" name="s_loc" value="울산" class="form-control" />울산 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="세종" class="form-control" />세종 </label><br>
 												<label class="locs"><input type="checkbox" name="s_loc" value="경기" class="form-control" />경기 </label>
-												<label class="locs"><input type="checkbox" name="s_loc" value="강원" class="form-control" />강원 </label></label>
+												<label class="locs"><input type="checkbox" name="s_loc" value="강원" class="form-control" />강원 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="충북" class="form-control" />충북 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="충남" class="form-control" />충남 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="전북" class="form-control" />전북 </label>
@@ -165,6 +150,7 @@
 												<label class="locs"><input type="checkbox" name="s_loc" value="경북" class="form-control" />경북 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="경남" class="form-control" />경남 </label>
 												<label class="locs"><input type="checkbox" name="s_loc" value="제주" class="form-control" />제주 </label>
+												<input type="hidden" name="locString" value="" id="locString"/> <!-- 체크박스 값을 받을 문자열 -->
 											</div>
 											
 											<button type="button" class="btn btn-info btn-search" onclick="searchBtn()">검색</button>
@@ -218,7 +204,7 @@
 										<c:forEach var="board" items="${notice}">
 											<tr>
 												<td class="show-col text-center"><span class="table-notice">공지</span></td>
-												<td class="subject"><a href="/madangs_folder/madang_1_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">${board.board_title}
+												<td class="subject"><a href="/madangs_folder/madang_2_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">${board.board_title}
 												<c:if test="${board.ccnt != 0}">
 													&nbsp;[${board.ccnt}] <!-- 제목옆에 댓글수 나타내기 -->
 												</c:if>
@@ -240,7 +226,7 @@
 										<c:forEach var="board" items="${list}">
 											<tr>
 												<td class="show-col text-center">${board.bno}</td>
-												<td class="subject"><a href="/madangs_folder/madang_1_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">${board.board_title} 
+												<td class="subject"><a href="/madangs_folder/madang_2_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">${board.board_title} 
 												<c:if test="${board.ccnt != 0}">
 													&nbsp;[${board.ccnt}]
 												</c:if>
@@ -266,7 +252,7 @@
 							<div class="row block btn-group-wrap">
 								<div class="col-sm-12 btn-group">
 									<div class="pull-right">
-										<a href="/madangs_folder/madang_1_3" class="btnType02 btn btn-info">
+										<a href="/madangs_folder/madang_2_3" class="btnType02 btn btn-info">
 											<span>글쓰기</span>
 										</a>
 									</div>
@@ -278,7 +264,7 @@
 							<ul class="page-num">
 								<!-- 첫 페이지 이동 -->
 								<c:if test="${pageDto.page != pageDto.startPage}">
-									<a href="/madangs_folder/madang_1_1?page=1&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+									<a href="/madangs_folder/madang_2_1?page=1&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
 										<li class="first"></li>
 									</a>
 									<!-- 검색결과에 따라 하단 페이지 달라지니까! -->
@@ -289,7 +275,7 @@
 
 								<!-- 이전 페이지 이동 -->
 								<c:if test="${pageDto.page > 1}">
-									<a href="/madangs_folder/madang_1_1?page=${pageDto.page -1}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+									<a href="/madangs_folder/madang_2_1?page=${pageDto.page -1}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
 										<li class="prev"></li>
 									</a>
 								</c:if>
@@ -300,7 +286,7 @@
 								<!-- 하단 페이지 번호 넣기 -->
 								<c:forEach begin="${pageDto.startPage}" end="${pageDto.maxPage}" step="1" var="num">
 									<c:if test="${num != pageDto.page}">
-										<a href="/madangs_folder/madang_1_1?page=${num}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+										<a href="/madangs_folder/madang_2_1?page=${num}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
 											<li class="num">
 												<div>${num}</div>
 											</li>
@@ -315,7 +301,7 @@
 
 								<!-- 다음 페이지 이동 -->
 								<c:if test="${pageDto.page < pageDto.maxPage}">
-									<a href="/madangs_folder/madang_1_1?page=${pageDto.page +1}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+									<a href="/madangs_folder/madang_2_1?page=${pageDto.page +1}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
 										<li class="next"></li>
 									</a>
 								</c:if>
@@ -325,7 +311,7 @@
 
 								<!-- 끝 페이지 이동 -->
 								<c:if test="${pageDto.page != pageDto.maxPage}">
-									<a href="/madangs_folder/madang_1_1?page=${pageDto.maxPage}&s_opt=${s_opt}&s_word=${s_word}&rowPP=${rowPP}">
+									<a href="/madangs_folder/madang_2_1?page=${pageDto.maxPage}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
 										<li class="last"></li>
 									</a>
 								</c:if>
@@ -385,19 +371,6 @@
 			});
 		});
 	</script>
-
-	<!-- 검색 기능 변수명은 응용해서 -->
-	<script>
-		function search() {
-			var searchInput = document.getElementById("search-input").value;
-			var searchType = document.getElementById("search-type").value;
-
-			// 검색 동작을 수행하는 코드를 작성합니다.
-			// 예시: 검색어와 검색 타입을 서버로 전송하고 결과를 받아옵니다.
-			// 이후 결과를 처리하는 로직을 추가하세요.
-		}
-	</script>
-
 </body>
 
 </html>

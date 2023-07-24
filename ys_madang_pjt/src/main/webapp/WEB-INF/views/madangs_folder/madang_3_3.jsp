@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!-- 취미/친목 게시판 수정 페이지 2023.07.24 영섭 -->
+<!-- 복지 혜택 안내 게시글 작성 페이지 2023.07.24 영섭 -->
 <!doctype html>
 <html lang="en">
 
@@ -46,10 +45,10 @@
 		<div class="banner_inner d-flex align-items-center">
 			<div class="container">
 				<div class="banner_content text-left">
-					<h2>자유 / 일상 게시판</h2>
+					<h2>취미 / 친목 게시판</h2>
 					<div class="page_link">
 						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_1.jsp">클릭하시면 [ 자유 / 일상 게시판 ] 페이지를 새로 고침합니다.</a>
+						<a href="madang_1.jsp">클릭하시면 [ 복지 혜택 안내 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -73,24 +72,19 @@
 					<div class="content_box tab_menu_01">
 						<div class="boxtype1">
 							<p class="descript">
-							<li>특정 개인 및 단체에 대한 비난, 상업성 광고, 허위사실 유포, 동일 또는 유사한 내용의 반복적 게시 등 법령을 위반하거나 홈페이지의 정상적인 운영에 지장을 초래하는 경우는 운영규칙에 의거하여 삭제될 수 있습니다.</li>
-							<li>또한, 개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기 바랍니다.</li>
+							<li>각 부처의 복지서비스 정보를 모아 한눈에 볼 수 있도록 제공하고, 실생활 중심의 복지정보와 서비스를 제공합니다.</li>
+							<li>개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기 바랍니다.</li>
+							<li>( 더 자세한 내용을 보시려면 <a href="https://www.bokjiro.go.kr/ssis-tbu/index.do"> → '복지로' 홈페이지로 이동하기</a> )</li>
 							</p>
 						</div>
 						<hr class="bold">
 						<div class="block table-responsive grid-view">
-							<form action="/madangs_folder/madang_2_4" name="update" method="post" enctype="multipart/form-data">
-							
-							
+							<form action="/madangs_folder/madang_3_3" name="write" method="post" enctype="multipart/form-data">
 								<table>
 									<colgroup>
 										<col width="15%">
 										<col width="85%">
 									</colgroup>
-									<tr>
-										<th>번호</th>
-										<td><input type="text" name="board_no" value="${mdto.board_no}" readonly="readonly"></td>
-									</tr>
 									<tr>
 										<th>작성자 ID</th>
 										<td><input type="text" name="auth_id" value="${sessionId}" readonly="readonly"></td>
@@ -102,85 +96,37 @@
 									<tr>
 										<th>지역</th>
 										<td>
-										<input type="radio" name="meet_loc" value="전국" 
-										<c:if test="${fn:contains(mdto.meet_loc, '전국') }">checked</c:if>/>
-										<label for="전국">전국</label>
-										<input type="radio" name="meet_loc" value="서울" 
-										<c:if test="${fn:contains(mdto.meet_loc, '서울') }">checked</c:if>/>
-										<label for="서울">서울</label>
-										<input type="radio" name="meet_loc" value="부산" 
-										<c:if test="${fn:contains(mdto.meet_loc, '부산') }">checked</c:if>/>
-										<label for="부산">부산</label>
-										<input type="radio" name="meet_loc" value="대구" 
-										<c:if test="${fn:contains(mdto.meet_loc, '대구') }">checked</c:if>/>
-										<label for="대구">대구</label>
-										<input type="radio" name="meet_loc" value="인천" 
-										<c:if test="${fn:contains(mdto.meet_loc, '인천') }">checked</c:if>/>
-										<label for="인천">인천</label>
-										<input type="radio" name="meet_loc" value="광주" 
-										<c:if test="${fn:contains(mdto.meet_loc, '광주') }">checked</c:if>/>
-										<label for="광주">광주</label>
-										<input type="radio" name="meet_loc" value="대전" 
-										<c:if test="${fn:contains(mdto.meet_loc, '대전') }">checked</c:if>/>
-										<label for="대전">대전</label>
-										<input type="radio" name="meet_loc" value="울산" 
-										<c:if test="${fn:contains(mdto.meet_loc, '울산') }">checked</c:if>/>
-										<label for="울산">울산</label>
-										<input type="radio" name="meet_loc" value="세종" 
-										<c:if test="${fn:contains(mdto.meet_loc, '세종') }">checked</c:if>/>
-										<label for="세종">세종</label><br>
-										
-										<input type="radio" name="meet_loc" value="경기" 
-										<c:if test="${fn:contains(mdto.meet_loc, '경기') }">checked</c:if>/>
-										<label for="경기">경기</label>
-										<input type="radio" name="meet_loc" value="강원" 
-										<c:if test="${fn:contains(mdto.meet_loc, '강원') }">checked</c:if>/>
-										<label for="강원">강원</label>
-										<input type="radio" name="meet_loc" value="충북" 
-										<c:if test="${fn:contains(mdto.meet_loc, '충북') }">checked</c:if>/>
-										<label for="충북">충북</label>
-										<input type="radio" name="meet_loc" value="충남" 
-										<c:if test="${fn:contains(mdto.meet_loc, '충남') }">checked</c:if>/>
-										<label for="충남">충남</label>
-										<input type="radio" name="meet_loc" value="전북" 
-										<c:if test="${fn:contains(mdto.meet_loc, '전북') }">checked</c:if>/>
-										<label for="전북">전북</label>
-										<input type="radio" name="meet_loc" value="전남" 
-										<c:if test="${fn:contains(mdto.meet_loc, '전남') }">checked</c:if>/>
-										<label for="전남">전남</label>
-										<input type="radio" name="meet_loc" value="경북" 
-										<c:if test="${fn:contains(mdto.meet_loc, '경북') }">checked</c:if>/>
-										<label for="경북">경북</label>
-										<input type="radio" name="meet_loc" value="경남" 
-										<c:if test="${fn:contains(mdto.meet_loc, '경남') }">checked</c:if>/>
-										<label for="경남">경남</label>
-										<input type="radio" name="meet_loc" value="제주" 
-										<c:if test="${fn:contains(mdto.meet_loc, '제주') }">checked</c:if>/>
-										<label for="제주">제주</label>
+										<input type="radio" name="meet_loc" value="전국" checked>전국 
+										<input type="radio" name="meet_loc" value="서울">서울 
+										<input type="radio" name="meet_loc" value="부산">부산 
+										<input type="radio" name="meet_loc" value="대구">대구 
+										<input type="radio" name="meet_loc" value="인천">인천 
+										<input type="radio" name="meet_loc" value="광주">광주 
+										<input type="radio" name="meet_loc" value="대전">대전 
+										<input type="radio" name="meet_loc" value="울산">울산 
+										<input type="radio" name="meet_loc" value="세종">세종 <br>
+										<input type="radio" name="meet_loc" value="경기">경기 
+										<input type="radio" name="meet_loc" value="강원">강원 
+										<input type="radio" name="meet_loc" value="충북">충북 
+										<input type="radio" name="meet_loc" value="충남">충남 
+										<input type="radio" name="meet_loc" value="전북">전북 
+										<input type="radio" name="meet_loc" value="전남">전남 
+										<input type="radio" name="meet_loc" value="경북">경북 
+										<input type="radio" name="meet_loc" value="경남">경남 
+										<input type="radio" name="meet_loc" value="제주">제주 
 										</td>
 									</tr>
 									<tr>
 										<th>제목</th>
-										<td><input type="text" name="board_title" value="${mdto.board_title}"></td>
+										<td><input type="text" name="board_title"></td>
 									</tr>
 									<tr>
 										<th>내용</th>
-										<td><textarea name="board_contents" cols="50" rows="10" >${mdto.board_contents}</textarea></td>
-									</tr>
-									<tr>
-										<th>파일</th>
-											<td>
-												<c:forEach var="imgNm" items="${arrImg }">
-													${imgNm }<br>
-												</c:forEach>
-											</td>
+										<td><textarea name="board_contents" cols="50" rows="10"></textarea></td>
 									</tr>
 									<tr>
 										<th>이미지</th>
 										<td>※ 사진파일은 최대 3개까지 올릴 수 있습니다.<br>
-											<input type="hidden" name="board_file" value="${arrImg[0]}"><!-- 원본파일명 -->
-											<input type="hidden" name="board_file" value="${arrImg[1]}"><!-- 원본파일명 -->
-											<input type="hidden" name="board_file" value="${arrImg[2]}"><!-- 원본파일명 -->
 											<input type="file" name="files" id="file"><br>
 											<input type="file" name="files" id="file"><br>
 											<input type="file" name="files" id="file">
@@ -194,9 +140,9 @@
 									<div class="col-sm-12 btn-group">
 										<div class="pull-right">
 											<button type="submit" class="btnType02 btn btn-info">
-												<span>수정완료</span>
+												<span>작성완료</span>
 											</button>
-											<button type="button" onclick="javascript:location.href = document.referrer;" class="btnType02 btn btn-info2">
+											<button type="button" onclick="javascript:location.href='madang_3_1'" class="btnType02 btn btn-info2">
 												<span>취소</span>
 											</button>
 										</div>
