@@ -50,7 +50,7 @@
 					<h2>취미 / 친목 게시판</h2>
 					<div class="page_link">
 						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_1.jsp">클릭하시면 [ 취미 / 친목 게시판 ] 페이지를 새로 고침합니다.</a>
+						<a href="madang_2_1">클릭하시면 [ 취미 / 친목 게시판 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -154,7 +154,7 @@
 											</div>
 											
 											<button type="button" class="btn btn-info btn-search" onclick="searchBtn()">검색</button>
-											<button type="submit" class="btn btn-info">초기화</button>
+											<button type="button" class="btn btn-info" onclick="javascript:location.href='madang_2_1'">초기화</button>
 										</div>
 										<div class="row grid-list-top">
 											<div class="col-xs-12">

@@ -121,7 +121,6 @@
 													<option value="all">-- 검색선택 --</option>
 													<option value="title">제목</option>
 													<option value="content">내용</option>
-													<option value="writer">등록자명</option>
 												</select>
 											</div>
 											<div class="form-group">
@@ -153,55 +152,25 @@
 											</div>
 											
 											<button type="button" class="btn btn-info btn-search" onclick="searchBtn()">검색</button>
-											<button type="submit" class="btn btn-info">초기화</button>
-										</div>
-										<div class="row grid-list-top">
-											<div class="col-xs-12">
-												<fieldset>
-													<legend class="sr-only">페이지당 목록갯수 선택</legend>
-													<div class="pull-left">
-														<span>
-															총 게시물 <strong>${pageDto.listCount}</strong>건 
-													</div>
-													<div class="pull-right">
-														<label for="q_rowPerPage">페이지당 목록</label> <select name="rowPP" id="q_rowPerPage" class="form-control">
-															<option value="10">-행-</option>
-															<option value="10">10</option>
-															<option value="15">15</option>
-															<option value="50">50</option>
-															<option value="100">100</option>
-														</select>
-														<button type="submit" class="btn btn-primary " data-loading-text="<i class='icon-spinner7 spin'></i>">변경</button>
-													</div>
-												</fieldset>
-											</div>
+											<button type="button" class="btn btn-info" onclick="javascript:location.href='madang_3_1'">초기화</button>
 										</div>
 									</fieldset>
 								</form>
 							</div>
-							<div class="block table-responsive grid-list for-mobile">
-								<!-- 리스트 -->
-								<table class="table table-bordered table-striped table-hover">
-									<colgroup>
-										<col class="show-col" width="80px;">
-										<col class="subject" width="">
-										<col width="12%;">
-										<col width="8%;">
-									</colgroup>
-									<thead>
-										<tr>
-											<th class="show-col">순번</th>
-											<th class="subject">제목</th>
-											<th>등록일</th>
-											<th>조회수</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach var="board" items="${list}">
-											<tr>
-												<td class="show-col text-center">${board.bno}</td>
-												<td class="subject"><a href="/madangs_folder/madang_3_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">[ ${board.meet_loc} ] ${board.board_title} 
-												<c:if test="${board.ccnt != 0}">
+							
+							<c:forEach var="board" items="${list}">
+								<!-- 요기부터 -->
+								<li style="width: 260px; height: 250px; float: left; padding: 5px; margin: 5px 5px; break-all; border: 1px solid gray; border-radius: 3%">
+									<!-- 이미지 영역 -->
+									<div class="cimg">
+										<img src="https://www.bokjiro.go.kr/ssis-tbu/cms/pc/main/banner/1/__icsFiles/afieldfile/2023/05/10/pc_592-360.jpg?nonCachingUsingTime=1690257568861" style="width: 248px; border-radius: 3%">
+									</div>
+									<div class="ccont">
+										<div class="ccont00">
+											<!-- 버튼 -->
+											<p class="ctitle" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
+												<a href="/madangs_folder/madang_3_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}">${board.board_title}
+													<c:if test="${board.ccnt != 0}">
 													&nbsp;[${board.ccnt}]
 												</c:if>
 												</a>
@@ -211,33 +180,32 @@
 												<c:if test="${board.board_file != ',,'}">
 													<img class="bbsNewImage" src="/img/file.png" style="width: 17px" alt="file">
 												</c:if>
-												</td>
-												<td><fmt:formatDate value="${board.board_created}" pattern="yyyy-MM-dd"/></td>
-												<td>${board.board_view}</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-								<!-- //리스트 -->
+											</p>
+											<p class="ctext" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${board.board_contents }</p>
+										</div>
+									</div>
+								</li>
+								<!-- 요기까지 -->
+							</c:forEach>
 							</div>
 
 							<!-- 버튼 -->
-							<div class="row block btn-group-wrap">
-								<div class="col-sm-12 btn-group">
-									<div class="pull-right">
-										<a href="/madangs_folder/madang_3_3" class="btnType02 btn btn-info">
-											<span>글쓰기</span>
-										</a>
-									</div>
+						<div class="row block btn-group-wrap" style="clear: both;">
+							<div class="col-sm-12 btn-group">
+								<div class="pull-right">
+									<a href="/madangs_folder/madang_3_3" class="btnType02 btn btn-info">
+										<span>글쓰기</span>
+									</a>
 								</div>
 							</div>
-							<!-- //버튼 -->
+						</div>
+						<!-- //버튼 -->
 
 							<!-- 페이징 -->
 							<ul class="page-num">
 								<!-- 첫 페이지 이동 -->
 								<c:if test="${pageDto.page != pageDto.startPage}">
-									<a href="/madangs_folder/madang_3_1?page=1&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
+									<a href="/madangs_folder/madang_3_1?page=1&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}">
 										<li class="first"></li>
 									</a>
 									<!-- 검색결과에 따라 하단 페이지 달라지니까! -->
@@ -248,7 +216,7 @@
 
 								<!-- 이전 페이지 이동 -->
 								<c:if test="${pageDto.page > 1}">
-									<a href="/madangs_folder/madang_3_1?page=${pageDto.page -1}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
+									<a href="/madangs_folder/madang_3_1?page=${pageDto.page -1}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}">
 										<li class="prev"></li>
 									</a>
 								</c:if>
@@ -259,7 +227,7 @@
 								<!-- 하단 페이지 번호 넣기 -->
 								<c:forEach begin="${pageDto.startPage}" end="${pageDto.maxPage}" step="1" var="num">
 									<c:if test="${num != pageDto.page}">
-										<a href="/madangs_folder/madang_3_1?page=${num}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
+										<a href="/madangs_folder/madang_3_1?page=${num}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}">
 											<li class="num">
 												<div>${num}</div>
 											</li>
@@ -274,7 +242,7 @@
 
 								<!-- 다음 페이지 이동 -->
 								<c:if test="${pageDto.page < pageDto.maxPage}">
-									<a href="/madangs_folder/madang_3_1?page=${pageDto.page +1}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
+									<a href="/madangs_folder/madang_3_1?page=${pageDto.page +1}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}">
 										<li class="next"></li>
 									</a>
 								</c:if>
@@ -284,7 +252,7 @@
 
 								<!-- 끝 페이지 이동 -->
 								<c:if test="${pageDto.page != pageDto.maxPage}">
-									<a href="/madangs_folder/madang_3_1?page=${pageDto.maxPage}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}&rowPP=${rowPP}">
+									<a href="/madangs_folder/madang_3_1?page=${pageDto.maxPage}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}">
 										<li class="last"></li>
 									</a>
 								</c:if>

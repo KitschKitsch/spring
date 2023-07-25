@@ -16,6 +16,11 @@ import com.java.service.HosService;
 public class SearchHosController { 
    
   @Autowired HosService hosService;
+  	
+  	@RequestMapping("/searchHoss_folder/searchHos_1")
+  	public String searchHos_1() {
+  		return "searchHoss_folder/searchHos_1";
+  	}
   
 	// 전체 데이터 가져오기
 	@RequestMapping("/allData")
@@ -27,8 +32,6 @@ public class SearchHosController {
 		
 		return list;
 	}
-	
-	
 	
 	// 병원 데이터만 가져오기
 	@RequestMapping("/hosBtn")

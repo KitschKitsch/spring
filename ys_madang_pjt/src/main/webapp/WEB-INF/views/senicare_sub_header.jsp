@@ -105,7 +105,7 @@
 										<a class="nav-link" href="../senicare_main.html">처음으로</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="../searchHoss_folder/searchHos_1.html">내 주변 의료기관 찾기</a>
+										<a class="nav-link" href="../searchHoss_folder/searchHos_1">내 주변 의료기관 찾기</a>
 									</li>
 									<!-- <li class="nav-item ">
 										<a class="nav-link" href="../departments.html">참여ㆍ정보마당</a>
@@ -136,16 +136,16 @@
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">참여 · 정보 마당</a>
 										<ul class="dropdown-menu">
 											<li class="nav-item">
-												<a class="nav-link" href="../madangs_folder/madang_1.html">자유 / 일상 게시판</a>
+												<a class="nav-link" href="../madangs_folder/madang_1_1">자유 / 일상 게시판</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="../madangs_folder/madang_2.html">취미 / 친목 게시판</a>
+												<a class="nav-link" href="../madangs_folder/madang_2_1">취미 / 친목 게시판</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="../madangs_folder/madang_3.html">복지 혜택 안내</a>
+												<a class="nav-link" href="../madangs_folder/madang_3_1">복지 혜택 안내</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="../madangs_folder/madang_4.html">디지털 교육 안내</a>
+												<a class="nav-link" href="../madangs_folder/madang_4_1">디지털 교육 안내</a>
 											</li>
 										</ul>
 									</li>
@@ -166,10 +166,10 @@
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">나의 건강 정보</a>
 										<ul class="dropdown-menu">
 											<li class="nav-item">
-												<a class="nav-link" href="../healths_folder/health_1.html">자가 진단 검사</a>
+												<a class="nav-link" href="../healths_folder/health_1">자가 진단 검사</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="../healths_folder/health_2.html">자가 진단 검사 결과</a>
+												<a class="nav-link" href="../healths_folder/health_2">자가 진단 검사 결과</a>
 											</li>
 										</ul>
 									</li>

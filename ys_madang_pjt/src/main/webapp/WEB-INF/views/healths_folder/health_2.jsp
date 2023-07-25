@@ -1,137 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="../img/favicon.png" type="image/png">
-	<title>Doctors</title>
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="../css/bootstrap.css">
-	<link rel="stylesheet" href="../vendors/linericon/style.css">
-	<link rel="stylesheet" href="../css/font-awesome.min.css">
-	<link rel="stylesheet" href="../vendors/nice-select/css/nice-select.css">
-	<link rel="stylesheet" href="../vendors/animate-css/animate.css">
-	<link rel="stylesheet" href="../vendors/jquery-ui/jquery-ui.css">
-	<!-- main css -->
-	<link rel="stylesheet" href="../css/style.css">
-	<link rel="stylesheet" href="../css/responsive.css">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="../img/favicon.png" type="image/png">
+<title>Hospice Medical</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../vendors/linericon/style.css">
+<link rel="stylesheet" href="../css/font-awesome.min.css">
+<link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="../vendors/lightbox/simpleLightbox.css">
+<link rel="stylesheet" href="../vendors/nice-select/css/nice-select.css">
+<link rel="stylesheet" href="../vendors/animate-css/animate.css">
+<link rel="stylesheet" href="../vendors/jquery-ui/jquery-ui.css">
+<!-- main css -->
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/style_jiin.css">
+<link rel="stylesheet" href="../css/style_ys.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 </head>
 
 <body>
 
 	<!--================Header Menu Area =================-->
-	<header class="header_area">
-		<div class="top_menu row m0">
-			<div class="container">
-				<div class="float-left">
-					<ul class="left_side">
-						<li>
-							<a href="login.html">
-								<i class="fa fa-facebook-f"></i>
-							</a>
-						</li>
-						<li>
-							<a href="login.html">
-								<i class="fa fa-twitter"></i>
-							</a>
-						</li>
-						<li>
-							<a href="login.html">
-								<i class="fa fa-dribbble"></i>
-							</a>
-						</li>
-						<li>
-							<a href="login.html">
-								<i class="fa fa-behance"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="float-right">
-					<ul class="right_side">
-						<li>
-							<a href="login.html">
-								<i class="lnr lnr-phone-handset"></i>
-								012-6532-568-9746
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="lnr lnr-envelope"></i>
-								emergency@colorlib.com
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html">
-						<img src="img/logo.png" alt="">
-					</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-					 aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<div class="row ml-0 w-100">
-							<div class="col-lg-12 pr-0">
-								<ul class="nav navbar-nav center_nav pull-right">
-									<li class="nav-item">
-										<a class="nav-link" href="index.html">Home</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="departments.html">Departments</a>
-									</li>
-									<li class="nav-item active">
-										<a class="nav-link" href="doctors.html">Doctors</a>
-									</li>
-									<li class="nav-item submenu dropdown">
-										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-										<ul class="dropdown-menu">
-											<li class="nav-item">
-												<a class="nav-link" href="about.html">About</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="services.html">Services</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="elements.html">Elements</a>
-											</li>
-										</ul>
-									</li>
-									<li class="nav-item submenu dropdown">
-										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-										<ul class="dropdown-menu">
-											<li class="nav-item">
-												<a class="nav-link" href="blog.html">Blog</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="single-blog.html">Blog Details</a>
-											</li>
-										</ul>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="contact.html">Contact</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</header>
+	<div data-include-path="../senicare_sub_header"></div>
 	<!--================Header Menu Area =================-->
 
 	<!--================ Banner Area =================-->
@@ -139,10 +37,10 @@
 		<div class="banner_inner d-flex align-items-center">
 			<div class="container">
 				<div class="banner_content text-left">
-					<h2>Consultants</h2>
+					<h2>자가진단 검사결과</h2>
 					<div class="page_link">
-						<a href="index.html">Home</a>
-						<a href="doctors.html">Consultants</a>
+						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
+						<a href="health_2">클릭하시면 [ 자가진단 검사결과 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -155,42 +53,112 @@
 		<div class="container">
 			<div class="row justify-content-center section-title-wrap">
 				<div class="col-lg-12">
-					<h1>Our Offered Services</h1>
+					<h1>노인성 5대질환 자가진단 검사결과</h1>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						치매, 퇴행성 관절염, 고혈압, 당뇨병, 뇌혈관질환을 간단하게 진단합니다.<br>본 진단은 단순 참고용으로 의학적인 진단을 대체할 수 없습니다.
 					</p>
 				</div>
 			</div>
-			
-<!-- 스타일 적용! 처음에 디스플레이 안.보.이.게 -->
-<style>
-  .demenTest{display: none;}
-  .arthTest{display: none;}
+
+			<!-- 스타일 적용! 처음에 디스플레이 안.보.이.게 -->
+			<style>
+.demenTest {
+	display: none;
+}
+
+.arthTest {
+	display: none;
+}
+
+.hyperTest {
+	display: none;
+}
+
+.diabetTest {
+	display: none;
+}
+
+.cerebroTest {
+	display: none;
+}
 </style>
 
-<script>
+			<script>
+	// 디스플레이 숨기고 보여주는 함수
 	function selectDemen() {
-		alert("치매");
-		$(".arthTest").css("display","none"); /* 디스플레이를 보.이.게! */
+		$(".arthTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".hyperTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".diabetTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".cerebroTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".demenTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".demenTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
 	}
-	
 	function selectArth() {
-		alert("퇴행성관절염");
-		$(".demenTest").css("display","none"); /* 디스플레이를 보.이.게! */
+		$(".demenTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".hyperTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".diabetTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".cerebroTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
 		$(".arthTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".arthTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
 	}
-	
+	function selectHyper() {
+		$(".demenTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".arthTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".diabetTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".cerebroTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".hyperTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".hyperTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
+	}
+	function selectDiabet() {
+		$(".demenTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".arthTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".hyperTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".cerebroTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".diabetTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".diabetTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
+	}
+	function selectCerebro() {
+		$(".demenTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".arthTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".hyperTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".diabetTest").css("display","none"); /* 디스플레이를 안.보.이.게! */
+		$(".cerebroTest").css("display","block"); /* 디스플레이를 보.이.게! */
+		// 스크롤 이동
+		var offset = $(".cerebroTest").offset();
+        $('html, body').animate({scrollTop : offset.top-300}, 400);
+        
+   		// 결과창 숨겨놓기
+    	$(document).ready(function(){
+    		$(".demenResult").hide();
+    	})
+    	$(document).ready(function(){
+    		$(".arthResult").hide();
+    	})
+    	$(document).ready(function(){
+    		$(".hyperResult").hide();
+    	})
+    	$(document).ready(function(){
+    		$(".diabetResult").hide();
+    	})
+    	$(document).ready(function(){
+    		$(".cerebroResult").hide();
+    	})        
+	}
 </script>
-
 			<div class="row justify-content-center d-flex align-items-center">
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
 						<img class="img-fluid" src="../img/demen.png" alt="">
 						<div class="align-items-end justify-content-center d-flex" onclick="selectDemen()">
-							<p>
-								자가진단 하러가기 >>
-							</p>
+							<p>검사결과 보기 >></p>
 							<h4>치매</h4>
 						</div>
 					</div>
@@ -199,9 +167,7 @@
 					<div class="thumb">
 						<img class="img-fluid" src="../img/arth.png" alt="">
 						<div class="align-items-end justify-content-center d-flex" onclick="selectArth()">
-							<p>
-								자가진단 하러가기 >>
-							</p>
+							<p>검사결과 보기 >></p>
 							<h4>퇴행성 관절염</h4>
 						</div>
 					</div>
@@ -210,9 +176,7 @@
 					<div class="thumb">
 						<img class="img-fluid" src="../img/hyper.png" alt="">
 						<div class="align-items-end justify-content-center d-flex" onclick="selectHyper()">
-							<p>
-								자가진단 하러가기 >>
-							</p>
+							<p>검사결과 보기 >></p>
 							<h4>고혈압</h4>
 						</div>
 					</div>
@@ -221,9 +185,7 @@
 					<div class="thumb">
 						<img class="img-fluid" src="../img/diabet.png" alt="">
 						<div class="align-items-end justify-content-center d-flex" onclick="selectDiabet()">
-							<p>
-								자가진단 하러가기 >>
-							</p>
+							<p>검사결과 보기 >></p>
 							<h4>당뇨병</h4>
 						</div>
 					</div>
@@ -232,105 +194,38 @@
 					<div class="thumb">
 						<img class="img-fluid" src="../img/cerebro.png" alt="">
 						<div class="align-items-end justify-content-center d-flex" onclick="selectCerebro()">
-							<p>
-								자가진단 하러가기 >>
-							</p>
+							<p>검사결과 보기 >></p>
 							<h4>뇌혈관질환</h4>
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			
-		</div>	
+
+			<!--========== 치매 자가진단 ==========-->
+			<form action="../healths_folder/health_2" name="demenTest" method="post">
+				<div class="demenTest">
+					<h3 class="c-tit01">내 기억력 점수는 몇 점 일까?</h3>
+					<h4 class="c-tit02">치매 자가진단 검사결과</h4>
+					<div>
+						<canvas id="demenChart"></canvas>
+					</div>
+					<div id="submitDemenBtn">
+						<a onclick="demenSum()" class="submitBtn">
+							<span>제출</span>
+						</a>
+					</div>
+				</div>
+			</form>
+
+
+
+		</div>
 	</section>
 	<!-- End team Area -->
 
 	<!-- start footer Area -->
-	<footer class="footer-area section_gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-2  col-md-6">
-					<div class="single-footer-widget">
-						<h6>Top Products</h6>
-						<ul class="footer-nav">
-							<li>
-								<a href="#">Managed Website</a>
-							</li>
-							<li>
-								<a href="#">Manage Reputation</a>
-							</li>
-							<li>
-								<a href="#">Power Tools</a>
-							</li>
-							<li>
-								<a href="#">Marketing Service</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4  col-md-6">
-					<div class="single-footer-widget mail-chimp">
-						<h6 class="mb-20">Contact Us</h6>
-						<p>
-							56/8, Santa bullevard, Rocky beach, San fransisco, Los angeles, USA
-						</p>
-						<h3>012-6532-568-9746</h3>
-						<h3>012-6532-568-97468</h3>
-					</div>
-				</div>
-				<div class="col-lg-6  col-md-12">
-					<div class="single-footer-widget newsletter">
-						<h6>Newsletter</h6>
-						<p>You can trust us. we only send promo offers, not a single spam.</p>
-						<div id="mc_embed_signup">
-							<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-							 method="get" class="form-inline">
-
-								<div class="form-group row">
-									<div class="col-lg-7 col-md-6 col-sm-12">
-										<input name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '"
-										 required="" type="email">
-									</div>
-
-									<div class="col-lg-5 col-md-12">
-										<button class="nw-btn main_btn circle">get started
-											<span class="lnr lnr-arrow-right"></span>
-										</button>
-									</div>
-								</div>
-								<div class="info"></div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row footer-bottom d-flex justify-content-between">
-				<p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-				<div class="col-lg-4 col-sm-12 footer-social">
-					<a href="#">
-						<i class="fa fa-facebook"></i>
-					</a>
-					<a href="#">
-						<i class="fa fa-twitter"></i>
-					</a>
-					<a href="#">
-						<i class="fa fa-dribbble"></i>
-					</a>
-					<a href="#">
-						<i class="fa fa-behance"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<div data-include-path="../senicare_sub_footer"></div>
 	<!-- End footer Area -->
-
-
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -338,11 +233,64 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="../js/popper.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../vendors/nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="../vendors/isotope/isotope-min.js"></script>
+	<script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
 	<script src="../js/jquery.ajaxchimp.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 	<script src="../js/mail-script.js"></script>
 	<script src="../js/custom.js"></script>
+	<!-- 스크립트 : 링크 연결 -->
+	<script>
+		window.addEventListener('load', function() {
+			var allElements = document.getElementsByTagName('*');
+			Array.prototype.forEach.call(allElements, function(el) {
+				var includePath = el.dataset.includePath;
+				if (includePath) {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							el.outerHTML = this.responseText;
+						}
+					};
+					xhttp.open('GET', includePath, true);
+					xhttp.send();
+				}
+			});
+		});
+	</script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+  		  type: 'line',
+  		  data: {
+  		      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  		      datasets: [{
+  		        label: 'OO 진단검사 결과 ',
+  		        data: [12, 19, 3, 5, 2, 3],
+  		        borderColor: '#FF6384',
+  		    	backgroundColor: '#9BD0F5',
+  		    	pointStyle: 'circle',
+  		   		pointRadius: 10,
+  		      	pointHoverRadius: 15
+  		      }]
+  		    },
+  		  options: {
+  		    responsive: true,
+  		    plugins: {
+  		      title: {
+  		        display: true,
+  		        text: (ctx) => 'Point Style: ' + ctx.chart.data.datasets[0].pointStyle,
+  		      }
+  		    }
+  		  }
+  		});
+  
+</script>
 </body>
 
 </html>

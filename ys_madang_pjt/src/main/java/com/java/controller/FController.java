@@ -27,5 +27,4 @@ public class FController {
 		
 		return "madangs_folder/madang_list";
 	}
- 
 }
