@@ -21,7 +21,7 @@ public class HosServiceImpl implements HosService {
 		// 페이지 메소드
 		pageDto = pageMethod(pageDto);
 		// 전체 데이터
-		ArrayList<HosDto> list = hosMapper.selectAll(); 
+		ArrayList<HosDto> list = hosMapper.selectAll(pageDto); 
 		
 		
 		return list;
