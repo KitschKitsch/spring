@@ -66,7 +66,7 @@ public class HealthController {
 			for (int i=0; i < list.size(); i++) {
 				if (list.get(i).getDemen() != null) {
 					demenList.add(Integer.parseInt(list.get(i).getDemen())); // null 아닌(=테스트 결과 있는) 결과 파싱해서 리스트에 넣기
-					demenDateList.add((list.get(i).getTest_date().toString().substring(0, 10))); // null 아닌(=테스트 결과 있는)
+					demenDateList.add((list.get(i).getTest_date().toString().substring(0, 10))); // null 아닌(=테스트 결과 있는) 데이터 잘라서 넣기
 				}
 					
 				if (list.get(i).getArth() != null) {
