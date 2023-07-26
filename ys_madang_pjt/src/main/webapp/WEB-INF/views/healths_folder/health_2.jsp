@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 
 <head>
@@ -48,6 +49,7 @@
 	</section>
 	<!--================End Banner Area =================-->
 
+<button onclick="testList()">버튼</button>
 	<!-- Start team Area -->
 	<section class="team-area section_gap">
 		<div class="container">
@@ -206,13 +208,9 @@
 				<div class="demenTest">
 					<h3 class="c-tit01">내 기억력 점수는 몇 점 일까?</h3>
 					<h4 class="c-tit02">치매 자가진단 검사결과</h4>
+					<h5>(※ 최대 10개까지만 조회가 가능합니다.)</h5>
 					<div>
 						<canvas id="demenChart"></canvas>
-					</div>
-					<div id="submitDemenBtn">
-						<a onclick="demenSum()" class="submitBtn">
-							<span>제출</span>
-						</a>
 					</div>
 				</div>
 			</form>
@@ -263,32 +261,84 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
-  const ctx = document.getElementById('myChart');
-
-  new Chart(ctx, {
-  		  type: 'line',
-  		  data: {
-  		      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  		      datasets: [{
-  		        label: 'OO 진단검사 결과 ',
-  		        data: [12, 19, 3, 5, 2, 3],
-  		        borderColor: '#FF6384',
-  		    	backgroundColor: '#9BD0F5',
-  		    	pointStyle: 'circle',
-  		   		pointRadius: 10,
-  		      	pointHoverRadius: 15
-  		      }]
-  		    },
-  		  options: {
-  		    responsive: true,
-  		    plugins: {
-  		      title: {
-  		        display: true,
-  		        text: (ctx) => 'Point Style: ' + ctx.chart.data.datasets[0].pointStyle,
-  		      }
-  		    }
-  		  }
-  		});
+	// 치매 그래프 그리기
+	
+	let chart_labels = []; // 10개 초과
+	let chart_datas = []; // 10개 초과
+	let chart_label = []; // 10개 이하
+	let chart_data = []; // 10개 이하
+	
+	$.ajax({
+		url:"/health/testList",
+		type:"post",
+		data: {"auth_id":'${sessionId}'},
+		success:function(data) {
+			console.log(data);
+			
+			// 일단 데이터 담아서
+			chart_labels = data.demenDateList;
+			chart_datas = data.demenList;
+			
+			// 10개 초과인지 비교
+			if (chart_labels.length > 10) { 
+				var startIndex = chart_labels.length - 10;
+				 var endIndex = chart_labels.length;
+				// 10개 이하로 자름
+				for (var i=startIndex; i<endIndex; i++) {
+					chart_label.push(chart_labels[i]); 
+				}
+			} else {
+				chart_label = data.demenDateList;
+			}
+			
+			// 10개 초과인지 비교
+			if (chart_datas.length > 10) { 
+				var startIndex = chart_datas.length - 10;
+				 var endIndex = chart_datas.length;
+				// 10개 이하로 자름
+				for (var i=startIndex; i<endIndex; i++) {
+						chart_data.push(chart_datas[i]); 
+				}
+			} else {
+				chart_data = data.demenList;
+			}
+			
+			console.log(chart_label);
+			console.log(chart_data);
+			
+			new Chart($("#demenChart"), {
+		  		  type: 'line',
+		  		  data: {
+		  		      labels: chart_label,
+		  		      datasets: [{
+		  		        label: '치매 진단검사 결과 ',
+		  		        data: chart_data,
+		  		        borderColor: '#FF6384',
+		  		    	backgroundColor: '#9BD0F5',
+		  		    	pointStyle: 'circle',
+		  		   		pointRadius: 10,
+		  		      	pointHoverRadius: 15
+		  		      }]
+		  		    },
+		  		  options: {
+		  		    responsive: true,
+		  		    plugins: {
+		  		      title: {
+		  		        display: true,
+		  		        text: (ctx) => 'Point Style: ' + ctx.chart.data.datasets[0].pointStyle,
+		  		      }
+		  		    }
+		  		  }
+		  		});// 그래프 그리기
+			
+			  
+		},
+		error: function() {
+			alert("실패");
+		}
+	});// ajax
+  
+  
   
 </script>
 </body>

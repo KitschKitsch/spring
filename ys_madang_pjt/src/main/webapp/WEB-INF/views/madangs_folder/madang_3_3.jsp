@@ -33,7 +33,12 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/responsive.css">
 </head>
-
+<script>
+	if (${sessionId == null}) {
+		alert("먼저 로그인을 해주세요.");
+		location.href ="/members_folder/member_2";
+	}
+</script>
 <body>
 	<!--================Header Menu Area =================-->
 	<div data-include-path="../senicare_sub_header"></div>

@@ -228,6 +228,12 @@
 							// 1. 댓글 저장
 							function commentBtn() {
 								
+								if (${sessionId == null}) {
+									alert("먼저 로그인을 해주세요.");
+									location.href ="/members_folder/member_2";
+									return false;
+								}
+								
 								let comment_private;
 								const replynumCheckbox = $(".replynum"); // replynum 클래스 이름을 가진 체크박스 요소를 가져옴
 								if (replynumCheckbox.prop("checked")==true) {

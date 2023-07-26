@@ -70,26 +70,26 @@
 
 					<!-- 스타일 적용! 처음에 디스플레이 안.보.이.게 -->
 					<style>
-.demenTest {
-	display: none;
-}
-
-.arthTest {
-	display: none;
-}
-
-.hyperTest {
-	display: none;
-}
-
-.diabetTest {
-	display: none;
-}
-
-.cerebroTest {
-	display: none;
-}
-</style>
+						.demenTest {
+							display: none;
+						}
+						
+						.arthTest {
+							display: none;
+						}
+						
+						.hyperTest {
+							display: none;
+						}
+						
+						.diabetTest {
+							display: none;
+						}
+						
+						.cerebroTest {
+							display: none;
+						}
+					</style>
 
 					<script>
 	// 디스플레이 숨기고 보여주는 함수
@@ -1143,23 +1143,29 @@
 	
 	<!--========== 추천버튼 ==========-->
 	function resultBtn() {
+		
 		$.ajax({
-			url: "/healths_folder/health_2",
+			url: "/health/insertOne",
 			type:"post",
 			data:{"auth_id":'${sessionId}',
-				"demen":$("#sum1").text(),
+				/* "demen":$("#sum1").text(),
 				"arth":$("#sum2").text(),
 				"hyper":$("#sum3").text(),
 				"diabet":$("#sum4").text(),
-				"cerebro":$("#sum5").text()
+				"cerebro":$("#sum5").text() */
+				"demen":10,
+				"arth":10,
+				"hyper":12,
+				"diabet":6,
+				"cerebro":3
 				},
 			success: function(data) {
 				alert("성공");
-			},
+				location.href = "/healths_folder/health_2?auth_id=${sessionId}" /* 두번째 페이지로 보냄  */
+				},
 			error: function() {
 				alert("실패");
 			}
-			
 		});// ajax
 	}
 </script>

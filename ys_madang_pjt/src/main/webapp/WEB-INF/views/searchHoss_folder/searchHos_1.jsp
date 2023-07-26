@@ -51,10 +51,10 @@
 	<section class="contact_area p_120">
 		<div class="container">
 			<div id="searchList" style="width: 30%; float: left; position: relative; top: 0px">
-				<form name="searchData" method="get" action="../searchData" class="form-inline">
+				<!-- <form name="searchData" method="get" action="../searchData" class="form-inline"> -->
 					<input type="text" name="hosnm" id="hosnm" style="width: 270px; height: 35px;">
-					<button type="button" onclick="searchBtn(hosnm)" class="btn btn-info">검색</button>
-				</form>
+					<button type="button" onclick="searchBtn()" class="btn btn-info">검색</button>
+				<!-- </form> -->
 				<button type="button" onclick="hosBtn()" class="btn btn-info">병원</button>
 				<button type="button" onclick="pharmBtn()" class="btn btn-info">약국</button>
 				<button type="button" onclick="nursBtn()" class="btn btn-info">요양병원</button>
@@ -862,7 +862,11 @@
 		
 		
 		/* -------------------- 검색버튼 --------------------  */
-		function searchBtn(hosnm) {
+		function searchBtn() {
+			
+			var hosnm = document.getElementById("hosnm").value;
+			alert(hosnm);
+			
 			// 이전에 표시된 데이터 초기화
 			$("#hosList").empty();
 			$("#mapBox").empty();
@@ -936,7 +940,7 @@
 													})
 										}
 										// 마커 이미지의 이미지 주소입니다
-										var imageSrc = "https://icons.veryicon.com/png/o/healthcate-medical/mental-health-department-icon-library/pharmacy-department.png";
+										var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 										for (var i = 0; i < positions.length; i++) {
 											// 마커 이미지의 이미지 크기 입니다
 											var imageSize = new kakao.maps.Size(

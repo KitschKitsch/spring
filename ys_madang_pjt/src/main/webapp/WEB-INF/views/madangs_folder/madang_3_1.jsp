@@ -169,14 +169,14 @@
 										<div class="ccont00">
 											<!-- 버튼 -->
 											<p class="ctitle" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">
+												<c:if test="${today < board.board_created }">
+													<img class="bbsNewImage" src="/img/ico_new.gif" alt="New">
+												</c:if>
 												<a href="/madangs_folder/madang_3_2?bno=${board.board_no}&s_opt=${s_opt}&s_word=${s_word}&s_loc=${s_loc}">${board.board_title}
 													<c:if test="${board.ccnt != 0}">
 													&nbsp;[${board.ccnt}]
 												</c:if>
 												</a>
-												<c:if test="${today < board.board_created }">
-													<img class="bbsNewImage" src="/img/ico_new.gif" alt="New">
-												</c:if>
 												<c:if test="${board.board_file != ',,'}">
 													<img class="bbsNewImage" src="/img/file.png" style="width: 17px" alt="file">
 												</c:if>
@@ -193,9 +193,11 @@
 						<div class="row block btn-group-wrap" style="clear: both;">
 							<div class="col-sm-12 btn-group">
 								<div class="pull-right">
-									<a href="/madangs_folder/madang_3_3" class="btnType02 btn btn-info">
-										<span>글쓰기</span>
-									</a>
+									<c:if test="${sessionId == 'admin'}">
+										<a href="/madangs_folder/madang_3_3" class="btnType02 btn btn-info">
+											<span>글쓰기</span>
+										</a>
+									</c:if>
 								</div>
 							</div>
 						</div>
