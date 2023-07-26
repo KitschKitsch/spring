@@ -52,7 +52,7 @@
 					<h2>디지털 교육 안내</h2>
 					<div class="page_link">
 						<a href="../senicare_main">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_4_1.jsp">클릭하시면 [ 디지털 교육 안내 ] 페이지를 새로 고침합니다.</a>
+						<a href="madang_4_1">클릭하시면 [ 디지털 교육 안내 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -122,9 +122,9 @@
 						<div class="block table-responsive grid-view">
 							<table class="table table-bordered">
 								<colgroup>
-									<col style="width: 15%;">
+									<col style="width: 12%;">
 									<col>
-									<col style="width: 15%;">
+									<col style="width: 10%;">
 									<col>
 								</colgroup>
 								<thead>

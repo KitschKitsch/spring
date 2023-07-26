@@ -48,7 +48,7 @@
 					<h2>디지털 교육 안내</h2>
 					<div class="page_link">
 						<a href="../senicare_main">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_4_1.jsp">클릭하시면 [ 디지털 교육 안내 ] 페이지를 새로 고침합니다.</a>
+						<a href="madang_4_1">클릭하시면 [ 디지털 교육 안내 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -107,7 +107,7 @@
 									</tr>
 									<tr>
 										<th>이미지</th>
-										<td>※ 사진파일은 최대 3개까지 올릴 수 있습니다.<br>
+										<td>※ (필수) 사진파일을 최소 1개이상 등록해야 합니다.<br>
 											<input type="file" name="files" id="file"><br>
 											<input type="file" name="files" id="file"><br>
 											<input type="file" name="files" id="file">

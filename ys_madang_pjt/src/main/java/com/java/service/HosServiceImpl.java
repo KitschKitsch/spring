@@ -75,5 +75,12 @@ public class HosServiceImpl implements HosService {
 		ArrayList<HosDto> list = hosMapper.selectOne(hno); 
 		return list;
 	}
+	
+	// 검색 데이터 가져오기
+	@Override
+	public ArrayList<HosDto> searchData(HosDto hosDto) {
+		ArrayList<HosDto> list = hosMapper.searchData(hosDto);
+		return list;
+	}
 
 }

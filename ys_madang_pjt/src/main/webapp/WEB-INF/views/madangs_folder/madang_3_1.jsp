@@ -45,10 +45,10 @@
 		<div class="banner_inner d-flex align-items-center">
 			<div class="container">
 				<div class="banner_content text-left">
-					<h2>취미 / 친목 게시판</h2>
+					<h2>복지 혜택 안내</h2>
 					<div class="page_link">
-						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_1.jsp">클릭하시면 [ 복지 혜택 안내 ] 페이지를 새로 고침합니다.</a>
+						<a href="../senicare_main">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
+						<a href="madang_3_1">클릭하시면 [ 복지 혜택 안내 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -160,10 +160,10 @@
 							
 							<c:forEach var="board" items="${list}">
 								<!-- 요기부터 -->
-								<li style="width: 260px; height: 250px; float: left; padding: 5px; margin: 5px 5px; break-all; border: 1px solid gray; border-radius: 3%">
+								<li class="gridList">
 									<!-- 이미지 영역 -->
 									<div class="cimg">
-										<img src="https://www.bokjiro.go.kr/ssis-tbu/cms/pc/main/banner/1/__icsFiles/afieldfile/2023/05/10/pc_592-360.jpg?nonCachingUsingTime=1690257568861" style="width: 248px; border-radius: 3%">
+										<img src="https://www.bokjiro.go.kr/ssis-tbu/cms/pc/main/banner/1/__icsFiles/afieldfile/2023/05/10/pc_592-360.jpg?nonCachingUsingTime=1690257568861" style="width: 245px; border-radius: 3%">
 									</div>
 									<div class="ccont">
 										<div class="ccont00">

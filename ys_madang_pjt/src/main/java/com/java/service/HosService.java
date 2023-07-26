@@ -21,5 +21,8 @@ public interface HosService {
 
 	// 데이터 1개 가져오기
 	ArrayList<HosDto> selectOne(int hno);
+	
+	// 검색 데이터 가져오기
+	ArrayList<HosDto> searchData(HosDto hosDto);
 
 }

@@ -49,7 +49,7 @@
 				<div class="banner_content text-left">
 					<h2>취미 / 친목 게시판</h2>
 					<div class="page_link">
-						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
+						<a href="../senicare_main">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
 						<a href="madang_2_1">클릭하시면 [ 취미 / 친목 게시판 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
@@ -186,9 +186,9 @@
 									<colgroup>
 										<col class="show-col" width="80px;">
 										<col class="subject" width="">
-										<col width="18%;">
-										<col width="12%;">
-										<col width="8%;">
+										<col width="20%;">
+										<col width="14%;">
+										<col width="9%;">
 									</colgroup>
 									<thead>
 										<tr>

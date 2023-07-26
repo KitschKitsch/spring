@@ -22,6 +22,16 @@ public class SearchHosController {
   		return "searchHoss_folder/searchHos_1";
   	}
   
+	// 검색 데이터 가져오기
+	@RequestMapping("/searchData")
+	@ResponseBody
+	public ArrayList<HosDto> searchData(HosDto hosDto, Model model) {
+		ArrayList<HosDto> list = hosService.searchData(hosDto);
+		model.addAttribute("list", list);
+		
+		return list;
+	}
+	
 	// 전체 데이터 가져오기
 	@RequestMapping("/allData")
 	@ResponseBody

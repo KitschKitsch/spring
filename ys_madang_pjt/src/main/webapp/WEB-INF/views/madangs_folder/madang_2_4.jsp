@@ -46,10 +46,10 @@
 		<div class="banner_inner d-flex align-items-center">
 			<div class="container">
 				<div class="banner_content text-left">
-					<h2>자유 / 일상 게시판</h2>
+					<h2>취미 / 친목 게시판</h2>
 					<div class="page_link">
-						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_1.jsp">클릭하시면 [ 자유 / 일상 게시판 ] 페이지를 새로 고침합니다.</a>
+						<a href="../senicare_main">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
+						<a href="madang_2_1">클릭하시면 [ 취미 / 친목 게시판 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 			<!--====게시판====-->
 			<div class="right-area">
 				<div class="right_contents_wrap">
-					<h3>자유 / 일상 게시판 글쓰기</h3>
+					<h3>취미 / 친목 게시판 글 수정하기</h3>
 					<div class="content_box tab_menu_01">
 						<div class="boxtype1">
 							<p class="descript">
@@ -87,10 +87,6 @@
 										<col width="15%">
 										<col width="85%">
 									</colgroup>
-									<tr>
-										<th>번호</th>
-										<td><input type="text" name="board_no" value="${mdto.board_no}" readonly="readonly"></td>
-									</tr>
 									<tr>
 										<th>작성자 ID</th>
 										<td><input type="text" name="auth_id" value="${sessionId}" readonly="readonly"></td>

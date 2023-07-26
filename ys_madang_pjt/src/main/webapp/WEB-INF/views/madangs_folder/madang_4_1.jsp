@@ -86,7 +86,7 @@
 							<li>개인정보보호를 위해 주민등록번호, 운전면허번호, 연락처 등은 노출되지 않도록 주의하여 주시기 바랍니다.</li>
 							<li>
 								( 더 자세한 내용을 보시려면
-								<a href="https://sdfedu.seoul.kr/course/course_list.jsp?cid=3&ch=course1"> → '에듀테크 캠퍼스' 홈페이지로 이동하기</a>
+								<a href="https://sdfedu.seoul.kr/course/course_list?cid=3&ch=course1"> → '에듀테크 캠퍼스' 홈페이지로 이동하기</a>
 								)
 							</li>
 							</p>
@@ -123,7 +123,7 @@
 
 							<c:forEach var="board" items="${list}">
 								<!-- 요기부터 -->
-								<li id="listImg1" style="width: 260px; height: 250px; float: left; padding: 5px; margin: 5px 5px; border: 1px solid gray; border-radius: 3%">
+								<li class="gridList">
 									<!-- 이미지 영역 -->
 									<div class="cimg">
 										<img src="../upload/${board.board_file}" style="width: 248px; position: absolute; clip: rect(0, 248px, 180px, 0); border-radius: 3%">

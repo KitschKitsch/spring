@@ -49,10 +49,10 @@
 		<div class="banner_inner d-flex align-items-center">
 			<div class="container">
 				<div class="banner_content text-left">
-					<h2>자유 / 일상 게시판</h2>
+					<h2>취미 / 친목 게시판</h2>
 					<div class="page_link">
-						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_1.jsp">클릭하시면 [ 자유 / 일상 게시판 ] 페이지를 새로 고침합니다.</a>
+						<a href="../senicare_main">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
+						<a href="madang_2_1">클릭하시면 [ 취미 / 친목 게시판 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -111,9 +111,9 @@
 						<div class="block table-responsive grid-view">
 							<table class="table table-bordered">
 								<colgroup>
-									<col style="width: 15%;">
+									<col style="width: 12%;">
 									<col>
-									<col style="width: 15%;">
+									<col style="width: 10%;">
 									<col>
 								</colgroup>
 								<thead>

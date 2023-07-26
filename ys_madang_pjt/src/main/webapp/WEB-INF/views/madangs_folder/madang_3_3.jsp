@@ -45,10 +45,10 @@
 		<div class="banner_inner d-flex align-items-center">
 			<div class="container">
 				<div class="banner_content text-left">
-					<h2>취미 / 친목 게시판</h2>
+					<h2>복지 혜택 안내</h2>
 					<div class="page_link">
-						<a href="../senicare_main.jsp">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
-						<a href="madang_1.jsp">클릭하시면 [ 복지 혜택 안내 ] 페이지를 새로 고침합니다.</a>
+						<a href="../senicare_main">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
+						<a href="madang_3_1">클릭하시면 [ 복지 혜택 안내 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -68,7 +68,7 @@
 			<!--====게시판====-->
 			<div class="right-area">
 				<div class="right_contents_wrap">
-					<h3>자유 / 일상 게시판 글쓰기</h3>
+					<h3>복지 혜택 안내 글쓰기</h3>
 					<div class="content_box tab_menu_01">
 						<div class="boxtype1">
 							<p class="descript">
@@ -126,7 +126,7 @@
 									</tr>
 									<tr>
 										<th>이미지</th>
-										<td>※ 사진파일은 최대 3개까지 올릴 수 있습니다.<br>
+										<td>※ (필수) 사진파일을 최소 1개이상 등록해야 합니다.<br>
 											<input type="file" name="files" id="file"><br>
 											<input type="file" name="files" id="file"><br>
 											<input type="file" name="files" id="file">

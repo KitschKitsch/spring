@@ -1,21 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="../img/favicon.png" type="image/png">
 <title>Hospice Medical</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../vendors/linericon/style.css">
 <link rel="stylesheet" href="../css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="../vendors/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
 <link rel="stylesheet" href="../vendors/lightbox/simpleLightbox.css">
 <link rel="stylesheet" href="../vendors/nice-select/css/nice-select.css">
 <link rel="stylesheet" href="../vendors/animate-css/animate.css">
@@ -42,8 +39,8 @@
 				<div class="banner_content text-left">
 					<h2>내 주변 의료기관 찾기</h2>
 					<div class="page_link">
-						<a href="../senicare_main">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a> <a
-							href="searchHos_1">클릭하시면 [ 내 주변 의료기관 찾기 ] 페이지를 새로 고침합니다.</a>
+						<a href="../senicare_main">클릭하시면 [ 홈페이지 ] 로 이동합니다 </a>
+						<a href="searchHos_1">클릭하시면 [ 내 주변 의료기관 찾기 ] 페이지를 새로 고침합니다.</a>
 					</div>
 				</div>
 			</div>
@@ -53,12 +50,10 @@
 	<!--================Contact Area =================-->
 	<section class="contact_area p_120">
 		<div class="container">
-			<div id="searchList"
-				style="width: 30%; float: left; position: relative; top: 0px">
-				<form action="../allData">
-					<input type="text" name="s_word"
-						style="width: 270px; height: 35px;">
-					<button type="submit" class="btn btn-info">검색</button>
+			<div id="searchList" style="width: 30%; float: left; position: relative; top: 0px">
+				<form name="searchData" method="get" action="../searchData" class="form-inline">
+					<input type="text" name="hosnm" id="hosnm" style="width: 270px; height: 35px;">
+					<button type="button" onclick="searchBtn(hosnm)" class="btn btn-info">검색</button>
 				</form>
 				<button type="button" onclick="hosBtn()" class="btn btn-info">병원</button>
 				<button type="button" onclick="pharmBtn()" class="btn btn-info">약국</button>
@@ -83,8 +78,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<i class="fa fa-close"></i>
 					</button>
 					<h2>Thank you</h2>
@@ -100,8 +94,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<i class="fa fa-close"></i>
 					</button>
 					<h2>Sorry !</h2>
@@ -115,8 +108,7 @@
 
 
 	<!--==================== 여기서부터 ====================-->
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a8704aeb10138e02bdeb9cb9fef81ab9"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a8704aeb10138e02bdeb9cb9fef81ab9"></script>
 	<script>
 		// 전체 불러오기
 		allData();
@@ -532,6 +524,20 @@
 														position : positions[i].latlng,
 														image : markerImage,
 													});
+											
+											
+											// '내 위치' 마커가 표시될 위치입니다 
+											var myMarkerPosition = new kakao.maps.LatLng(lat,
+													lon);
+											// '내 위치' 마커를 생성합니다
+											var myMarker = new kakao.maps.Marker({
+												position : myMarkerPosition,
+											//image: myMarkerImage
+											});
+											// '내 위치' 마커가 지도 위에 표시되도록 설정합니다
+											myMarker.setMap(map);
+											
+											
 											var iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 											// 마커에 표시할 인포윈도우를 생성합니다 
 											var infowindow = new kakao.maps.InfoWindow(
@@ -660,6 +666,18 @@
 														position : positions[i].latlng,
 														image : markerImage,
 													});
+											
+											// '내 위치' 마커가 표시될 위치입니다 
+											var myMarkerPosition = new kakao.maps.LatLng(lat,
+													lon);
+											// '내 위치' 마커를 생성합니다
+											var myMarker = new kakao.maps.Marker({
+												position : myMarkerPosition,
+											//image: myMarkerImage
+											});
+											// '내 위치' 마커가 지도 위에 표시되도록 설정합니다
+											myMarker.setMap(map);
+											
 											var iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 											// 마커에 표시할 인포윈도우를 생성합니다 
 											var infowindow = new kakao.maps.InfoWindow(
@@ -791,6 +809,148 @@
 														position : positions[i].latlng,
 														image : markerImage,
 													});
+											
+											// '내 위치' 마커가 표시될 위치입니다 
+											var myMarkerPosition = new kakao.maps.LatLng(lat,
+													lon);
+											// '내 위치' 마커를 생성합니다
+											var myMarker = new kakao.maps.Marker({
+												position : myMarkerPosition,
+											//image: myMarkerImage
+											});
+											// '내 위치' 마커가 지도 위에 표시되도록 설정합니다
+											myMarker.setMap(map);
+											
+											var iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+											// 마커에 표시할 인포윈도우를 생성합니다 
+											var infowindow = new kakao.maps.InfoWindow(
+													{
+														content : positions[i].title, // 인포윈도우에 표시할 내용
+														removable : iwRemoveable
+													});
+											// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+											// 이벤트 리스너로는 클로저를 만들어 등록합니다 
+											// for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+											kakao.maps.event
+													.addListener(marker,
+															'click',
+															makeOverListener(
+																	map,
+																	marker,
+																	infowindow));
+										}
+										// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+										function makeOverListener(map, marker,
+												infowindow) {
+											return function() {
+												infowindow.open(map, marker);
+											};
+										}
+										// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+										function makeOutListener(infowindow) {
+											return function() {
+												infowindow.close();
+											};
+										}// for문
+									},
+									error : function(data) {
+										alert("실패");
+									}
+								});// ajax
+					});// 위치정보
+		}// hosBtn
+		
+		
+		/* -------------------- 검색버튼 --------------------  */
+		function searchBtn(hosnm) {
+			// 이전에 표시된 데이터 초기화
+			$("#hosList").empty();
+			$("#mapBox").empty();
+
+			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+			navigator.geolocation
+					.getCurrentPosition(function(position) {
+
+						var lat = position.coords.latitude, // 위도
+						lon = position.coords.longitude; // 경도
+
+						alert("검색 데이터 받아오기");
+						$
+								.ajax({
+									url : "../searchData",
+									type : "get",
+									data : {"hosnm":hosnm},
+									success : function(data) {
+										console.log(data);
+										for (var i = 0; i < data.length; i++) {
+											let htmlData = "";
+											htmlData += "<tr><td>--------------------</td></tr>";
+											htmlData += "<tr><th><a onclick='clickHere("
+													+ data[i].hno
+													+ ")' style='color:orange; cursor:pointer'>"
+													+ data[i].hosnm
+													+ "</a></th></tr>";
+											htmlData += "<tr><td>주소: "
+													+ data[i].addr
+													+ "</td></tr>";
+											htmlData += "<tr><td onclick='test()'>전화번호: "
+													+ data[i].tel
+													+ "</td></tr>";
+											$("#hosList").append(htmlData);
+										}
+										var mapContainer = document
+												.getElementById('mapBox'), // 지도를 표시할 div  
+										mapOption = {
+											center : new kakao.maps.LatLng(lat,
+													lon), // 지도의 중심좌표
+											level : 5
+										// 지도의 확대 레벨
+										};
+										var map = new kakao.maps.Map(
+												mapContainer, mapOption); // 지도를 생성합니다
+										// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+										var mapTypeControl = new kakao.maps.MapTypeControl();
+										// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+										// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+										map
+												.addControl(
+														mapTypeControl,
+														kakao.maps.ControlPosition.TOPRIGHT);
+										// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+										var zoomControl = new kakao.maps.ZoomControl();
+										map
+												.addControl(
+														zoomControl,
+														kakao.maps.ControlPosition.RIGHT);
+										// 마커를 표시할 위치와 title 객체 배열입니다 
+										var positions = [];
+										for (var i = 0; i < data.length; i++) {
+											positions
+													.push({
+														title : '<div style="padding:5px;">'
+																+ data[i].hosnm
+																+ '<br><a href="https://map.kakao.com/link/to/'+data[i].hosnm+','+data[i].xpos+','+data[i].ypos+'" style="color:blue" target="_blank">길찾기</a></div>',
+														latlng : new kakao.maps.LatLng(
+																data[i].xpos,
+																data[i].ypos)
+													})
+										}
+										// 마커 이미지의 이미지 주소입니다
+										var imageSrc = "https://icons.veryicon.com/png/o/healthcate-medical/mental-health-department-icon-library/pharmacy-department.png";
+										for (var i = 0; i < positions.length; i++) {
+											// 마커 이미지의 이미지 크기 입니다
+											var imageSize = new kakao.maps.Size(
+													40, 40);
+											// 마커 이미지를 생성합니다    
+											var markerImage = new kakao.maps.MarkerImage(
+													imageSrc, imageSize);
+											// 마커를 생성합니다
+											var marker = new kakao.maps.Marker(
+													{
+														map : map, // 마커를 표시할 지도
+														position : positions[i].latlng,
+														image : markerImage,
+													});
 											var iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 											// 마커에 표시할 인포윈도우를 생성합니다 
 											var infowindow = new kakao.maps.InfoWindow(
@@ -841,10 +1001,8 @@
 	<script src="../vendors/isotope/isotope-min.js"></script>
 	<script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
 	<script src="../js/jquery.ajaxchimp.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 	<script src="../js/mail-script.js"></script>
 	<script src="../js/custom.js"></script>
 	<!-- 스크립트 : 링크 연결 -->
