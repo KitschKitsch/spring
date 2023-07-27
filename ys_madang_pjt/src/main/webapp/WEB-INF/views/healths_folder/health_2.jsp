@@ -139,7 +139,10 @@
 				<span style="display:inline-block; width:500px;">	
 					<canvas id="demenPolar"></canvas>
 				</span>
-			</div style={>
+				<h4 class="c-tit02">치매 예방 및 관리에 도움을 주는 운동과 식단</h4>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/uk3oKzjhMT4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VMj0DzBbefU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			</div>
 			<!--========== 퇴행성 관절염 자가진단 ==========-->
 			<div class="arthTest">
 				<h3 class="c-tit01">내 관절점수는 몇 점 일까?</h3>
@@ -150,6 +153,10 @@
 				<span style="display:inline-block; width:500px;">	
 					<canvas id="arthPolar"></canvas>
 				</span>
+				<h4 class="c-tit02">퇴행성 관절염 예방 및 관리에 도움을 주는 운동과 식단</h4>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/MIx329dU8ug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bM0hJWePWfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				
 			</div>
 			<!--========== 고혈압 자가진단 ==========-->
 			<div class="hyperTest">
@@ -161,6 +168,9 @@
 				<span style="display:inline-block; width:500px;">	
 					<canvas id="hyperPolar"></canvas>
 				</span>
+				<h4 class="c-tit02">고혈압 예방 및 관리에 도움을 주는 운동과 식단</h4>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/H8D77McC8Uc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/LzHMy2ScdhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				
 			</div>
 			<!--========== 당뇨병 자가진단 ==========-->
@@ -173,6 +183,10 @@
 				<span style="display:inline-block; width:500px;">	
 					<canvas id="diabetPolar"></canvas>
 				</span>
+				<h4 class="c-tit02">당뇨병 예방 및 관리에 도움을 주는 운동과 식단</h4>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/tj0FuDZ3Dpg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/BFeF_5NywSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				
 			</div>
 			<!--========== 뇌혈관질환 자가진단 ==========-->
 			<div class="cerebroTest">
@@ -184,6 +198,9 @@
 				<span style="display:inline-block; width:500px;">	
 					<canvas id="cerebroPolar"></canvas>
 				</span>
+				<h4 class="c-tit02">뇌혈관질환 예방 및 관리에 도움을 주는 운동과 식단</h4>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Q4hKh6dSScw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/iUJSO5CMJ3E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 			</div>
 		</div>
 	</section>
@@ -290,7 +307,7 @@
 						: disNm == "hyper" ? chart_data = data.hyperList
 						: disNm == "diabet" ? chart_data = data.diabetList
 						: disNm == "cerebro" ? chart_data = data.cerebroList
-						: chart_data = 111;
+						: chart_data = "404";
 					}
 
 					console.log(chart_label);

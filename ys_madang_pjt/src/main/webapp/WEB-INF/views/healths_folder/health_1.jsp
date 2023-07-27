@@ -976,7 +976,6 @@
 					// 제출버튼으로 바꿈
 					htmlData += "<a onclick=\"demenSum()\" class='submitBtn'><span>제출</span></a>";
 					$("#submitDemenBtn").html(htmlData);
-					// +++++ DB 삭제
 				}
 				else if (fidx.html().includes("arth")) {
 					// 라디오 버튼 초기화
@@ -992,7 +991,6 @@
 					// 제출버튼으로 바꿈
 					htmlData += "<a onclick=\"arthSum()\" class='submitBtn'><span>제출</span></a>";
 					$("#submitArthBtn").html(htmlData);
-					// DB 삭제
 				}
 				else if (fidx.html().includes("hyper")) {
 					// 라디오 버튼 초기화
@@ -1008,7 +1006,6 @@
 					// 제출버튼으로 바꿈
 					htmlData += "<a onclick=\"hyperSum()\" class='submitBtn'><span>제출</span></a>";
 					$("#submitHyperBtn").html(htmlData);
-					// DB 삭제
 				}
 				else if (fidx.html().includes("diabet")) {
 					// 라디오 버튼 초기화
@@ -1024,7 +1021,6 @@
 					// 제출버튼으로 바꿈
 					htmlData += "<a onclick=\"diabetSum()\" class='submitBtn'><span>제출</span></a>";
 					$("#submitDiabetBtn").html(htmlData);
-					// DB 삭제
 				}
 				else if (fidx.html().includes("cerebro")) {
 					// 라디오 버튼 초기화
@@ -1040,12 +1036,11 @@
 					// 제출버튼으로 바꿈
 					htmlData += "<a onclick=\"cerebroSum()\" class='submitBtn'><span>제출</span></a>";
 					$("#submitCerebroBtn").html(htmlData);
-					// DB 삭제
 				}
 			}// resetBtn
 			
 			
-			/*<!--========== 추천버튼 ==========-->*/
+			/*<!--========== 점수	저장버튼 ==========-->*/
 			function resultBtn() {
 				
 				$.ajax({

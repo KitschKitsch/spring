@@ -159,11 +159,11 @@
 									</tr>
 									<tr>
 										<th>제목</th>
-										<td><input type="text" name="board_title" value="${mdto.board_title}"></td>
+										<td><input type="text" name="board_title" value="${mdto.board_title}" maxlength="20" required></td>
 									</tr>
 									<tr>
 										<th>내용</th>
-										<td><textarea name="board_contents" cols="50" rows="10" >${mdto.board_contents}</textarea></td>
+										<td><textarea name="board_contents" cols="50" rows="10" maxlength="500" required>${mdto.board_contents}</textarea></td>
 									</tr>
 									<tr>
 										<th>파일</th>

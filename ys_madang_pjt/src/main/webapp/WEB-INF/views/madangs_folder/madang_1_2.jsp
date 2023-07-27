@@ -424,7 +424,7 @@
 											비밀글 여부 &nbsp;<input role="switch" type="checkbox" class="replynum">
 										</p>
 									</label>
-									<textarea class="replyType" id="commentBox" val=""></textarea>
+									<textarea class="replyType" id="commentBox" val="" placeholder="댓글을 입력하세요(최대 50자)" maxlength="50"></textarea>
 								</li>
 								<li class="btn">
 									<a onclick="commentBtn()" class="replyBtn">등록</a>

@@ -105,16 +105,16 @@
 									</tr>
 									<tr>
 										<th>제목</th>
-										<td><input type="text" name="board_title"></td>
+										<td><input type="text" name="board_title" placeholder="제목을 입력하세요(최대 20자)" maxlength="20" required></td>
 									</tr>
 									<tr>
 										<th>내용</th>
-										<td><textarea name="board_contents" cols="50" rows="10"></textarea></td>
+										<td><textarea name="board_contents" cols="50" rows="10" placeholder="내용을 입력하세요(최대 500자)" maxlength="500" required></textarea></td>
 									</tr>
 									<tr>
 										<th>이미지</th>
 										<td>※ (필수) 사진파일을 최소 1개이상 등록해야 합니다.<br>
-											<input type="file" name="files" id="file"><br>
+											<input type="file" name="files" id="file" required><br>
 											<input type="file" name="files" id="file"><br>
 											<input type="file" name="files" id="file">
 										</td>

@@ -103,7 +103,7 @@
 			
 			<div class="right-area">
 				<div class="right_contents_wrap">
-					<h3>자유 / 일상 게시판</h3>
+					<h3>복지 혜택 안내</h3>
 					<div class="content_box tab_menu_01">
 						<div class="boxtype1">
 							<p class="descript">
@@ -429,7 +429,7 @@
 											비밀글 여부 &nbsp;<input role="switch" type="checkbox" class="replynum">
 										</p>
 									</label>
-									<textarea class="replyType" id="commentBox" val=""></textarea>
+									<textarea class="replyType" id="commentBox" val="" placeholder="댓글을 입력하세요(최대 50자)" maxlength="50"></textarea>
 								</li>
 								<li class="btn">
 									<a onclick="commentBtn()" class="replyBtn">등록</a>
