@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- 취미/친목 게시판 게시글 작성 페이지 2023.07.24 영섭 -->
+<!-- 취미/친목 게시판 게시글 작성 페이지 2023.07.24 시작 (영섭) -->
+<!-- 취미/친목 게시판 게시글 작성 페이지 2023.07.24 완료 (영섭) -->
 <!doctype html>
 <html lang="en">
 

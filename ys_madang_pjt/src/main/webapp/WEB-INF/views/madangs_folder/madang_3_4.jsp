@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!-- 복지 혜택 안내 수정 페이지 2023.07.24 영섭 -->
+<!-- 복지 혜택 안내 게시글 수정 페이지 2023.07.24 시작 (영섭) -->
+<!-- 복지 혜택 안내 게시글 수정 페이지 2023.07.24 완료 (영섭) -->
 <!doctype html>
 <html lang="en">
 
@@ -211,6 +212,7 @@
 		</div>
 		<!--====게시판====-->
 		</div>
+		
 	</section>
 
 	<!-- End Offered Services Area -->

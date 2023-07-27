@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- 취미/친목 게시판 게시글 보기 페이지 2023.07.24 영섭 -->
+<!-- 취미/친목 게시판 게시글 보기 페이지 2023.07.24 시작 (영섭) -->
+<!-- 취미/친목 게시판 게시글 보기 페이지 2023.07.24 완료 (영섭) -->
 <!doctype html>
 <html lang="en">
 
@@ -36,8 +37,6 @@
 </head>
 
 <body>
-
-
 
 	<!--================Header Menu Area =================-->
 	<div data-include-path="../senicare_sub_header"></div>
@@ -146,7 +145,6 @@
 									<tr>
 										<td colspan="4">
 											<div class="col-md-9">
-
 
 												<script type="text/javascript">
 													$(function() {
@@ -404,12 +402,7 @@
 										}
 									});// ajax
 								}// if
-
 							}// updateSave
-							
-							
-							
-							
 						</script>
 
 
@@ -595,13 +588,7 @@
 				</div>
 			</div>
 			<!--====게시판====-->
-
-
-
-
-
-
-
+			
 		</div>
 	</section>
 

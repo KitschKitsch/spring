@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- 내 주변 의료기관 찾기 페이지 2023.07.10 시작 (영섭) -->
+<!-- 내 주변 의료기관 찾기 페이지 2023.07.12 완료 (영섭) -->
 <!doctype html>
 <html lang="en">
 
@@ -106,7 +108,6 @@
 	<div id="map"></div>
 
 
-
 	<!--==================== 여기서부터 ====================-->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a8704aeb10138e02bdeb9cb9fef81ab9"></script>
 	<script>
@@ -188,7 +189,7 @@
 							var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 							for (var i = 0; i < positions.length; i++) {
 								// 마커 이미지의 이미지 크기 입니다
-								var imageSize = new kakao.maps.Size(24, 35);
+								var imageSize = new kakao.maps.Size(20, 31);
 								// 마커 이미지를 생성합니다    
 								var markerImage = new kakao.maps.MarkerImage(
 										imageSrc, imageSize);
@@ -334,7 +335,7 @@
 															var imageSrcOne = "https://icons.veryicon.com/png/o/miscellaneous/multicolor-3/location-point-1.png";
 															// '선택 위치' 마커 이미지의 이미지 크기 입니다
 															var imageSizeOne = new kakao.maps.Size(
-																	70, 70);
+																	60, 60);
 															// '선택 위치' 마커 이미지를 생성합니다    
 															var markerImageOne = new kakao.maps.MarkerImage(
 																	imageSrcOne,
@@ -356,7 +357,7 @@
 															for (var i = 0; i < positions.length; i++) {
 																// 마커 이미지의 이미지 크기 입니다
 																var imageSize = new kakao.maps.Size(
-																		24, 35);
+																		20, 31);
 																// 마커 이미지를 생성합니다    
 																var markerImage = new kakao.maps.MarkerImage(
 																		imageSrc,
@@ -513,7 +514,7 @@
 										for (var i = 0; i < positions.length; i++) {
 											// 마커 이미지의 이미지 크기 입니다
 											var imageSize = new kakao.maps.Size(
-													35, 35);
+													30,30);
 											// 마커 이미지를 생성합니다    
 											var markerImage = new kakao.maps.MarkerImage(
 													imageSrc, imageSize);
@@ -655,7 +656,7 @@
 										for (var i = 0; i < positions.length; i++) {
 											// 마커 이미지의 이미지 크기 입니다
 											var imageSize = new kakao.maps.Size(
-													40, 40);
+													30,30);
 											// 마커 이미지를 생성합니다    
 											var markerImage = new kakao.maps.MarkerImage(
 													imageSrc, imageSize);
@@ -798,7 +799,7 @@
 										for (var i = 0; i < positions.length; i++) {
 											// 마커 이미지의 이미지 크기 입니다
 											var imageSize = new kakao.maps.Size(
-													40, 40);
+													30, 30);
 											// 마커 이미지를 생성합니다    
 											var markerImage = new kakao.maps.MarkerImage(
 													imageSrc, imageSize);
@@ -856,7 +857,7 @@
 									error : function(data) {
 										alert("실패");
 									}
-								});// ajax
+								});// ajaxㄴ
 					});// 위치정보
 		}// hosBtn
 		
@@ -944,7 +945,7 @@
 										for (var i = 0; i < positions.length; i++) {
 											// 마커 이미지의 이미지 크기 입니다
 											var imageSize = new kakao.maps.Size(
-													40, 40);
+													24, 40);
 											// 마커 이미지를 생성합니다    
 											var markerImage = new kakao.maps.MarkerImage(
 													imageSrc, imageSize);

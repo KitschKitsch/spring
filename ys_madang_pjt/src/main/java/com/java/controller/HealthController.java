@@ -46,7 +46,7 @@ public class HealthController {
 	// 각 점수를 리스트로 가져오기
 	@PostMapping("/health/testList")
 	@ResponseBody
-	public HashMap<String, Object> health_2(HealthDto healthDto) {
+	public HashMap<String, Object> testList(HealthDto healthDto) {
 		HashMap<String, Object> map = new HashMap<>();
 		ArrayList<HealthDto> list = healthService.selectAll(healthDto);
 

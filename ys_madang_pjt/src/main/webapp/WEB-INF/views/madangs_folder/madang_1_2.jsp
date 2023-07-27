@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- 자유/일상 게시판 게시글 보기 페이지 2023.07.21 영섭 -->
+<!-- 자유/일상 게시판 게시글 보기 페이지 2023.07.20 시작 (영섭) -->
+<!-- 자유/일상 게시판 게시글 보기 페이지 2023.07.20 완료 (영섭) -->
 <!doctype html>
 <html lang="en">
 
@@ -593,12 +594,6 @@
 				</div>
 			</div>
 			<!--====게시판====-->
-
-
-
-
-
-
 
 		</div>
 	</section>
