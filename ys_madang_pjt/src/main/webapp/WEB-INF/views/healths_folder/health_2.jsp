@@ -76,7 +76,7 @@
 			<script>
 			
 			</script>
-			<div class="row justify-content-center d-flex align-items-center">
+			<div style="display: flex; justify-content: space-around;">
 				<div class="col-lg-3 col-md-6 single-team mb-50">
 					<div class="thumb">
 						<img class="img-fluid" src="../img/demen.png" alt="">
